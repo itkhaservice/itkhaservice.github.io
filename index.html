@@ -59,6 +59,10 @@
         font-weight: 600;
         color: #343a40;
     }
+    #project.form-select {
+        max-height: 150px; /* Adjust as needed */
+        overflow-y: auto;
+    }
   </style>
 </head>
 <body>
@@ -108,11 +112,6 @@
       <div class="mb-3">
         <label for="file" class="form-label">Chọn tệp tin đính kèm:</label>
         <input id="file" type="file" class="form-control">
-      </div>
-
-      <div class="mb-3">
-        <label for="note" class="form-label">Ghi chú (không bắt buộc)</label>
-        <textarea id="note" rows="3" class="form-control"></textarea>
       </div>
 
       <button id="sendBtn" class="btn btn-primary">GỬI TỆP TIN</button>
