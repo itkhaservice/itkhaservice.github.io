@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Upload File Dự Án</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f7f7;
+      margin: 0;
+      padding: 0;
+    }
+    #upload-widget {
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      background: #fff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    h3 { text-align: center; }
+    label { font-weight: bold; margin-top: 10px; display: block; }
+    select, input[type="file"], textarea {
+      width: 100%;
+      padding: 8px;
+      margin: 6px 0;
+      box-sizing: border-box;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+    button {
+      padding: 10px 16px;
+      margin-top: 12px;
+      cursor: pointer;
+      background: #28a745;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+    button:hover { background: #218838; }
+    #msg { margin-top: 12px; font-weight: bold; text-align: center; }
+  </style>
+</head>
+<body>
+
+<div id="upload-widget">
+  <h3>Gửi file dữ liệu dự án</h3>
+
+  <label for="project">Chọn dự án</label>
+  <select id="project">
+    <option value="">-- Chọn dự án --</option>
+    <option>Sen Hồng A</option>
+    <option>Sen Hồng BC</option>
+    <option>TDH Riverview</option>
+    <option>Sài Gòn Metro</option>
+    <option>Lan Phương MHBR</option>
+    <option>Flora Anh Đào</option>
+    <option>Citrine</option>
+    <option>Flora Kikyo</option>
+    <option>TDH Phước Long</option>
+    <option>Topaz Home 2</option>
+    <option>Samsora</option>
+    <option>R7</option>
+    <option>Orient</option>
+    <option>Vạn Đô</option>
+    <option>Horizon</option>
+    <option>KH 1</option>
+    <option>KH 2</option>
+    <option>T.P Elite Phoenix 1</option>
+    <option>T.P Elite Phoenix 2</option>
+    <option>Topaz City - Khối B</option>
+    <option>Citizen</option>
+    <option>Hưng Phát</option>
+    <option>Hưng Phát 2</option>
+    <option>Phú Gia</option>
+    <option>Nhất Lan 2</option>
+    <option>The Star</option>
+    <option>Tam Phú</option>
+    <option>Phố Gia Phúc</option>
+    <option>The Useful</option>
+  </select>
+
+  <label for="file">Chọn file</label>
+  <input id="file" type="file">
+
+  <label for="note">Ghi chú (không bắt buộc)</label>
+  <textarea id="note" rows="3"></textarea>
+
+  <button id="sendBtn">Gửi file</button>
+
+  <div id="msg"></div>
+</div>
+
+<script>
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyCg4xq3QxjSbZTpuCj8HCAjyj0xe_BsQXZzZgRmHuEM0BQ9jFW7Y1OkSITlmqGrjiE/exec";
+
+document.getElementById('sendBtn').addEventListener('click', async function () {
+  const project = document.getElementById('project').value.trim();
+  const fileInput = document.getElementById('file');
+  const note = document.getElementById('note').value || '';
+  const msg = document.getElementById('msg');
+
+  msg.style.color = 'green';
+  msg.textContent = '';
+
+  if (!project) { msg.style.color='red'; msg.textContent='Vui lòng chọn dự án.'; return; }
+  if (!fileInput.files || fileInput.files.length === 0) { msg.style.color='red'; msg.textContent='Vui lòng chọn file.'; return; }
+
+  const file = fileInput.files[0];
+
+  const reader = new FileReader();
+  reader.onload = async function(e) {
+    const base64Data = e.target.result.split(',')[1];
+
+    const formData = new FormData();
+    formData.append('project', project);
+    formData.append('fileName', file.name);
+    formData.append('note', note);
+    formData.append('fileBlob', base64Data);
+
+    msg.textContent = 'Đang gửi...';
+
+    try {
+      const res = await fetch(WEB_APP_URL, { method: 'POST', body: formData });
+      const data = await res.json();
+      if (res.ok && data.status === "ok") {
+        msg.style.color='green';
+        msg.textContent = 'Gửi thành công!';
+        fileInput.value = "";
+        document.getElementById('note').value = "";
+      } else {
+        msg.style.color='red';
+        msg.textContent = 'Lỗi: ' + (data.message || JSON.stringify(data));
+      }
+    } catch(err) {
+      msg.style.color='red';
+      msg.textContent = 'Lỗi mạng hoặc server: ' + err.message;
+    }
+  };
+  reader.readAsDataURL(file);
+});
+</script>
+
+</body>
+</html>
