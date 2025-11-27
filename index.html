@@ -162,7 +162,7 @@
 
       <div class="mb-3">
         <label for="file" class="form-label">Chọn tệp tin đính kèm:</label>
-        <input id="file" type="file" class="form-control">
+        <input id="file" type="file" class="form-control" accept=".xls,.xlsx">
       </div>
 
       <button id="sendBtn" class="btn btn-primary">GỬI TỆP TIN</button>
@@ -204,7 +204,6 @@
 
         if (!nativeSelect || !selectedDiv || !itemsDiv) return;
 
-        // Populate custom items
         for (const option of nativeSelect.options) {
           const item = document.createElement("DIV");
           item.innerHTML = option.innerHTML;
@@ -221,11 +220,9 @@
             this.classList.add("same-as-selected");
 
             nativeSelect.value = option.value;
-            // Trigger a 'change' event on the native select in case other scripts are listening for it.
             nativeSelect.dispatchEvent(new Event('change'));
 
             selectedDiv.innerHTML = this.innerHTML;
-            // Close dropdown after selection
             itemsDiv.classList.add("select-hide");
             selectedDiv.classList.remove("select-arrow-active");
           });
@@ -251,7 +248,6 @@
     document.getElementById('sendBtn').addEventListener('click', async function () {
       const project = document.getElementById('project').value.trim();
       const fileInput = document.getElementById('file');
-      const note = document.getElementById('note').value || '';
       const msg = document.getElementById('msg');
 
       msg.style.color = 'red'; // Default to red for errors
@@ -273,6 +269,15 @@
 
       const file = fileInput.files[0];
 
+      const fileName = file.name;
+      const fileExtension = fileName.substring(fileName.lastIndexOf('.') + 1).toLowerCase();
+      const allowedExtensions = ['xls', 'xlsx', 'xlsm'];
+
+      if (!allowedExtensions.includes(fileExtension)) {
+        msg.textContent = 'Lỗi: Chỉ chấp nhận tệp tin Excel (.xls, .xlsx, .xlsm).';
+        return;
+      }
+
       if (file.size > MAX_FILE_SIZE) {
         msg.textContent = 'Lỗi: Kích thước tệp tin không được vượt quá 100MB.';
         return;
@@ -286,7 +291,6 @@
         const formData = new FormData();
         formData.append('project', project);
         formData.append('fileName', file.name);
-        formData.append('note', note);
         formData.append('fileBlob', base64Data);
 
         msg.textContent = 'Đang gửi...';
@@ -299,7 +303,6 @@
             msg.style.color = 'green';
             msg.textContent = 'Gửi thành công!';
             fileInput.value = "";
-            document.getElementById('note').value = "";
           } else {
             msg.style.color = 'red';
             msg.textContent = 'Lỗi: ' + (data.message || JSON.stringify(data));
