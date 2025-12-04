@@ -8,7 +8,8 @@ document.addEventListener("DOMContentLoaded", function() {
             const navLinks = document.querySelectorAll(".navbar-nav .nav-link");
             const currentPage = window.location.pathname;
             navLinks.forEach(link => {
-                if (link.getAttribute("href") === currentPage) {
+                const linkPath = new URL(link.href).pathname;
+                if (linkPath === currentPage || (currentPage === "/" && linkPath === "/index.html")) {
                     link.classList.add("active");
                 }
             });
