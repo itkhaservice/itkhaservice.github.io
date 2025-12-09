@@ -252,3 +252,9 @@ footer {
 .col-md-6 h4 {
     margin-top: 0;
 }
+
+/* Custom class for smaller images */
+.img-small {
+    max-width: 70%; 
+    height: auto;
+}
