@@ -169,9 +169,11 @@
       </div>
       <div class="col-md-8">
         <h4 id="cau-hinh-thong-tin-ngan-hang-mac-dinh">8.2. Cấu hình thông tin ngân hàng - Mặc định "110000063371"</h4>
-        <p class="long-string">"00020101021238560010A0000007270126000697041501121100000633710208QRIBFTTA53037045408494949495802VN62110807myexcel630429DD" </p>
-        <p>Sao chép đoạn mã và dán.</p>
-        <p>Sau đó nhấn Lưu.</p>
+        <div class="code-copy-block">
+          <code class="copyable-code-string long-string">00020101021238560010A0000007270126000697041501121100000633710208QRIBFTTA53037045408494949495802VN62110807myexcel630429DD</code>
+          <button class="copy-button btn btn-sm btn-outline-secondary">Sao chép</button>
+        </div>
+        <p>Sao chép đoạn mã và dán. Sau đó nhấn Lưu.</p>
       </div>
     </div>
     <div class="row align-items-start mb-4">
@@ -180,7 +182,10 @@
       </div>
       <div class="col-md-8">
         <h4 id="cau-hinh-thong-tin-ngan-hang-tai-khoan-khac-1">8.3. Cấu hình thông tin ngân hàng - Tài khoản khác</h4>
-        <p>Truy cập đường dẫn: <a href="https://vietqr.net/" target="_blank">vietqr.net</a> để lấy thông tin. Điền thông tin tài khoản ngân hàng. Số tiền: 49494949. Nội dung: myexcel. Tạo mã QR và dùng Camera điện thoại để quét lấy đoạn mã.</p>
+        <p>Truy cập đường dẫn: <a href="https://vietqr.net/" target="_blank">vietqr.net</a> để lấy thông tin. Điền thông tin tài khoản ngân hàng. </p>
+        <p>Số tiền: 49494949</p>
+        <p>Nội dung: myexcel</p>
+        <p>Tạo mã QR và dùng Camera điện thoại để quét lấy đoạn mã.</p>
       </div>
     </div>
     <div class="row align-items-start mb-4">
@@ -217,7 +222,11 @@
       </div>
       <div class="col-md-8">
         <h4 id="su-dung-cong-thuc-mau">9.2. Sử dụng công thức - Mẫu công thức</h4>
-        <p>Mẫu công thức: =QrBank_SoTien_NoiDung(H26, “Thanh toan phi 12.2024 CC SCR II Can ho.”&C6)</p>
+        <p>Mẫu công thức:</p>
+        <div class="code-copy-block">
+          <code class="copyable-code-string long-string">=QrBank_SoTien_NoiDung(H26, “Thanh toan phi 12.2024 CC SCR II Can ho.”&C6)</code>
+          <button class="copy-button btn btn-sm btn-outline-secondary">Sao chép</button>
+        </div>
       </div>
     </div>
     <div class="row align-items-start mb-4">
@@ -310,6 +319,10 @@
                 <h4 id="loi-thuong-gap-qrcode-lech-1-dong">10.6. QrCode lệch 1 đồng</h4>
                 <p>Khoảng 2-5% số lượng báo phí sẽ bị lệch 1-2 đồng nếu Số tiền bị lẻ</p>
                 <p>Sử dụng công thức lấy ô giá tiền => ép về kiểu chữ để giữ đúng (không tăng không giảm) => ép ngược về lại kiểu chuỗi là số => Công thức QrCode sẽ nhận đúng giá trị không hơn không kém.</p>
+                <div class="code-copy-block">
+                  <code class="copyable-code-string long-string">=SUBSTITUTE(TEXT(H16,"0"),",","")</code>
+                  <button class="copy-button btn btn-sm btn-outline-secondary">Sao chép</button>
+                </div>
               </div>
             </div></main>
   

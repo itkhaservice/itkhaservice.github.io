@@ -228,3 +228,51 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 });
+
+// Copy to Clipboard Functionality
+document.addEventListener('DOMContentLoaded', function() {
+  const copyButtons = document.querySelectorAll('.code-copy-block .copy-button');
+
+  copyButtons.forEach(copyButton => {
+    const codeToCopyElement = copyButton.previousElementSibling; // The <code> tag
+    
+    if (codeToCopyElement && codeToCopyElement.classList.contains('copyable-code-string')) {
+      copyButton.addEventListener('click', async function() {
+        const textToCopy = codeToCopyElement.textContent || codeToCopyElement.innerText;
+
+        try {
+          await navigator.clipboard.writeText(textToCopy);
+          const originalText = copyButton.textContent;
+          copyButton.textContent = 'Đã sao chép!';
+          setTimeout(() => {
+            copyButton.textContent = originalText;
+          }, 2000); // Revert after 2 seconds
+        } catch (err) {
+          console.error('Không thể sao chép văn bản: ', err);
+          // Fallback for older browsers or non-secure contexts
+          const textArea = document.createElement('textarea');
+          textArea.value = textToCopy;
+          textArea.style.position = 'fixed'; // Avoid scrolling to bottom
+          textArea.style.left = '-999999px';
+          textArea.style.top = '-999999px';
+          document.body.appendChild(textArea);
+          textArea.focus();
+          textArea.select();
+          try {
+            document.execCommand('copy');
+            const originalText = copyButton.textContent;
+            copyButton.textContent = 'Đã sao chép!';
+            setTimeout(() => {
+              copyButton.textContent = originalText;
+            }, 2000);
+          } catch (execErr) {
+            console.error('Fallback: Không thể sao chép văn bản', execErr);
+            alert('Không thể sao chép tự động. Vui lòng sao chép thủ công: ' + textToCopy);
+          } finally {
+            document.body.removeChild(textArea);
+          }
+        }
+      });
+    }
+  });
+});
