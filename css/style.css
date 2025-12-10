@@ -10,7 +10,7 @@
 
 body {
     background-color: var(--secondary-color);
-    font-family: 'Inter', sans-serif;
+    font-family: 'Roboto', sans-serif;
     color: var(--text-color);
     line-height: 1.6;
 }
@@ -257,8 +257,98 @@ footer {
 .img-small {
     max-width: 70%; 
     height: auto;
+    transition: transform 0.3s ease-in-out; /* Smooth transition */
+    transform-origin: center center; /* Zoom from the center */
+}
+
+.img-small:hover {
+    transform: scale(1.05); /* Zoom in by 5% */
 }
 
 .long-string {
     word-break: break-all;
+}
+
+/* Highlight effect for scroll targets */
+@keyframes highlight-fade {
+  from { background-color: rgba(0, 123, 255, 0.2); } /* Light blue highlight */
+  to { background-color: transparent; }
+}
+
+.highlight {
+  animation: highlight-fade 2s ease-out;
+  border-radius: 5px; /* Optional: adds rounded corners to the highlight */
+  padding: 5px;
+  margin: -5px;
+}
+
+/* Back to Menu Button */
+.back-to-menu-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 100;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  padding: 0;
+  font-size: 24px;
+  line-height: 50px; /* Should be equal to height */
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  
+  /* For fade effect */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+.back-to-menu-btn.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Styling for Table of Contents links */
+.table-of-contents a {
+    color: var(--text-color); /* Dark grey */
+    text-decoration: none; /* Remove underline */
+    transition: color 0.2s ease-in-out, font-weight 0.2s ease-in-out;
+}
+
+.table-of-contents a:hover,
+.table-of-contents a:active,
+.table-of-contents a:focus { /* Include focus for accessibility */
+    color: var(--primary-color); /* Darker on hover/active/focus */
+    text-decoration: none; /* Ensure no underline on hover */
+    font-weight: 700; /* Make text bold on hover/active/focus */
+}
+
+/* --- Content Hierarchy Indentation (Final Revision) --- */
+
+/* All h4 headings get 2em padding */
+main.container .col-md-8 h4 {
+    padding-left: 2em;
+}
+
+/* All content (p, ul) following an h3 gets 2em padding */
+main.container h3 ~ p,
+main.container h3 ~ ul {
+    padding-left: 2em;
+}
+
+/* All content (p, ul) following an h4 gets 4em padding */
+main.container h4 ~ p,
+main.container h4 ~ ul {
+    padding-left: 4em;
+}
+
+/* Ensure ULs don't have excessive default padding, and LI elements have consistent indent */
+main.container ul {
+    padding-left: 0; /* Remove browser default UL padding */
+    margin-left: 0; /* Remove browser default UL margin */
+    list-style-position: inside; /* Bullet inside content box */
+}
+
+main.container ul li {
+    padding-left: 1.5em; /* Add specific padding to LI elements for further indent */
 }

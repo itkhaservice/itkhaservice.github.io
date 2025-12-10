@@ -7,7 +7,7 @@
   <!-- Google Fonts: Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <!-- Bootstrap CSS -->
@@ -20,11 +20,11 @@
     <h1 class="page-title text-center mb-5">Excel</h1>
     <h2 class="text-center mb-4">Hướng dẫn cài đặt và sử dụng MyExcel</h2>
 
-    <div class="table-of-contents mb-5 p-3 border rounded">
+    <div class="table-of-contents mb-5 p-3 border rounded" id="table-of-contents">
       <ol>
         <li><a href="#tai-va-luu-thu-muc">Tải và lưu thư mục</a></li>
-        <li><a href="#cai-dat-trust-center-vi-tri-tin-cay">Cài đặt Trust Center (Vị trí tin cậy)</a></li>
-        <li><a href="#cai-dat-trust-center-thu-muc-con">Cài đặt Trust Center (Thư mục con)</a></li>
+        <li><a href="#cai-dat-trust-center-vi-tri-tin-cay">Cài đặt Vị trí tin cậy</a></li>
+        <li><a href="#cai-dat-trust-center-thu-muc-con">Cài đặt Thư mục con</a></li>
         <li><a href="#cai-dat-macro">Cài đặt Macro</a></li>
         <li><a href="#cai-dat-active-x">Cài đặt Active X</a></li>
         <li><a href="#cai-dat-protected-view">Cài đặt Protected View</a></li>
@@ -67,6 +67,7 @@
       <div class="col-md-8">
         <h3 id="tai-va-luu-thu-muc">1. Tải và lưu thư mục</h3>
         <p>Tải xuống CaiDatMyExcel, giải nén sau đó Sao chép thưc mục "MyExcel" vào ổ đĩa Windows C.</p>
+        <p><a href="https://drive.google.com/file/d/1nyafQ1p1avp2VpKlNmNlNtH2CQ4bW0aW/view?usp=sharing">Tải xuống tại đây.</a></p>
       </div>
     </div>
 
@@ -76,8 +77,12 @@
         <img src="images/myexcel/Hướng dẫn tích hợp Qr Code Ngân hàng-2.png" data-image-full="images/myexcel/Hướng dẫn tích hợp Qr Code Ngân hàng-2.png" alt="Cài đặt Trust Center" class="img-fluid border p-2 rounded img-small" data-bs-toggle="modal" data-bs-target="#imageModal" style="cursor: pointer;">
       </div>
       <div class="col-md-8">
-        <h3 id="cai-dat-trust-center-vi-tri-tin-cay">2. Cài đặt Trust Center (Vị trí tin cậy)</h3>
-        <p>Mở Excel, chọn Option(Tùy chọn) => Trust Center (Trung tâm tin cậy) => Trust Center Settings...(Cài đặt trung tâm tin cậy) => Trusted Location (Vị trí tin cậy) => Add new location..(Thêm mới vị trí tin cậy).</p>
+        <h3 id="cai-dat-trust-center-vi-tri-tin-cay">2. Cài đặt Vị trí tin cậy</h3>
+        <p>Mở Excel, chọn Option (Tùy chọn)</p>
+        <p>=> Trust Center (Trung tâm tin cậy)</p>
+        <p>=> Trust Center Settings (Cài đặt trung tâm tin cậy)</p>
+        <p>=> Trusted Location (Vị trí tin cậy)</p>
+        <p>=> Add new location (Thêm mới vị trí tin cậy)</p>
       </div>
     </div>
 
@@ -87,7 +92,7 @@
         <img src="images/myexcel/Hướng dẫn tích hợp Qr Code Ngân hàng-3.png" data-image-full="images/myexcel/Hướng dẫn tích hợp Qr Code Ngân hàng-3.png" alt="Cài đặt Trust Center - Thư mục con" class="img-fluid border p-2 rounded img-small" data-bs-toggle="modal" data-bs-target="#imageModal" style="cursor: pointer;">
       </div>
       <div class="col-md-8">
-        <h3 id="cai-dat-trust-center-thu-muc-con">3. Cài đặt Trust Center (Thư mục con)</h3>
+        <h3 id="cai-dat-trust-center-thu-muc-con">3. Cài đặt Thư mục con</h3>
         <p>Sau đó, chọn đến thư mục MyExcel. Chọn Subfolders of this location are also trusted (Các thư mục con của vị trí này cũng được tin cậy). Sau đó, chọn OK hoàn tất.</p>
       </div>
     </div>
@@ -101,9 +106,9 @@
         <h3 id="cai-dat-macro">4. Cài đặt Macro</h3>
         <p>Chọn Trust Center (Trung tâm tin cậy) => Trust Center Settings...(Cài đặt trung tâm tin cậy) => Macro Settings (Thiết đặt Macro)</p>
         <ul>
-          <li>Disable VBA macros with notification(...)</li>
-          <li>Enable Excel 4.0 macros when VBA macros are enabled(...)</li>
-          <li>Trust access to the VBA project object model(...)</li>
+          <li>Disable VBA macros with notification (Vô hiệu hóa macro VBA kèm thông báo)</li>
+          <li>Enable Excel 4.0 macros when VBA macros are enabled (Kích hoạt macro Excel 4.0 khi macro VBA được kích hoạt.)</li>
+          <li>Trust access to the VBA project object model (Cấp quyền truy cập vào mô hình đối tượng dự án VBA)</li>
         </ul>
       </div>
     </div>
@@ -117,8 +122,8 @@
         <h3 id="cai-dat-active-x">5. Cài đặt Active X</h3>
         <p>Chọn Trust Center (Trung tâm tin cậy) => Trust Center Settings...(Cài đặt trung tâm tin cậy) => ActiveX Settings (Thiết đặt Active X)</p>
         <ul>
-          <li>Prompt me before enabling all controls with minimal restrictions (...)</li>
-          <li>Safe mode (helps limit the control's access to your computer)</li>
+          <li>Prompt me before enabling all controls with minimal restrictions (Hãy hỏi tôi trước khi kích hoạt tất cả các tùy chọn với hạn chế tối thiểu.)</li>
+          <li>Safe mode helps limit the control's access to your computer (Chế độ an toàn giúp hạn chế quyền truy cập của hệ điều hành vào máy tính của bạn)</li>
         </ul>
       </div>
     </div>
@@ -144,21 +149,16 @@
       </div>
       <div class="col-md-8">
         <h3 id="kich-hoat-add-ins">7. Kích hoạt Add-ins</h3>
-        <p>Mở Excel, chọn Option(Tùy chọn) => Add-ins (Phần bổ trợ) => Chọn Go (Đến) => Chọn đến MyExcel.xlam (Lưu trong thư mục ổ đĩa C:\MyExcel).</p>
+        <p>Mở Excel, chọn Option(Tùy chọn) => Add-ins (Phần bổ trợ) => Chọn Go (Đến) => Chọn đến MyExcel.xlam (Lưu trong thư mục ổ đĩa C:\MyExcel). Tải xuống MyExcel.xlam.</p>
       </div>
     </div>
 
-    <!-- Remaining sections for error handling and support - using existing placeholder descriptions -->
-    <div class="row mb-3">
-        <div class="col-12">
-            <h3 class="text-center" id="cau-hinh-thong-tin-ngan-hang-main">8. Cấu hình thông tin ngân hàng</h3>
-        </div>
-    </div>
     <div class="row align-items-start mb-4">
       <div class="col-md-4 text-center mb-4">
         <img src="images/myexcel/Hướng dẫn tích hợp Qr Code Ngân hàng-8.png" data-image-full="images/myexcel/Hướng dẫn tích hợp Qr Code Ngân hàng-8.png" alt="Cấu hình thông tin ngân hàng" class="img-fluid border p-2 rounded img-small" data-bs-toggle="modal" data-bs-target="#imageModal" style="cursor: pointer;">
       </div>
       <div class="col-md-8">
+        <h3 id="cau-hinh-thong-tin-ngan-hang-main">8. Cấu hình thông tin ngân hàng</h3>
         <h4 id="cau-hinh-thong-tin-ngan-hang-chi-tiet">8.1. Cấu hình thông tin ngân hàng</h4>
         <p>Sau khi Add-ins thành công, trên thanh công cụ sẽ xuất hiện Phần Minitool. Nhấn chọn Minitool => Tạo Qr Tài khoản Ngân hàng để nhận chuyển tiền (VietQR) => Nhấn chọn Tạo QR Code Tài khoản Ngân hàng</p>
       </div>
@@ -169,7 +169,9 @@
       </div>
       <div class="col-md-8">
         <h4 id="cau-hinh-thong-tin-ngan-hang-mac-dinh">8.2. Cấu hình thông tin ngân hàng - Mặc định "110000063371"</h4>
-        <p class="long-string">"00020101021238560010A0000007270126000697041501121100000633710208QRIBFTTA53037045408494949495802VN62110807myexcel630429DD" Sao chép đoạn mã và dán. Sau đó nhấn Lưu</p>
+        <p class="long-string">"00020101021238560010A0000007270126000697041501121100000633710208QRIBFTTA53037045408494949495802VN62110807myexcel630429DD" </p>
+        <p>Sao chép đoạn mã và dán.</p>
+        <p>Sau đó nhấn Lưu.</p>
       </div>
     </div>
     <div class="row align-items-start mb-4">
@@ -178,7 +180,7 @@
       </div>
       <div class="col-md-8">
         <h4 id="cau-hinh-thong-tin-ngan-hang-tai-khoan-khac-1">8.3. Cấu hình thông tin ngân hàng - Tài khoản khác</h4>
-        <p>Truy cập đường dẫn: vietqr.net để lấy thông tin. Điền thông tin tài khoản ngân hàng. Số tiền: 49494949. Nội dung: myexcel. Tạo mã QR và dùng Camera điện thoại để quét lấy đoạn mã.</p>
+        <p>Truy cập đường dẫn: <a href="https://vietqr.net/" target="_blank">vietqr.net</a> để lấy thông tin. Điền thông tin tài khoản ngân hàng. Số tiền: 49494949. Nội dung: myexcel. Tạo mã QR và dùng Camera điện thoại để quét lấy đoạn mã.</p>
       </div>
     </div>
     <div class="row align-items-start mb-4">
@@ -199,16 +201,12 @@
         <p>Sau khi Add-ins thành công, trên thanh công cụ sẽ xuất hiện Phần Minitool. Nhấn chọn Minitool => Tạo Qr Tài khoản Ngân hàng để nhận chuyển tiền (VietQR) => Bật tắt hàm VietQr => Nhấn OK</p>
       </div>
     </div>
-    <div class="row mb-3">
-        <div class="col-12">
-            <h3 class="text-center" id="su-dung-cong-thuc-main">9. Sử dụng công thức</h3>
-        </div>
-    </div>
     <div class="row align-items-start mb-4">
       <div class="col-md-4 text-center mb-4">
         <img src="images/myexcel/Hướng dẫn tích hợp Qr Code Ngân hàng-13.png" data-image-full="images/myexcel/Hướng dẫn tích hợp Qr Code Ngân hàng-13.png" alt="Sử dụng công thức" class="img-fluid border p-2 rounded img-small" data-bs-toggle="modal" data-bs-target="#imageModal" style="cursor: pointer;">
       </div>
       <div class="col-md-8">
+        <h3 id="su-dung-cong-thuc-main">9. Sử dụng công thức</h3>
         <h4 id="su-dung-cong-thuc-1">9.1. Giới thiệu</h4>
         <p>Áp dụng công thức: QrBank_SoTien_NoiDung(sotien,noidung). Gộp nhiều ô để tạo QrBank to, rõ và dễ dàng quét.</p>
       </div>
@@ -222,24 +220,18 @@
         <p>Mẫu công thức: =QrBank_SoTien_NoiDung(H26, “Thanh toan phi 12.2024 CC SCR II Can ho.”&C6)</p>
       </div>
     </div>
-    <div class="row mb-3">
-        <div class="col-12">
-            <h3 class="text-center" id="cac-loi-thuong-gap">10. Các lỗi thường gặp</h3>
-        </div>
-    </div>
-    
-    <!-- Section Mất công thức -->
     <div class="row align-items-start mb-4">
       <div class="col-md-4 text-center mb-4">
         <img src="images/myexcel/Hướng dẫn tích hợp Qr Code Ngân hàng-18.png" data-image-full="images/myexcel/Hướng dẫn tích hợp Qr Code Ngân hàng-18.png" alt="Mất công thức" class="img-fluid border p-2 rounded img-small" data-bs-toggle="modal" data-bs-target="#imageModal" style="cursor: pointer;">
       </div>
       <div class="col-md-8">
+        <h3 id="cac-loi-thuong-gap">10. Các lỗi thường gặp</h3>
         <h4 id="loi-thuong-gap-mat-cong-thuc">10.1. Mất công thức</h4>
         <p>Khi thay đổi STT căn hộ, QRCode không cập nhật.</p>
         <p>Kiểm tra lại thư viện Minitool còn trên thanh công cụ không?</p>
         <ul>
-          <li>Nếu không -> Add-ins lại thư viện</li>
-          <li>Nếu còn -> Bật tắt hàm QrCode trở lại</li>
+          <li>Nếu không -> Add-ins lại thư viện (<a href="#kich-hoat-add-ins">Xem lại</a>)</li>
+          <li>Nếu còn -> Bật tắt hàm QrCode trở lại (<a href="#bat-tat-ham-vietqr">Xem lại</a>)</li>
         </ul>
       </div>
     </div>
@@ -252,7 +244,7 @@
       <div class="col-md-8">
         <h4 id="loi-thuong-gap-thay-doi-noi-dung">10.2. Thay đổi nội dung</h4>
         <p>Công thức QrBank_SoTien_NoiDung gồm 2 giá trị chính là Số tiền và Nội dung</p>
-        <p>Nội dung có thể đổi bằng cách ghép chuỗi bằng & / CONCAT / CONCATENATE</p>
+        <p>Nội dung có thể đổi bằng cách ghép chuỗi bằng <strong>&</strong> / <strong>CONCAT</strong> / <strong>CONCATENATE</strong> </p>
       </div>
     </div>
     
@@ -291,6 +283,7 @@
             <img src="images/myexcel/Hướng dẫn tích hợp Qr Code Ngân hàng-22.png" data-image-full="images/myexcel/Hướng dẫn tích hợp Qr Code Ngân hàng-22.png" alt="Xóa nhiều QR nhỏ" class="img-fluid border p-2 rounded img-small" data-bs-toggle="modal" data-bs-target="#imageModal" style="cursor: pointer;">
           </div>
           <div class="col-md-8">
+            <h4 id=""></h4>
             <p>Có 2 cách để xóa nhanh các QRCode nhỏ, thay vì chọn từng hình và bấm nút Delete</p>
             <p>Cách 1: Xóa bằng hộp thoại Go to</p>
             <p>Cách 2: Xóa bằng tính năng MyExcel</p>
@@ -335,6 +328,11 @@
       </div>
     </div>
   </div>
+
+  <!-- Back to Menu Button -->
+  <a href="#table-of-contents" id="back-to-menu" class="btn btn-primary back-to-menu-btn" title="Quay về menu">
+    <i class="bi bi-arrow-up"></i>
+  </a>
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>

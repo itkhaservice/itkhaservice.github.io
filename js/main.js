@@ -157,3 +157,74 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 });
+
+// Highlight and center for all anchor links
+document.addEventListener('DOMContentLoaded', function() {
+  const anchorLinks = document.querySelectorAll('.container a[href^="#"]');
+
+  anchorLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      // Don't intercept bootstrap components
+      if (e.target.closest('[data-bs-toggle="modal"]')) {
+        return;
+      }
+      
+      e.preventDefault(); // Prevent default jump
+      
+      const targetId = this.getAttribute('href');
+      
+      try {
+        const targetElement = document.querySelector(targetId);
+
+        if (targetElement) {
+          // Calculate the position to scroll to
+          const elementRect = targetElement.getBoundingClientRect();
+          const absoluteElementTop = elementRect.top + window.pageYOffset;
+          const middle = absoluteElementTop - (window.innerHeight / 2) + (elementRect.height / 2);
+
+          // Scroll to the calculated position
+          window.scrollTo({
+              top: middle,
+              behavior: 'smooth'
+          });
+
+          // Update the URL hash without jumping
+          if(history.pushState) {
+            history.pushState(null, null, targetId);
+          } else {
+            location.hash = targetId;
+          }
+
+          // Remove highlight from any other highlighted element first
+          document.querySelectorAll('.highlight').forEach(el => el.classList.remove('highlight'));
+          
+          // Add highlight class to the new target
+          targetElement.classList.add('highlight');
+
+          // Remove the class after the animation completes
+          setTimeout(() => {
+            targetElement.classList.remove('highlight');
+          }, 2000); // Must match animation duration in CSS
+        }
+      } catch (err) {
+        console.error("Error scrolling to target:", targetId, err);
+      }
+    });
+  });
+});
+
+// Back to Menu button visibility
+document.addEventListener('DOMContentLoaded', function() {
+  const backToMenuBtn = document.getElementById('back-to-menu');
+  const scrollThreshold = 300; // Show button after scrolling 300px
+
+  if (backToMenuBtn) {
+    window.addEventListener('scroll', function() {
+      if (window.pageYOffset > scrollThreshold) {
+        backToMenuBtn.classList.add('show');
+      } else {
+        backToMenuBtn.classList.remove('show');
+      }
+    });
+  }
+});
