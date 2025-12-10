@@ -258,3 +258,7 @@ footer {
     max-width: 70%; 
     height: auto;
 }
+
+.long-string {
+    word-break: break-all;
+}
