@@ -129,21 +129,14 @@ if (sendBtn) {
   });
 }
 
-// Image Modal and Zoom Functionality
+// Image Modal Functionality
 document.addEventListener('DOMContentLoaded', function() {
   const imageModal = document.getElementById('imageModal');
   if (imageModal) {
     const modalImage = document.getElementById('modalImage');
-    const imageModalLabel = document.getElementById('imageModalLabel');
-    const zoomInBtn = document.getElementById('zoomInBtn');
-    const zoomOutBtn = document.getElementById('zoomOutBtn');
-    let currentScale = 1;
-    let translateX = 0;
-    let translateY = 0;
-    let isDragging = false;
-    let startX, startY;
-
-    // Reset zoom and position when modal is opened
+    const imageModalLabel = document.getElementById('modalImageLabel');
+    
+    // Set image src and alt when modal is opened
     imageModal.addEventListener('show.bs.modal', function (event) {
       const button = event.relatedTarget; // Button that triggered the modal
       const imageUrl = button.getAttribute('data-image-full');
@@ -152,103 +145,15 @@ document.addEventListener('DOMContentLoaded', function() {
       modalImage.src = imageUrl;
       imageModalLabel.textContent = imageAlt;
       
-      // Reset zoom and position
-      currentScale = 1;
-      translateX = 0;
-      translateY = 0;
-      updateImageTransform();
-      modalImage.style.cursor = 'grab';
+      // Ensure image is reset to default state (no transform)
+      modalImage.style.transform = 'none';
+      modalImage.style.cursor = 'default';
     });
 
-    function updateImageTransform() {
-      modalImage.style.transform = `scale(${currentScale}) translate(${translateX}px, ${translateY}px)`;
-      modalImage.style.transformOrigin = '0 0'; // Keep origin top-left for easier drag calculation
-    }
-
-    if (zoomInBtn) {
-      zoomInBtn.addEventListener('click', function() {
-        currentScale += 0.1;
-        updateImageTransform();
-      });
-    }
-
-    if (zoomOutBtn) {
-      zoomOutBtn.addEventListener('click', function() {
-        if (currentScale > 0.2) { // Prevent zooming out too much
-          currentScale -= 0.1;
-          updateImageTransform();
-        }
-      });
-    }
-
-    // Drag functionality
-    modalImage.addEventListener('mousedown', function(e) {
-      if (currentScale > 1) { // Only allow dragging if zoomed in
-        isDragging = true;
-        startX = e.clientX - translateX;
-        startY = e.clientY - translateY;
-        modalImage.style.cursor = 'grabbing';
-      }
-    });
-
-    modalImage.addEventListener('mousemove', function(e) {
-      if (!isDragging) return;
-      
-      // Calculate new position based on drag
-      translateX = e.clientX - startX;
-      translateY = e.clientY - startY;
-      
-      // Boundary checks (simplified, might need more complex logic for exact boundaries)
-      const imgRect = modalImage.getBoundingClientRect();
-      const modalBodyRect = modalImage.parentElement.getBoundingClientRect(); // Parent is modal-body
-
-      // Prevent dragging image completely out of view horizontally
-      if (imgRect.width * currentScale < modalBodyRect.width) {
-        translateX = 0; // Center if image is smaller than modal-body
-      } else {
-        const maxX = (imgRect.width * currentScale - modalBodyRect.width) / (currentScale * 2);
-        if (translateX > maxX) translateX = maxX;
-        if (translateX < -maxX) translateX = -maxX;
-      }
-
-      // Prevent dragging image completely out of view vertically
-      if (imgRect.height * currentScale < modalBodyRect.height) {
-        translateY = 0; // Center if image is smaller than modal-body
-      } else {
-        const maxY = (imgRect.height * currentScale - modalBodyRect.height) / (currentScale * 2);
-        if (translateY > maxY) translateY = maxY;
-        if (translateY < -maxY) translateY = -maxY;
-      }
-
-
-      updateImageTransform();
-    });
-
-    modalImage.addEventListener('mouseup', function() {
-      isDragging = false;
-      if (currentScale > 1) {
-        modalImage.style.cursor = 'grab';
-      } else {
-        modalImage.style.cursor = 'default';
-      }
-    });
-
-    modalImage.addEventListener('mouseleave', function() {
-      isDragging = false;
-      if (currentScale > 1) {
-        modalImage.style.cursor = 'grab';
-      } else {
-        modalImage.style.cursor = 'default';
-      }
-    });
-
-    // Reset zoom and position on modal close
+    // Reset transform on modal close to ensure next image opens correctly
     imageModal.addEventListener('hidden.bs.modal', function () {
-      currentScale = 1;
-      translateX = 0;
-      translateY = 0;
-      updateImageTransform();
-      modalImage.style.cursor = 'grab';
+      modalImage.style.transform = 'none';
+      modalImage.style.cursor = 'default';
     });
   }
 });
