@@ -276,3 +276,13 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 });
+
+// Play music on first user interaction
+document.addEventListener('click', () => {
+  const backgroundMusic = document.getElementById('background-music');
+  if (backgroundMusic && backgroundMusic.paused) {
+    backgroundMusic.play().catch(error => {
+      console.log("Music autoplay was prevented by the browser.");
+    });
+  }
+}, { once: true });
