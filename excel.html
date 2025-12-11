@@ -13,8 +13,65 @@
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="images/system/logo.png" type="image/png">
+
+<style>
+body {
+    background-image: url('images/system/wallpaper.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+#canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+}
+#fallingCanvasMai {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 99998;
+    pointer-events: none;
+}
+#fallingCanvasDao {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 99997;
+    pointer-events: none;
+}
+.corner-flower-mai {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    width: 160px;
+    z-index: 100000;
+}
+.corner-flower-dao {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    width: 160px;
+    z-index: 100000;
+}
+</style>
 </head>
 <body class="d-flex flex-column min-vh-100">
+  <canvas id="fallingCanvasMai"></canvas>
+  <canvas id="fallingCanvasDao"></canvas>
+  <canvas id="canvas"></canvas>
+  <img src="images/mai.png" class="corner-flower-mai">
+  <img src="images/dao.png" class="corner-flower-dao">
 
 <main class="container mt-5">
     <h1 class="page-title text-center mb-5">Excel</h1>
@@ -93,7 +150,9 @@
       </div>
       <div class="col-md-8">
         <h3 id="cai-dat-trust-center-thu-muc-con">3. Cài đặt Thư mục con</h3>
-        <p>Sau đó, chọn đến thư mục MyExcel. Chọn Subfolders of this location are also trusted (Các thư mục con của vị trí này cũng được tin cậy). Sau đó, chọn OK hoàn tất.</p>
+        <p>Sau đó, chọn đến thư mục MyExcel.</p>
+        <p>=> Chọn Subfolders of this location are also trusted (Các thư mục con của vị trí này cũng được tin cậy). 
+        <p>=> Sau đó, chọn OK hoàn tất.</p>
       </div>
     </div>
 
@@ -160,7 +219,10 @@
       <div class="col-md-8">
         <h3 id="cau-hinh-thong-tin-ngan-hang-main">8. Cấu hình thông tin ngân hàng</h3>
         <h4 id="cau-hinh-thong-tin-ngan-hang-chi-tiet">8.1. Cấu hình thông tin ngân hàng</h4>
-        <p>Sau khi Add-ins thành công, trên thanh công cụ sẽ xuất hiện Phần Minitool. Nhấn chọn Minitool => Tạo Qr Tài khoản Ngân hàng để nhận chuyển tiền (VietQR) => Nhấn chọn Tạo QR Code Tài khoản Ngân hàng</p>
+        <p>Sau khi Add-ins thành công, trên thanh công cụ sẽ xuất hiện Phần Minitool.</p>
+        <p>=> Nhấn chọn Minitool</p> 
+        <p>=> Tạo Qr Tài khoản Ngân hàng để nhận chuyển tiền (VietQR)</p>
+        <p>=> Nhấn chọn Tạo QR Code Tài khoản Ngân hàng</p>
       </div>
     </div>
     <div class="row align-items-start mb-4">
@@ -203,7 +265,11 @@
       </div>
       <div class="col-md-8">
         <h4 id="bat-tat-ham-vietqr">8.5. Bật tắt hàm VietQr</h4>
-        <p>Sau khi Add-ins thành công, trên thanh công cụ sẽ xuất hiện Phần Minitool. Nhấn chọn Minitool => Tạo Qr Tài khoản Ngân hàng để nhận chuyển tiền (VietQR) => Bật tắt hàm VietQr => Nhấn OK</p>
+        <p>Sau khi Add-ins thành công, trên thanh công cụ sẽ xuất hiện Phần Minitool.</p> 
+        <p>=> Nhấn chọn Minitool </p>
+        <p>=> Tạo Qr Tài khoản Ngân hàng để nhận chuyển tiền (VietQR) </p>
+        <p>=> Bật tắt hàm VietQR Code </p>
+        <p>=> Nhấn OK</p>
       </div>
     </div>
     <div class="row align-items-start mb-4">
@@ -325,23 +391,7 @@
                 </div>
               </div>
             </div></main>
-  
-  <!-- Modal for image viewing -->
-  <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="imageModalLabel"></h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body text-center">
-          <img src="" class="img-fluid" id="modalImage" style="cursor: grab; transform: scale(1); transform-origin: 0 0;">
-        </div>
-
-      </div>
-    </div>
-  </div>
-
+            
   <!-- Back to Menu Button -->
   <a href="#table-of-contents" id="back-to-menu" class="btn btn-primary back-to-menu-btn" title="Quay về menu">
     <i class="bi bi-arrow-up"></i>
@@ -350,6 +400,44 @@
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
   <script src="js/components.js"></script>
-  <script src="js/main.js"></script>
+  <script src="js/main.js"></script><!-- Image Modal -->
+<div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-content bg-transparent border-0">
+      <div class="modal-body text-center">
+        <img src="" id="fullImage" class="img-fluid" alt="Enlarged Image">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Image Modal -->
+<div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-content bg-transparent border-0">
+      <div class="modal-body text-center">
+        <img src="" id="fullImage" class="img-fluid" alt="Enlarged Image">
+      </div>
+    </div>
+  </div>
+</div>
+<script src="js/app.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var imageModal = document.getElementById('imageModal');
+    if (imageModal) {
+        imageModal.addEventListener('show.bs.modal', function(event) {
+            var button = event.relatedTarget;
+            var imageSrc = button.getAttribute('data-image-full');
+            var modalImage = imageModal.querySelector('#fullImage');
+            modalImage.src = imageSrc;
+        });
+    }
+});
+</script>
 </body>
 </html>
+
+
+
+
