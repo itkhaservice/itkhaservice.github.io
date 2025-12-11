@@ -379,4 +379,41 @@ main.container ul li {
 
 .code-copy-block .copy-button {
     flex-shrink: 0; /* Prevent button from shrinking */
+}/* Responsive adjustments for excel.html images on small devices */
+@media (max-width: 767.98px) {
+    .row .col-md-4,
+    .row .col-md-8 {
+        width: 100% !important; /* Ensure columns take full width */
+        flex: 0 0 100% !important; /* Ensure columns take full width */
+        max-width: 100% !important; /* Ensure columns take full width */
+        padding-left: 0 !important; /* Remove column padding */
+        padding-right: 0 !important; /* Remove column padding */
+    }
+
+    .row {
+        margin-left: 0 !important; /* Remove negative row margin */
+        margin-right: 0 !important; /* Remove negative row margin */
+    }
+
+    .col-md-4 img.img-small {
+        max-width: 100% !important; /* Image takes full width of its parent */
+        padding: 0 !important; /* Remove padding around the image */
+        border-radius: 0 !important; /* Remove border-radius on images to fill corners */
+    }
+
+    /* Adjust padding for headings and paragraphs inside the .col-md-8 on small screens */
+    main.container .col-md-8 h3,
+    main.container .col-md-8 h4,
+    main.container .col-md-8 h3 ~ p,
+    main.container .col-md-8 h3 ~ ul,
+    main.container .col-md-8 h4 ~ p,
+    main.container .col-md-8 h4 ~ ul,
+    main.container .col-md-8 h4 ~ .code-copy-block {
+        padding-left: 1rem !important; /* Add a small default padding if needed, or 0 if truly no indent */
+        padding-right: 1rem !important;
+    }
+
+    .col-md-4.text-center.mb-4 {
+        margin-bottom: 0 !important; /* Reduce margin below image div to prevent large gaps */
+    }
 }
