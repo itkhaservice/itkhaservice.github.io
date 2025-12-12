@@ -342,6 +342,10 @@ main.container h3 ~ ul {
 main.container h4 ~ p,
 main.container h4 ~ ul,
 main.container h4 ~ .code-copy-block {
+    padding-left: 6em;
+}
+
+main.container h4 ~ div.code-copy-block {
     padding-left: 1em;
 }
 
