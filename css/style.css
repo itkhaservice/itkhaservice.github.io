@@ -342,7 +342,7 @@ main.container h3 ~ ul {
 main.container h4 ~ p,
 main.container h4 ~ ul,
 main.container h4 ~ .code-copy-block {
-    padding-left: 4em;
+    padding-left: 1em;
 }
 
 /* Ensure ULs don't have excessive default padding, and LI elements have consistent indent */
@@ -361,7 +361,7 @@ main.container ul li {
     display: flex;
     align-items: center;
     gap: 10px; /* Space between code and button */
-    background-color: #f8f9fa; /* Light grey background */
+    background-color: #d2d9df; /* Light grey background */
     border: 1px solid #e9ecef; /* Light border */
     border-radius: 8px;
     padding: 10px 15px;
