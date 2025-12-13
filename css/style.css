@@ -423,3 +423,31 @@ main.container ul li {
         margin-bottom: 0 !important; /* Reduce margin below image div to prevent large gaps */
     }
 }
+
+/* Custom Carousel Control Styling */
+.carousel .carousel-control-prev,
+.carousel .carousel-control-next {
+    width: 25%; /* Increased width for a 'bigger rectangular' area */
+    background-color: transparent; /* Start with no background */
+    opacity: 0; /* Hidden by default */
+    transition: background-color 0.3s ease, opacity 0.3s ease, backdrop-filter 0.3s ease; /* Add backdrop-filter to transition */
+}
+
+.carousel .carousel-control-prev:hover,
+.carousel .carousel-control-next:hover {
+    background-color: rgba(0, 0, 0, 0.4); /* Darker grey background on hover */
+    opacity: 1; /* Fully visible on hover */
+    backdrop-filter: blur(5px); /* Apply blur effect to background behind the control */
+}
+
+.carousel .carousel-control-prev-icon,
+.carousel .carousel-control-next-icon {
+    filter: brightness(1.5) drop-shadow(0 0 2px rgba(0,0,0,0.5));
+}
+
+/* Make carousel images smaller and centered */
+.carousel-item img {
+    max-width: 80%; /* Make images 80% of carousel item width */
+    height: auto;   /* Maintain aspect ratio */
+    margin: 0 auto; /* Center the image */
+}

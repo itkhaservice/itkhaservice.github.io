@@ -71,8 +71,8 @@ function setupCanvas(canvasId, imagePath, isFromLeft, flowerCount) {
   }
   
   // Gọi hàm cài đặt cho từng canvas
-  setupCanvas("fallingCanvasMai", "images/hoamai.png", false, 70); // Hoa mai từ phải qua
-  setupCanvas("fallingCanvasDao", "images/hoadao.png", true, 70);  // Hoa đào từ trái qua
+  setupCanvas("fallingCanvasMai", "images/hoamai.png", false, 30); // Hoa mai từ phải qua
+  setupCanvas("fallingCanvasDao", "images/hoadao.png", true, 30);  // Hoa đào từ trái qua
   
 document.addEventListener("DOMContentLoaded", () => {
   const number1 = document.getElementById("number1");
