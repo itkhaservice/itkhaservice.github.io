@@ -1,6 +1,10 @@
+// Global flag for effects
+window.effectsEnabled = true;
+
 // Hàm cài đặt canvas và hiệu ứng hoa rơi
 function setupCanvas(canvasId, imagePath, isFromLeft, flowerCount) {
     const canvas = document.getElementById(canvasId);
+    if (!canvas) return; // Exit if canvas not found
     const ctx = canvas.getContext("2d");
   
     // Đặt kích thước canvas
@@ -50,8 +54,10 @@ function setupCanvas(canvasId, imagePath, isFromLeft, flowerCount) {
   
     // Tạo hiệu ứng hoa rơi
     function animate() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      flowers.forEach(updateAndDrawFlower);
+      if (window.effectsEnabled) {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          flowers.forEach(updateAndDrawFlower);
+      }
       requestAnimationFrame(animate);
     }
   
@@ -68,13 +74,32 @@ function setupCanvas(canvasId, imagePath, isFromLeft, flowerCount) {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
     });
-  }
+}
   
-  // Gọi hàm cài đặt cho từng canvas
-  setupCanvas("fallingCanvasMai", "images/hoamai.png", false, 30); // Hoa mai từ phải qua
-  setupCanvas("fallingCanvasDao", "images/hoadao.png", true, 30);  // Hoa đào từ trái qua
+// Gọi hàm cài đặt cho từng canvas
+setupCanvas("fallingCanvasMai", "images/hoamai.png", false, 30); // Hoa mai từ phải qua
+setupCanvas("fallingCanvasDao", "images/hoadao.png", true, 30);  // Hoa đào từ trái qua
   
 document.addEventListener("DOMContentLoaded", () => {
+    // Event delegation for dynamically loaded header buttons
+    document.addEventListener('click', function(event) {
+        const toggleBtn = event.target.closest('#toggle-effects-btn');
+        if (toggleBtn) {
+            window.effectsEnabled = !window.effectsEnabled;
+            // If effects are disabled, clear the canvases one last time
+            if (!window.effectsEnabled) {
+                const canvasIds = ["fallingCanvasMai", "fallingCanvasDao", "canvas"];
+                canvasIds.forEach(id => {
+                    const canvas = document.getElementById(id);
+                    if (canvas) {
+                        const ctx = canvas.getContext('2d');
+                        ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    }
+                });
+            }
+        }
+    });
+
   const number1 = document.getElementById("number1");
   const number2 = document.getElementById("number2");
   const number3 = document.getElementById("number3");
@@ -94,13 +119,18 @@ document.addEventListener("DOMContentLoaded", () => {
   const modalMessage = document.getElementById("modal-message");
   const closeModalButton = document.getElementById("close-modal");
 
-  closeModalButton.addEventListener("click", () => {
-    modal.classList.add("hidden");
-  });
+  if(closeModalButton) {
+    closeModalButton.addEventListener("click", () => {
+        modal.classList.add("hidden");
+    });
+  }
+
 
   function showModal(message) {
-    modalMessage.textContent = message;
-    modal.classList.remove("hidden");
+    if (modalMessage) {
+        modalMessage.textContent = message;
+        modal.classList.remove("hidden");
+    }
   }
 
   // Cập nhật trạng thái giải thưởng được chọn
@@ -110,7 +140,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     selectedPrize = prize;
     spinsLeft = prizeStatus[prize].spinsLeft;
-    priceElement.textContent = `Đã chọn: ${prize}. Số lần quay: ${spinsLeft}`;
+    if(priceElement) {
+        priceElement.textContent = `Đã chọn: ${prize}. Số lần quay: ${spinsLeft}`;
+    }
   }
 
   // Kiểm tra xem giải có còn lượt quay không
@@ -135,9 +167,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // Tạo hiệu ứng quay số
   function animateNumbers(stopIndex) {
     return setInterval(() => {
-      if (stopIndex < 1) number1.textContent = Math.floor(Math.random() * 10);
-      if (stopIndex < 2) number2.textContent = Math.floor(Math.random() * 10);
-      if (stopIndex < 3) number3.textContent = Math.floor(Math.random() * 10);
+      if (number1 && stopIndex < 1) number1.textContent = Math.floor(Math.random() * 10);
+      if (number2 && stopIndex < 2) number2.textContent = Math.floor(Math.random() * 10);
+      if (number3 && stopIndex < 3) number3.textContent = Math.floor(Math.random() * 10);
     }, 50);
   }
 
@@ -145,109 +177,26 @@ document.addEventListener("DOMContentLoaded", () => {
   function showCongratulationsMessage(luckyNumber) {
     const modal = document.getElementById("congratulationsModal");
     const luckyNumberDisplay = document.getElementById("lucky-number-display");
+    if(modal && luckyNumberDisplay) {
+        luckyNumberDisplay.textContent = luckyNumber;
+        modal.style.display = "block";
 
-    luckyNumberDisplay.textContent = luckyNumber;
-    modal.style.display = "block";
-
-    setTimeout(() => {
-      modal.style.display = "none";
-    }, 5000);
+        setTimeout(() => {
+          modal.style.display = "none";
+        }, 5000);
+    }
   }
 
   function playAudio() {
     const audioPlayer = document.getElementById("audio-player");
-    audioPlayer.play();
-    setTimeout(() => {
-      audioPlayer.pause();
-      audioPlayer.currentTime = 0;
-    }, 3000);
+    if(audioPlayer) {
+        audioPlayer.play();
+        setTimeout(() => {
+          audioPlayer.pause();
+          audioPlayer.currentTime = 0;
+        }, 3000);
+    }
   }
-
-  // Hiển thị số may mắn và cập nhật trạng thái
-  // function displayLuckyNumber() {
-  //   const luckyNumber = String(Math.floor(Math.random() * 491)).padStart(
-  //     3,
-  //     "0"
-  //   );
-  //   changeBackgroundColorWhite(number1);
-
-  //   changeBackgroundColorWhite(number2);
-
-  //   changeBackgroundColorWhite(number3);
-  //   const [digit1, digit2, digit3] = luckyNumber;
-
-  //   let interval = animateNumbers(0);
-
-  //   setTimeout(() => {
-  //     manualSpinButton.disabled = true;
-  //     manualSpinButton.style.backgroundColor = "#ccc";
-  //     manualSpinButton.style.cursor = "not-allowed";
-
-  //     clearInterval(interval);
-  //     number1.textContent = digit1;
-  //     const audioPlayer1 = document.getElementById("audio-player1");
-  //     audioPlayer1.play();
-  //     changeBackgroundColor(number1);
-  //     interval = animateNumbers(1);
-
-  //     setTimeout(() => {
-  //       clearInterval(interval);
-  //       number2.textContent = digit2;
-  //       const audioPlayer1 = document.getElementById("audio-player1");
-  //       audioPlayer1.play();
-  //       changeBackgroundColor(number2);
-  //       interval = animateNumbers(2);
-
-  //       setTimeout(() => {
-  //         clearInterval(interval);
-  //         number3.textContent = digit3;
-  //         const audioPlayer1 = document.getElementById("audio-player1");
-  //         changeBackgroundColor(number3);
-  //         audioPlayer1.play();
-
-  //         const prizeMapping = {
-  //           "Giải đặc biệt": "one",
-  //           "Giải nhất": "two",
-  //           "Giải nhì": "three",
-  //           "Giải ba": "four",
-  //           "Giải khuyến khích": "five",
-  //           "Giải phụ": "six",
-  //         };
-  //         const prizeCode = prizeMapping[selectedPrize];
-  //         let resultItem = document.querySelector(`#result-${prizeCode}`);
-  //         if (!resultItem) {
-  //           resultItem = document.createElement("li");
-  //           resultItem.id = `result-${prizeCode}`;
-  //           resultItem.innerHTML = `<strong>${selectedPrize}: </strong><span class="lucky-numbers" style="color: #FFD700;"></span>`;
-  //           resultList.appendChild(resultItem);
-  //         }
-  //         const luckyNumbersSpan = resultItem.querySelector(".lucky-numbers");
-  //         luckyNumbersSpan.textContent += luckyNumbersSpan.textContent
-  //           ? `, ${luckyNumber}`
-  //           : luckyNumber;
-
-  //         setTimeout(() => {
-  //           showCongratulationsMessage(luckyNumber);
-  //           playAudio();
-  //         }, 1000);
-
-  //         manualSpinButton.disabled = false;
-  //         manualSpinButton.style.backgroundColor = "yellow";
-  //         manualSpinButton.style.cursor = "pointer";
-
-  //         spinsLeft--;
-  //         prizeStatus[selectedPrize].spinsLeft = spinsLeft;
-
-  //         if (spinsLeft === 0) {
-  //           prizeStatus[selectedPrize].isCompleted = true;
-  //           priceElement.textContent = `${selectedPrize} đã hoàn tất quay số!`;
-  //         } else {
-  //           priceElement.textContent = `Đã chọn: ${selectedPrize}. Còn lại: ${spinsLeft}`;
-  //         }
-  //       }, 1000);
-  //     }, 1000);
-  //   }, 1000);
-  // }
 
   // Hàm để vô hiệu hóa phím Enter
   function disableEnterKey() {
@@ -268,6 +217,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Hiển thị số may mắn và cập nhật trạng thái
   function displayLuckyNumber() {
+    if(!number1 || !number2 || !number3) return;
+
     const luckyNumber = String(Math.floor(Math.random() * 491)).padStart(
       3,
       "0"
@@ -287,23 +238,21 @@ document.addEventListener("DOMContentLoaded", () => {
       clearInterval(interval);
       number1.textContent = digit1;
       const audioPlayer1 = document.getElementById("audio-player1");
-      audioPlayer1.play();
+      if(audioPlayer1) audioPlayer1.play();
       changeBackgroundColor(number1);
       interval = animateNumbers(1);
 
       setTimeout(() => {
         clearInterval(interval);
         number2.textContent = digit2;
-        const audioPlayer1 = document.getElementById("audio-player1");
-        audioPlayer1.play();
+        if(audioPlayer1) audioPlayer1.play();
         changeBackgroundColor(number2);
         interval = animateNumbers(2);
 
         setTimeout(() => {
           clearInterval(interval);
           number3.textContent = digit3;
-          const audioPlayer1 = document.getElementById("audio-player1");
-          changeBackgroundColor(number3);
+          if(audioPlayer1) changeBackgroundColor(number3);
           audioPlayer1.play();
 
           const prizeMapping = {
@@ -320,7 +269,7 @@ document.addEventListener("DOMContentLoaded", () => {
             resultItem = document.createElement("li");
             resultItem.id = `result-${prizeCode}`;
             resultItem.innerHTML = `<strong>${selectedPrize}: </strong><span class="lucky-numbers" style="color: #FFD700;"></span>`;
-            resultList.appendChild(resultItem);
+            if(resultList) resultList.appendChild(resultItem);
           }
           const luckyNumbersSpan = resultItem.querySelector(".lucky-numbers");
           luckyNumbersSpan.textContent += luckyNumbersSpan.textContent
@@ -359,16 +308,18 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Lắng nghe phím Enter trên toàn màn hình
+  if(manualSpinButton) {
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+          const audioPlayer1 = document.getElementById("audio-player1");
 
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Enter") {
-      const audioPlayer1 = document.getElementById("audio-player1");
+          if(audioPlayer1) audioPlayer1.play();
 
-      audioPlayer1.play();
+          handleSpinToggle();
+        }
+      });
+  }
 
-      handleSpinToggle();
-    }
-  });
 
   // Xử lý quay/dừng
   let isSpinning = false;
@@ -379,9 +330,9 @@ document.addEventListener("DOMContentLoaded", () => {
       isSpinning = true;
       manualSpinButton.textContent = "Dừng";
       spinningInterval = setInterval(() => {
-        number1.textContent = Math.floor(Math.random() * 10);
-        number2.textContent = Math.floor(Math.random() * 10);
-        number3.textContent = Math.floor(Math.random() * 10);
+        if(number1) number1.textContent = Math.floor(Math.random() * 10);
+        if(number2) number2.textContent = Math.floor(Math.random() * 10);
+        if(number3) number3.textContent = Math.floor(Math.random() * 10);
       }, 50);
     } else {
       isSpinning = false;
@@ -391,37 +342,47 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  manualSpinButton.addEventListener("click", handleSpinToggle);
+  if(manualSpinButton) {
+    manualSpinButton.addEventListener("click", handleSpinToggle);
+  }
+
 
   // Lắng nghe sự kiện chọn giải thưởng
-  spinButtons.forEach((button) => {
-    const prize = button.getAttribute("data-prize");
-    const count = parseInt(button.getAttribute("data-count"), 10);
-    button.addEventListener("click", () => {
-      const audioPlayer1 = document.getElementById("audio-player1");
-      audioPlayer1.play();
-      if (prizeStatus[prize]?.isCompleted) {
-        showModal(`${prize} đã hoàn tất quay. Vui lòng chọn giải khác!`);
-        return;
-      }
-      updateSelectedPrize(prize, count);
-    });
-    button.addEventListener("keydown", (event) => {
-      if (event.key === "Enter") {
-        event.preventDefault();
-      }
-    });
-  });
+  if(spinButtons) {
+      spinButtons.forEach((button) => {
+        const prize = button.getAttribute("data-prize");
+        const count = parseInt(button.getAttribute("data-count"), 10);
+        button.addEventListener("click", () => {
+          const audioPlayer1 = document.getElementById("audio-player1");
+          if(audioPlayer1) audioPlayer1.play();
+          if (prizeStatus[prize]?.isCompleted) {
+            showModal(`${prize} đã hoàn tất quay. Vui lòng chọn giải khác!`);
+            return;
+          }
+          updateSelectedPrize(prize, count);
+        });
+        button.addEventListener("keydown", (event) => {
+          if (event.key === "Enter") {
+            event.preventDefault();
+          }
+        });
+      });
+  }
+
 
   // Các hàm không liên quan khác (ví dụ như tương tác giao diện hoặc sự kiện bổ sung)
   function resetPrizeSelection() {
     selectedPrize = null;
     spinsLeft = 0;
-    priceElement.textContent = "Vui lòng chọn giải thưởng để bắt đầu!";
+    if(priceElement) {
+        priceElement.textContent = "Vui lòng chọn giải thưởng để bắt đầu!";
+    }
   }
 
   function clearResultList() {
-    resultList.innerHTML = "";
+    if(resultList) {
+        resultList.innerHTML = "";
+    }
   }
 });
 
@@ -446,7 +407,7 @@ window.requestAnimFrame = (function () {
 })();
 
 var canvas = document.getElementById("canvas"),
-  ctx = canvas.getContext("2d"),
+  ctx = canvas ? canvas.getContext("2d") : null,
   cw = window.innerWidth,
   ch = window.innerHeight,
   fireworks = [],
@@ -460,8 +421,11 @@ var canvas = document.getElementById("canvas"),
   mx,
   my;
 
-canvas.width = cw;
-canvas.height = ch;
+if(canvas) {
+    canvas.width = cw;
+    canvas.height = ch;
+}
+
 
 function random(min, max) {
   return Math.random() * (max - min) + min;
@@ -617,6 +581,13 @@ function createParticles(x, y) {
 
 function loop() {
   requestAnimFrame(loop);
+  
+  if (!window.effectsEnabled) {
+      if(ctx) {
+        ctx.clearRect(0, 0, cw, ch);
+      }
+      return; // Skip this frame's drawing
+  }
 
   hue += 0.5;
 
@@ -676,21 +647,21 @@ function loop() {
   }
 }
 
-canvas.addEventListener("mousemove", function (e) {
-  mx = e.pageX - canvas.offsetLeft;
-  my = e.pageY - canvas.offsetTop;
-});
+if(canvas) {
+    canvas.addEventListener("mousemove", function (e) {
+      mx = e.pageX - canvas.offsetLeft;
+      my = e.pageY - canvas.offsetTop;
+    });
 
-canvas.addEventListener("mousedown", function (e) {
-  e.preventDefault();
-  mousedown = true;
-});
+    canvas.addEventListener("mousedown", function (e) {
+      e.preventDefault();
+      mousedown = true;
+    });
 
-canvas.addEventListener("mouseup", function (e) {
-  e.preventDefault();
-  mousedown = false;
-});
+    canvas.addEventListener("mouseup", function (e) {
+      e.preventDefault();
+      mousedown = false;
+    });
 
-window.onload = loop;
-
-
+    window.onload = loop;
+}

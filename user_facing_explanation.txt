@@ -1,0 +1,18 @@
+Tôi đã thêm các câu lệnh `console.log` chi tiết hơn vào `js/main.js` để giúp gỡ lỗi chức năng phát nhạc ngẫu nhiên.
+
+Bây giờ, để kiểm tra điều này một cách chính xác, bạn cần:
+1.  **Tải lại trang** (nhấn F5 hoặc Ctrl+R).
+2.  **Mở bảng điều khiển nhà phát triển của trình duyệt** (thường là F12).
+3.  **Nhấp vào nút phát nhạc ngẫu nhiên nhiều lần.**
+4.  **Quan sát kỹ các thông báo trong bảng điều khiển, đặc biệt nếu bạn nghe thấy âm nhạc bị chồng chéo.**
+
+Đầu ra mới trong bảng điều khiển sẽ cung cấp thông tin chi tiết hơn:
+*   `Shuffle button clicked!`
+*   `Before stopping: paused=[true/false] src=[đường_dẫn_đến_bài_hát]` - Điều này sẽ cho chúng ta biết liệu `currentAudio` có nghĩ rằng nó đang phát hay không và nguồn của nó là gì.
+*   `Previous song paused and reset.` - Điều này xác nhận liệu logic tạm dừng và đặt lại có được thực thi hay không.
+*   `Selected song: [đường_dẫn_đến_bài_hát]`
+*   `Music started playing: [đường_dẫn_đến_bài_hát]` (nếu thành công)
+*   `Music playback failed for: [đường_dẫn_đến_bài_hát] [Đối tượng Lỗi]` (nếu có lỗi)
+*   `Playback attempt for [đường_dẫn_đến_bài_hát] finished.`
+
+Các thông tin ghi nhật ký chi tiết này sẽ giúp xác định lý do tại sao bài hát trước đó có thể không dừng như mong đợi. Tôi sẽ thông báo cho người dùng về điều này.
