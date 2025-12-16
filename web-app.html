@@ -12,8 +12,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <script src="https://kit.fontawesome.com/94472b8613.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" href="images/system/logo.png" type="image/png">
 
@@ -103,6 +102,13 @@ body {
             <li><a href="#tao-bao-phi-tu-dong">Tạo báo phí tự động</a></li>
             <li><a href="#phat-hanh-bao-phi">Phát hành báo phí</a></li>
             <li><a href="#gui-thong-bao-bao-phi">Gửi thông báo báo phí</a></li>
+          </ol>
+        </li>
+        <li><a href="#khac">Khác</a>
+          <ol>
+            <li><a href="#giao-dien-su-dung">Giao diện sử dụng</a></li>
+            <li><a href="#xoa-them-nhan-khau">Xóa - Thêm nhân khẩu</a></li>
+            <li><a href="#in-phieu">In phiếu</a></li>
           </ol>
         </li>
       </ol>
@@ -624,7 +630,14 @@ body {
                     <span class="visually-hidden">Next</span>
                 </button>
             </div>
-            <p>Mô tả chi tiết các bước để phát hành báo phí sau khi đã được tạo và kiểm tra. Thao tác này sẽ làm cho báo phí có thể được xem bởi cư dân. Chèn hình ảnh minh họa cho từng bước vào carousel ở trên.</p>
+        <p>Ở danh mục ở bên trái <i class="fa-solid fa-circle-arrow-right"></i> Tổng quan <i class="fa-solid fa-circle-arrow-right"></i> Kiểm tra số liệu Phát sinh báo phí <i class="fa-solid fa-circle-arrow-right"></i> Nếu đúng hết, tiến hành Phát hành báo phí</p>
+        <p>Ở danh mục ở bên trái <i class="fa-solid fa-circle-arrow-right"></i> Báo phí <i class="fa-solid fa-circle-arrow-right"></i> Hành động <i class="fa-solid fa-circle-arrow-right"></i> Phát hành Nhiều báo phí <i class="fa-solid fa-circle-arrow-right"></i> Nhấn chọn Kiểu/Tháng/Phát hành => Có <i class="fa-solid fa-circle-arrow-right"></i> Đồng ý để hoàn tất.</p>
+        <p><strong><u>Lưu ý:</u></strong></p>
+        <ul>
+            <li>Nếu sai Phí quản lý <i class="fa-solid fa-circle-arrow-right"></i> Kiểm tra Diện tích & Đơn giá.</li>
+            <li>Nếu sai Phí phương tiện <i class="fa-solid fa-circle-arrow-right"></i> Kiểm tra Số lượng từng loại xe & Đơn giá.</li>
+            <li>Nếu sai Phí nước <i class="fa-solid fa-circle-arrow-right"></i> Kiểm tra Số lượng tiêu thụ trong các định mức & Đơn giá.</li>
+        </ul>
         </div>
     </div>
     <div class="row align-items-start mb-5">
@@ -652,7 +665,121 @@ body {
                     <span class="visually-hidden">Next</span>
                 </button>
             </div>
-            <p>Mô tả chi tiết các bước để gửi thông báo đẩy (push notification) qua ứng dụng di động cho cư dân sau khi báo phí đã được phát hành. Chèn hình ảnh minh họa cho từng bước vào carousel ở trên.</p>
+        <p>Ở danh mục ở bên trái <i class="fa-solid fa-circle-arrow-right"></i> Báo phí <i class="fa-solid fa-circle-arrow-right"></i> Hành động <i class="fa-solid fa-circle-arrow-right"></i> Gửi thông báo <i class="fa-solid fa-circle-arrow-right"></i> Nhấn chọn Tháng <i class="fa-solid fa-circle-arrow-right"></i> Nhập Tiêu đề <i class="fa-solid fa-circle-arrow-right"></i> Lần lượt chọn: <strong>Không - Có - Không</strong> <i class="fa-solid fa-circle-arrow-right"></i> Đồng ý để hoàn tất.</p>
+        </div>
+    </div>
+    <!-- Section Khác -->
+    <h2 id="khac">III. Khác</h2>
+    <div class="row align-items-start mb-5">
+        <div class="col-md-12">
+            <h3 id="giao-dien-su-dung">1. Giao diện sử dụng</h3>
+            <div id="carousel-giao-dien-su-dung" class="carousel slide mb-3" data-bs-ride="false">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carousel-giao-dien-su-dung" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-image-full="images/web-app/web_app_8.1.1.png" style="cursor: pointer;">
+                            <img src="images/web-app/web_app_8.1.1.png" class="d-block w-100" alt="Giao diện sử dụng 1">
+                        </a>
+                    </div>
+                    <div class="carousel-item">
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-image-full="images/web-app/web_app_8.1.2.png" style="cursor: pointer;">
+                            <img src="images/web-app/web_app_8.1.2.png" class="d-block w-100" alt="Giao diện sử dụng 1">
+                        </a>
+                    </div>
+                    <div class="carousel-item">
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-image-full="images/web-app/web_app_8.1.3.png" style="cursor: pointer;">
+                            <img src="images/web-app/web_app_8.1.3.png" class="d-block w-100" alt="Giao diện sử dụng 1">
+                        </a>
+                    </div>
+                    <div class="carousel-item">
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-image-full="images/web-app/web_app_8.1.4.png" style="cursor: pointer;">
+                            <img src="images/web-app/web_app_8.1.4.png" class="d-block w-100" alt="Giao diện sử dụng 1">
+                        </a>
+                    </div>
+                    <div class="carousel-item">
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-image-full="images/web-app/web_app_8.1.5.png" style="cursor: pointer;">
+                            <img src="images/web-app/web_app_8.1.5.png" class="d-block w-100" alt="Giao diện sử dụng 1">
+                        </a>
+                    </div>
+                    <div class="carousel-item">
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-image-full="images/web-app/web_app_8.1.6.png" style="cursor: pointer;">
+                            <img src="images/web-app/web_app_8.1.6.png" class="d-block w-100" alt="Giao diện sử dụng 1">
+                        </a>
+                    </div>                    
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carousel-giao-dien-su-dung" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carousel-giao-dien-su-dung" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        <p>Mỗi trang đều có các bộ công cụ mặc định</p>
+        <ul>
+            <li>Thùng rác <i class="fa-solid fa-circle-arrow-right"></i> Xóa vĩnh viễn hoặc Khôi phục</li>
+            <li> Lọc <i class="fa-solid fa-circle-arrow-right"></i> Theo nhiều kiểu </li>
+            <li> Sau khi Lọc <i class="fa-solid fa-circle-arrow-right"></i> Xóa bộ lọc </li>
+            <li> Tìm kiếm <i class="fa-solid fa-circle-arrow-right"></i> Theo dữ liệu </li>
+            <li> Cột hiển thị <i class="fa-solid fa-circle-arrow-right"></i> Tùy chọn </li>
+            <li> Số lượng dòng dữ liệu <i class="fa-solid fa-circle-arrow-right"></i> Trên 1 trang </li>
+        </ul>
+        </div>
+        </div>
+    </div>
+    <div class="row align-items-start mb-5">
+        <div class="col-md-12">
+            <h3 id="xoa-them-nhan-khau">2. Xóa - Thêm nhân khẩu</h3>
+            <div id="carousel-xoa-them-nhan-khau" class="carousel slide mb-3" data-bs-ride="false">
+                <div class="carousel-indicators">
+                     <button type="button" data-bs-target="#carousel-xoa-them-nhan-khau" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-image-full="https://via.placeholder.com/1200x600.png?text=Hinh+Anh+1" style="cursor: pointer;">
+                            <img src="https://via.placeholder.com/1200x600.png?text=Hinh+Anh+1" class="d-block w-100" alt="Xóa - Thêm nhân khẩu 1">
+                        </a>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carousel-xoa-them-nhan-khau" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carousel-xoa-them-nhan-khau" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+            <p>Nội dung chi tiết về các bước thực hiện sẽ được cập nhật ở đây. Vui lòng cung cấp nội dung và đường dẫn hình ảnh.</p>
+        </div>
+    </div>
+    <div class="row align-items-start mb-5">
+        <div class="col-md-12">
+            <h3 id="in-phieu">3. In phiếu</h3>
+            <div id="carousel-in-phieu" class="carousel slide mb-3" data-bs-ride="false">
+                <div class="carousel-indicators">
+                     <button type="button" data-bs-target="#carousel-in-phieu" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-image-full="https://via.placeholder.com/1200x600.png?text=Hinh+Anh+1" style="cursor: pointer;">
+                            <img src="https://via.placeholder.com/1200x600.png?text=Hinh+Anh+1" class="d-block w-100" alt="In phiếu 1">
+                        </a>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carousel-in-phieu" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carousel-in-phieu" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+            <p>Nội dung chi tiết về các bước thực hiện sẽ được cập nhật ở đây. Vui lòng cung cấp nội dung và đường dẫn hình ảnh.</p>
         </div>
     </div>
 </main>

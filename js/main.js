@@ -38,7 +38,35 @@ document.addEventListener("DOMContentLoaded", function () {
   // ... (logic remains the same) ...
 
   // --- Back to Menu Button ---
-  // ... (logic remains the same) ...
+  const backToMenuButton = document.getElementById("back-to-menu");
+
+  if (backToMenuButton) {
+    // Show or hide the button based on scroll position
+    const scrollFunction = () => {
+      if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+        backToMenuButton.classList.add("show");
+      } else {
+        backToMenuButton.classList.remove("show");
+      }
+    };
+
+    // Add scroll event listener
+    window.addEventListener("scroll", scrollFunction);
+
+    // Smooth scroll to target on click
+    backToMenuButton.addEventListener("click", (e) => {
+      const href = backToMenuButton.getAttribute("href");
+      if (href && href.startsWith("#")) {
+        e.preventDefault();
+        const targetElement = document.querySelector(href);
+        if (targetElement) {
+          targetElement.scrollIntoView({
+            behavior: "smooth"
+          });
+        }
+      }
+    });
+  }
 
   // --- Copy to Clipboard ---
   // ... (logic remains the same) ...
