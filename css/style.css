@@ -451,3 +451,33 @@ main.container ul li {
     height: auto;   /* Maintain aspect ratio */
     margin: 0 auto; /* Center the image */
 }
+
+/* --- Mobile-specific styles for web-app.html --- */
+@media (max-width: 767.98px) {
+    /* Hide decorative elements: fireworks, corner flowers */
+    #canvas,
+    .corner-flower-mai,
+    .corner-flower-dao {
+        display: none !important;
+    }
+
+    /* Remove main container padding to make content full-width */
+    main.container {
+        padding-left: 5px !important;
+        padding-right: 5px !important;
+    }
+
+    /* Remove all hierarchical indentation for headings, paragraphs, lists, and carousels */
+    main.container h2,
+    main.container h3,
+    main.container h4,
+    main.container h3 ~ p,
+    main.container h3 ~ ul,
+    main.container h4 ~ p,
+    main.container h4 ~ ul,
+    main.container h4 ~ .code-copy-block,
+    main.container h4 ~ div.code-copy-block,
+    main.container .carousel {
+        padding-left: 0 !important;
+    }
+}
