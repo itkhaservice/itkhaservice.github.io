@@ -933,12 +933,159 @@ body {
               });
           });
 
-          // After the modal is fully shown and content is loaded, apply mouse swipe
+          // After the modal is fully shown and content is loaded, apply mouse swipe and zoom
           imageModal.addEventListener('shown.bs.modal', function() {
               const modalCarouselEl = document.getElementById('modalCarousel');
-              if (modalCarouselEl) {
-                  applyMouseSwipe(modalCarouselEl);
-              }
+              if (!modalCarouselEl) return;
+              
+              // Prevent duplicate listeners
+              if (modalCarouselEl.dataset.zoomInitialized) return;
+              modalCarouselEl.dataset.zoomInitialized = 'true';
+
+              let scale = 1;
+              let panning = false;
+              let pointX = 0, pointY = 0;
+              let startX = 0, startY = 0;
+              const zoomStep = 0.2;
+              const maxZoom = 15; // Increased max zoom
+              const minZoom = 1;
+
+              const getActiveImg = () => modalCarouselEl.querySelector('.carousel-item.active img');
+              
+              const updateTransform = () => {
+                  const img = getActiveImg();
+                  if (img) {
+                      img.style.transform = `translate(${pointX}px, ${pointY}px) scale(${scale})`;
+                      
+                      // Remove clipping limits
+                      const containers = [
+                          modalCarouselEl, 
+                          modalCarouselEl.querySelector('.carousel-inner'), 
+                          imageModal.querySelector('.modal-content'), 
+                          imageModal.querySelector('.modal-body')
+                      ];
+                      
+                      containers.forEach(c => {
+                          if (c) {
+                              c.style.overflow = scale > 1 ? 'visible' : '';
+                              // Ensure the container itself doesn't restrict size
+                              if (scale > 1) {
+                                  c.style.zIndex = "9999";
+                              }
+                          }
+                      });
+
+                      if (scale > 1) {
+                          modalCarouselEl.style.cursor = panning ? 'grabbing' : 'grab';
+                          img.style.cursor = panning ? 'grabbing' : 'grab';
+                      } else {
+                          modalCarouselEl.style.cursor = 'grab';
+                          img.style.cursor = 'grab';
+                      }
+                  }
+              };
+
+              // Reset zoom when slide changes
+              modalCarouselEl.addEventListener('slide.bs.carousel', () => {
+                  scale = 1;
+                  pointX = 0;
+                  pointY = 0;
+                  panning = false;
+                  modalCarouselEl.querySelectorAll('img').forEach(img => {
+                      img.style.transform = '';
+                      img.style.cursor = '';
+                  });
+                  // Reset overflow
+                  const containers = [
+                      modalCarouselEl, 
+                      modalCarouselEl.querySelector('.carousel-inner'), 
+                      imageModal.querySelector('.modal-content'), 
+                      imageModal.querySelector('.modal-body')
+                  ];
+                  containers.forEach(c => { if(c) c.style.overflow = ''; });
+              });
+
+              // Wheel Zoom
+              modalCarouselEl.addEventListener('wheel', (e) => {
+                  const img = getActiveImg();
+                  if (!img) return;
+                  e.preventDefault();
+
+                  const delta = e.deltaY > 0 ? -zoomStep : zoomStep;
+                  const oldScale = scale;
+                  scale = Math.min(Math.max(minZoom, scale + delta), maxZoom);
+
+                  if (scale === 1) {
+                      pointX = 0; 
+                      pointY = 0;
+                  }
+                  
+                  updateTransform();
+              }, { passive: false });
+
+              // Unified Mouse/Touch Events for Pan (Zoom > 1) and Swipe (Zoom = 1)
+              let isDragging = false;
+              let dragStartX = 0;
+              let dragStartY = 0;
+              
+              const onPointerDown = (e) => {
+                  if (e.type === 'mousedown' && e.button !== 0) return;
+                  
+                  const clientX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+                  const clientY = e.type.includes('touch') ? e.touches[0].clientY : e.clientY;
+                  
+                  isDragging = true;
+                  dragStartX = clientX;
+                  dragStartY = clientY;
+
+                  if (scale > 1) {
+                      panning = true;
+                      startX = clientX - pointX;
+                      startY = clientY - pointY;
+                      modalCarouselEl.style.cursor = 'grabbing';
+                      e.preventDefault();
+                  }
+              };
+
+              const onPointerMove = (e) => {
+                  if (!isDragging) return;
+
+                  const clientX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+                  const clientY = e.type.includes('touch') ? e.touches[0].clientY : e.clientY;
+
+                  if (scale > 1) {
+                      e.preventDefault();
+                      pointX = clientX - startX;
+                      pointY = clientY - startY;
+                      updateTransform();
+                  }
+              };
+
+              const onPointerUp = (e) => {
+                  if (!isDragging) return;
+                  isDragging = false;
+                  panning = false;
+
+                  const clientX = e.type.includes('touch') ? (e.changedTouches ? e.changedTouches[0].clientX : dragStartX) : e.clientX;
+
+                  if (scale === 1) {
+                      const diffX = dragStartX - clientX;
+                      if (Math.abs(diffX) > 50) {
+                          const instance = bootstrap.Carousel.getInstance(modalCarouselEl);
+                          if (diffX > 0) instance.next();
+                          else instance.prev();
+                      }
+                  }
+                  updateTransform();
+              };
+
+              modalCarouselEl.addEventListener('mousedown', onPointerDown);
+              window.addEventListener('mousemove', onPointerMove);
+              window.addEventListener('mouseup', onPointerUp);
+
+              modalCarouselEl.addEventListener('touchstart', onPointerDown, { passive: false });
+              modalCarouselEl.addEventListener('touchmove', onPointerMove, { passive: false });
+              modalCarouselEl.addEventListener('touchend', onPointerUp);
           });
       }
 

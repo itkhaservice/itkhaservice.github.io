@@ -75,7 +75,6 @@ document.addEventListener("DOMContentLoaded", function () {
   let musicPlaylist = [];
   let currentAudio = null;
   let lastSongIndex = -1;
-  let isFirstClick = true;
 
   /* =======================
    LOAD PLAYLIST TỪ JSON
@@ -139,20 +138,6 @@ document.addEventListener("DOMContentLoaded", function () {
     currentAudio.onended = playRandomSong;
   }
 
-  /* =======================
-   CLICK ĐẦU TIÊN ĐỂ PHÁT
-======================= */
-  document.addEventListener(
-    "click",
-    () => {
-      if (isFirstClick) {
-        playRandomSong();
-        isFirstClick = false;
-      }
-    },
-    { once: true }
-  );
-
   // --- Single Delegated Click Listener for Header Buttons & Music Autoplay ---
   document.addEventListener("click", (event) => {
     // --- Shuffle music button logic ---
@@ -206,19 +191,6 @@ document.addEventListener("DOMContentLoaded", function () {
         .catch((error) => {
           console.error("Music playback failed for:", randomSong, error);
         });
-    }
-
-    // --- One-time logic on first interaction ---
-    if (isFirstClick) {
-      isFirstClick = false;
-
-      // Autoplay background music
-      const backgroundMusic = document.getElementById("background-music");
-      if (backgroundMusic && backgroundMusic.paused) {
-        backgroundMusic.play().catch((error) => {
-          console.log("Music autoplay was prevented by the browser.");
-        });
-      }
     }
   });
 });

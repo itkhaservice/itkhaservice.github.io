@@ -1,5 +1,5 @@
 // Global flag for effects
-window.effectsEnabled = true;
+window.effectsEnabled = false;
 
 // Hàm cài đặt canvas và hiệu ứng hoa rơi
 function setupCanvas(canvasId, imagePath, isFromLeft, flowerCount) {
