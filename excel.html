@@ -451,11 +451,125 @@ body {
 document.addEventListener('DOMContentLoaded', function() {
     var imageModal = document.getElementById('imageModal');
     if (imageModal) {
+        // Set image source when modal opens
         imageModal.addEventListener('show.bs.modal', function(event) {
             var button = event.relatedTarget;
             var imageSrc = button.getAttribute('data-image-full');
             var modalImage = imageModal.querySelector('#fullImage');
             modalImage.src = imageSrc;
+            
+            // Reset transforms
+            modalImage.style.transform = '';
+            modalImage.style.cursor = 'grab';
+        });
+
+        // Initialize Zoom & Pan when modal is shown
+        imageModal.addEventListener('shown.bs.modal', function() {
+            var modalImage = imageModal.querySelector('#fullImage');
+            if (!modalImage) return;
+
+            // Prevent duplicate listeners
+            if (modalImage.dataset.zoomInitialized) return;
+            modalImage.dataset.zoomInitialized = 'true';
+
+            let scale = 1;
+            let panning = false;
+            let pointX = 0, pointY = 0;
+            let startX = 0, startY = 0;
+            const zoomStep = 0.2;
+            const maxZoom = 15;
+            const minZoom = 1;
+
+            const updateTransform = () => {
+                modalImage.style.transform = `translate(${pointX}px, ${pointY}px) scale(${scale})`;
+                
+                // Allow overflow when zoomed
+                const containers = [
+                    imageModal.querySelector('.modal-content'),
+                    imageModal.querySelector('.modal-body')
+                ];
+                
+                containers.forEach(c => {
+                    if (c) {
+                        c.style.overflow = scale > 1 ? 'visible' : '';
+                         if (scale > 1) {
+                            c.style.zIndex = "9999";
+                        }
+                    }
+                });
+
+                if (scale > 1) {
+                    modalImage.style.cursor = panning ? 'grabbing' : 'grab';
+                } else {
+                    modalImage.style.cursor = 'grab';
+                }
+            };
+
+            // Wheel Zoom
+            modalImage.addEventListener('wheel', (e) => {
+                e.preventDefault();
+                const delta = e.deltaY > 0 ? -zoomStep : zoomStep;
+                scale = Math.min(Math.max(minZoom, scale + delta), maxZoom);
+
+                if (scale === 1) {
+                    pointX = 0;
+                    pointY = 0;
+                }
+                updateTransform();
+            }, { passive: false });
+
+            // Pan Logic
+            let isDragging = false;
+            let dragStartX = 0;
+            let dragStartY = 0;
+
+            const onPointerDown = (e) => {
+                if (e.type === 'mousedown' && e.button !== 0) return;
+                e.preventDefault();
+                
+                const clientX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+                const clientY = e.type.includes('touch') ? e.touches[0].clientY : e.clientY;
+
+                isDragging = true;
+                dragStartX = clientX;
+                dragStartY = clientY;
+
+                if (scale > 1) {
+                    panning = true;
+                    startX = clientX - pointX;
+                    startY = clientY - pointY;
+                    modalImage.style.cursor = 'grabbing';
+                }
+            };
+
+            const onPointerMove = (e) => {
+                if (!isDragging) return;
+                
+                const clientX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+                const clientY = e.type.includes('touch') ? e.touches[0].clientY : e.clientY;
+
+                if (scale > 1) {
+                    e.preventDefault();
+                    pointX = clientX - startX;
+                    pointY = clientY - startY;
+                    updateTransform();
+                }
+            };
+
+            const onPointerUp = (e) => {
+                if (!isDragging) return;
+                isDragging = false;
+                panning = false;
+                updateTransform();
+            };
+
+            modalImage.addEventListener('mousedown', onPointerDown);
+            window.addEventListener('mousemove', onPointerMove);
+            window.addEventListener('mouseup', onPointerUp);
+
+            modalImage.addEventListener('touchstart', onPointerDown, { passive: false });
+            modalImage.addEventListener('touchmove', onPointerMove, { passive: false });
+            modalImage.addEventListener('touchend', onPointerUp);
         });
     }
 });
