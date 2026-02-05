@@ -247,6 +247,52 @@ body {
             <i class="bi bi-grid-3x3-gap-fill"></i> Xem thêm một số tài khoản Khánh Hội & BQT
           </button>
         </div>
+
+        <!-- Quick Code Generator -->
+        <div class="card mt-5 border-0 shadow-sm" style="border-radius: var(--border-radius-lg); background: rgba(255,255,255,0.9); backdrop-filter: blur(10px);">
+          <div class="card-body p-4 text-start">
+            <h5 class="fw-bold mb-3" style="color: var(--primary-color);"><i class="bi bi-magic text-primary"></i> Công cụ tạo mã nhanh (Tham khảo)</h5>
+            <p class="text-danger small mb-4"><i class="bi bi-exclamation-triangle-fill"></i> Lưu ý: Kiểm tra kỹ thông tin trước khi sử dụng chính thức.</p>
+            
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label small fw-bold">Chọn ngân hàng</label>
+                <select id="genBank" class="form-select form-select-sm">
+                  <option value="970415">Vietinbank (970415)</option>
+                  <option value="970418">BIDV (970418)</option>
+                  <option value="970448">OCB (970448)</option>
+                  <option value="970430">PGBank (970430)</option>
+                  <option value="970436">Vietcombank (970436)</option>
+                  <option value="970422">MB Bank (970422)</option>
+                  <option value="970407">Techcombank (970407)</option>
+                  <option value="970423">TPBank (970423)</option>
+                  <option value="970432">VPBank (970432)</option>
+                  <option value="970416">ACB (970416)</option>
+                  <option value="970405">Agribank (970405)</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label small fw-bold">Số tài khoản</label>
+                <input type="text" id="genAcc" class="form-control form-control-sm" placeholder="Nhập số tài khoản..." value="110000063371">
+              </div>
+              <div class="col-12 d-grid">
+                <button type="button" class="btn btn-primary btn-sm" onclick="generateQuickCode()" style="border-radius: 8px;">
+                  <i class="bi bi-gear-fill"></i> Tạo mã cấu hình
+                </button>
+              </div>
+              <div id="genResultArea" class="col-12 d-none">
+                <label class="form-label small fw-bold mt-2">Mã cấu hình tạo ra:</label>
+                <div class="code-copy-block" style="padding: 10px 15px;">
+                  <code id="genResultCode" style="font-size: 0.8rem;" class="long-string"></code>
+                  <button class="btn btn-sm btn-light copy-button" type="button" onclick="copyToClipboardFromCode(this)">
+                    <i class="bi bi-clipboard"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       </div>
     </div>
     <div class="row align-items-start mb-4">
@@ -616,6 +662,59 @@ function copyToClipboardFromCode(btn) {
     }).catch(err => {
         console.error('Lỗi khi copy: ', err);
     });
+}
+
+function generateQuickCode() {
+    const bin = document.getElementById('genBank').value;
+    const acc = document.getElementById('genAcc').value.trim();
+    
+    if (!acc) {
+        alert('Vui lòng nhập số tài khoản!');
+        return;
+    }
+
+    const formatTag = (tag, value) => {
+        return tag.toString().padStart(2, '0') + value.length.toString().padStart(2, '0') + value;
+    };
+
+    // Sub-tags for Tag 38
+    const sub00 = formatTag(0, 'A000000727');
+    const sub01_sub00 = formatTag(0, bin);
+    const sub01_sub01 = formatTag(1, acc);
+    const sub01 = formatTag(1, sub01_sub00 + sub01_sub01);
+    const sub02 = formatTag(2, 'QRIBFTTA');
+    
+    const tag38 = formatTag(38, sub00 + sub01 + sub02);
+    
+    // Core payload (before CRC)
+    let payload = "000201010212" + tag38 + "53037045408494949495802VN62110807myexcel6304";
+    
+    // CRC16 CCITT (0xFFFF)
+    const crc = (data) => {
+        let crc = 0xFFFF;
+        for (let i = 0; i < data.length; i++) {
+            crc ^= data.charCodeAt(i) << 8;
+            for (let j = 0; j < 8; j++) {
+                if ((crc & 0x8000) !== 0) {
+                    crc = (crc << 1) ^ 0x1021;
+                } else {
+                    crc <<= 1;
+                }
+            }
+        }
+        return (crc & 0xFFFF).toString(16).toUpperCase().padStart(4, '0');
+    };
+
+    const finalCode = payload + crc(payload);
+    
+    const resultArea = document.getElementById('genResultArea');
+    const resultCode = document.getElementById('genResultCode');
+    
+    resultCode.innerText = finalCode;
+    resultArea.classList.remove('d-none');
+    
+    // Smooth scroll to result
+    resultArea.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
 </script>
 <script src="js/app.js"></script>
