@@ -724,12 +724,15 @@ function generateQuickCode() {
     const resultCode = document.getElementById('genResultCode');
     const resultQR = document.getElementById('genResultQR');
     
-    // Tạo link ảnh QR từ API (miễn phí và nhanh)
-    const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(finalCode)}`;
+    // Sử dụng API VietQR (ổn định hơn tại VN)
+    const qrUrl = `https://api.vietqr.io/image/${bin}/${acc}.jpg?accountName=KHANH%20HOI&amount=49494949&addInfo=myexcel`;
     
+    // Hiển thị mã code ngay lập tức
     resultCode.innerText = finalCode;
-    resultQR.src = qrUrl;
     resultArea.classList.remove('d-none');
+    
+    // Load ảnh QR
+    resultQR.src = qrUrl;
     
     // Smooth scroll to result
     resultArea.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
