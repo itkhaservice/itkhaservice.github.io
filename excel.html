@@ -724,15 +724,20 @@ function generateQuickCode() {
     const resultCode = document.getElementById('genResultCode');
     const resultQR = document.getElementById('genResultQR');
     
-    // Sử dụng API VietQR (ổn định hơn tại VN)
-    const qrUrl = `https://api.vietqr.io/image/${bin}/${acc}.jpg?accountName=KHANH%20HOI&amount=49494949&addInfo=myexcel`;
-    
     // Hiển thị mã code ngay lập tức
     resultCode.innerText = finalCode;
     resultArea.classList.remove('d-none');
     
-    // Load ảnh QR
-    resultQR.src = qrUrl;
+    // Đặt ảnh tạm thời là một loading GIF hoặc để trống để chờ
+    resultQR.src = 'https://cdnjs.cloudflare.com/ajax/libs/galleriffic/2.0.1/css/loader.gif';
+    
+    // Tạo link ảnh QR từ chuỗi finalCode (Sử dụng QuickChart API cực nhanh)
+    const qrUrl = `https://quickchart.io/qr?text=${encodeURIComponent(finalCode)}&size=200&centerImageUrl=https://itkhaservice.github.io/images/system/logo.png`;
+    
+    // Gán ảnh thật sau khi tính toán xong
+    setTimeout(() => {
+        resultQR.src = qrUrl;
+    }, 100);
     
     // Smooth scroll to result
     resultArea.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
