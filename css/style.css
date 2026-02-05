@@ -267,6 +267,34 @@ footer {
     transform: scale(1.05); /* Zoom in by 5% */
 }
 
+.btn-custom-outline {
+    border: 1.5px solid var(--accent-color);
+    color: var(--accent-color);
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(5px);
+    border-radius: var(--border-radius-md);
+    padding: 0.6rem 1.5rem;
+    font-weight: 600;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.btn-custom-outline:hover {
+    background-color: var(--accent-color);
+    color: white;
+    box-shadow: 0 8px 20px rgba(0, 123, 255, 0.25);
+    transform: translateY(-2px);
+    border-color: var(--accent-color);
+}
+
+.btn-custom-outline i {
+    font-size: 1.2rem;
+}
+
 .long-string {
     word-break: break-all;
 }
