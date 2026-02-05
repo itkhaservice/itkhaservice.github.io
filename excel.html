@@ -732,7 +732,7 @@ function generateQuickCode() {
     resultQR.src = 'https://cdnjs.cloudflare.com/ajax/libs/galleriffic/2.0.1/css/loader.gif';
     
     // Tạo link ảnh QR từ chuỗi finalCode (Sử dụng QuickChart API cực nhanh)
-    const qrUrl = `https://quickchart.io/qr?text=${encodeURIComponent(finalCode)}&size=200&centerImageUrl=https://itkhaservice.github.io/images/system/logo.png`;
+    const qrUrl = `https://quickchart.io/qr?text=${encodeURIComponent(finalCode)}&size=200`;
     
     // Gán ảnh thật sau khi tính toán xong
     setTimeout(() => {
