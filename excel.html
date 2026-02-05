@@ -280,13 +280,26 @@ body {
                   <i class="bi bi-gear-fill"></i> Tạo mã cấu hình
                 </button>
               </div>
-              <div id="genResultArea" class="col-12 d-none">
-                <label class="form-label small fw-bold mt-2">Mã cấu hình tạo ra:</label>
-                <div class="code-copy-block" style="padding: 10px 15px;">
-                  <code id="genResultCode" style="font-size: 0.8rem;" class="long-string"></code>
-                  <button class="btn btn-sm btn-light copy-button" type="button" onclick="copyToClipboardFromCode(this)">
-                    <i class="bi bi-clipboard"></i>
-                  </button>
+              <div id="genResultArea" class="col-12 d-none mt-3">
+                <div class="row align-items-center g-3">
+                  <!-- Cột trái: Hình QR -->
+                  <div class="col-md-4 text-center">
+                    <div class="bg-white p-2 rounded shadow-sm d-inline-block border">
+                      <img id="genResultQR" src="" alt="QR Code" class="img-fluid" style="width: 150px; height: 150px;">
+                    </div>
+                    <div class="mt-2 small text-muted">Mã QR tham khảo</div>
+                  </div>
+                  <!-- Cột phải: Mã Code -->
+                  <div class="col-md-8">
+                    <label class="form-label small fw-bold">Mã cấu hình tạo ra:</label>
+                    <div class="code-copy-block" style="padding: 10px 15px; background: #f8f9fa;">
+                      <code id="genResultCode" style="font-size: 0.8rem;" class="long-string"></code>
+                      <button class="btn btn-sm btn-light copy-button" type="button" onclick="copyToClipboardFromCode(this)">
+                        <i class="bi bi-clipboard"></i>
+                      </button>
+                    </div>
+                    <p class="small text-muted mt-2 mb-0"><i class="bi bi-info-circle"></i> Bạn có thể dùng App Ngân hàng quét thử hình QR bên cạnh để kiểm tra thông tin.</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -709,8 +722,13 @@ function generateQuickCode() {
     
     const resultArea = document.getElementById('genResultArea');
     const resultCode = document.getElementById('genResultCode');
+    const resultQR = document.getElementById('genResultQR');
+    
+    // Tạo link ảnh QR từ API (miễn phí và nhanh)
+    const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(finalCode)}`;
     
     resultCode.innerText = finalCode;
+    resultQR.src = qrUrl;
     resultArea.classList.remove('d-none');
     
     // Smooth scroll to result
