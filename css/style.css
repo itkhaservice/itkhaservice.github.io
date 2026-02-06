@@ -1,7 +1,7 @@
 :root {
-    --primary-color: #0a2540; /* Deep Navy Blue */
+    --primary-color: #0f7f44; /* Excel Green */
     --secondary-color: #f6f9fc; /* Light Grey */
-    --accent-color: #007bff; /* Vibrant Blue for buttons */
+    --accent-color: #0f7f44; /* Excel Green for buttons */
     --text-color: #363636;
     --card-bg: #ffffff;
     --border-radius-lg: 20px;

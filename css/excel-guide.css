@@ -1,0 +1,170 @@
+
+/* Excel Guide Modern Styling */
+:root {
+    --guide-primary: #0f7f44;
+    --guide-bg: #ffffff;
+    --guide-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    --timeline-color: #e9ecef;
+}
+
+/* Timeline container */
+.guide-container {
+    position: relative;
+    padding-left: 3rem;
+}
+
+.guide-container::before {
+    content: '';
+    position: absolute;
+    left: 15px;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--timeline-color);
+    border-radius: 3px;
+}
+
+/* Individual Step Card */
+.guide-step {
+    position: relative;
+    background: var(--guide-bg);
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 3rem;
+    box-shadow: var(--guide-shadow);
+    border: 1px solid rgba(0,0,0,0.03);
+    transition: transform 0.3s ease;
+}
+
+.guide-step:hover {
+    transform: translateY(-5px);
+}
+
+/* Step Number Marker */
+.step-marker {
+    position: absolute;
+    left: -3rem;
+    top: 1.5rem;
+    width: 40px;
+    height: 40px;
+    background: var(--guide-primary);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.1rem;
+    z-index: 2;
+    border: 4px solid #f8f9fa;
+    box-shadow: 0 0 0 3px var(--guide-primary);
+}
+
+/* Quick Navigation Grid */
+.nav-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 4rem;
+}
+
+.nav-item {
+    background: white;
+    padding: 1rem;
+    border-radius: 12px;
+    text-decoration: none !important;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.03);
+    transition: all 0.2s;
+    border: 1px solid transparent;
+}
+
+.nav-item:hover {
+    border-color: var(--guide-primary);
+    background: #f0f7ff;
+    transform: scale(1.02);
+}
+
+.nav-item i {
+    font-size: 1.2rem;
+    color: var(--guide-primary);
+}
+
+/* Sub-steps grouping */
+.step-group {
+    background: rgba(0, 123, 255, 0.02);
+    border-radius: 20px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    border: 1px dashed #dee2e6;
+}
+
+.group-title {
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Image styling within guide */
+.guide-img-wrapper {
+    overflow: hidden;
+    border-radius: 12px;
+    cursor: zoom-in;
+    margin-bottom: 1rem;
+}
+
+.guide-img-wrapper img {
+    transition: transform 0.5s;
+    width: 100%;
+}
+
+.guide-img-wrapper:hover img {
+    transform: scale(1.03);
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .guide-container {
+        padding-left: 1rem;
+    }
+    .guide-container::before {
+        display: none;
+    }
+    .step-marker {
+        position: static;
+        margin-bottom: 1rem;
+    }
+}
+
+/* Reset old hierarchical indentation for guide steps */
+.guide-step h3, 
+.guide-step h4, 
+.guide-step h5,
+.guide-step p, 
+.guide-step ul,
+.guide-step .code-copy-block {
+    padding-left: 0 !important;
+    margin-left: 0 !important;
+}
+
+.guide-step ul li {
+    padding-left: 1.5rem !important;
+}
+
+.step-group {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .step-group {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+}
