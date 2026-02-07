@@ -356,7 +356,12 @@ body {
           </div>
         </div>
         <div class="col-md-7">
-          <h5 id="bat-tat-ham-vietqr" class="fw-bold">8.5. Bật hàm VietQr Code</h5>
+          <h5 id="bat-tat-ham-vietqr" class="fw-bold d-flex align-items-center flex-wrap">
+            8.5. Bật hàm VietQr Code
+            <button class="btn btn-sm btn-outline-primary ms-md-3 mt-2 mt-md-0 video-btn" data-video-url="https://player.vimeo.com/video/1160103020?autoplay=1">
+              <i class="bi bi-play-circle me-1"></i>Xem video hướng dẫn
+            </button>
+          </h5>
           <p>Để các công thức Excel có thể tính toán, bạn cần kích hoạt hàm:</p>
           <ul class="small">
             <li>MiniTool > Tạo Qr Tài khoản Ngân hàng...</li>
@@ -413,7 +418,9 @@ body {
               <div class="card-body">
                 <h6 class="fw-bold text-primary">1. In liên tục</h6>
                 <p class="small text-muted">Dành cho danh sách STT kế tiếp nhau (Ví dụ: In từ 1 đến 100).</p>
-                <a href="https://mega.nz/file/b4RhRK7a#bZ-_wwhZ0f8vE93N7P3SORyFUMj4NTs2AgNMaNyAwSA" target="_blank" class="btn btn-sm btn-outline-primary w-100">Video hướng dẫn</a>
+                <button class="btn btn-sm btn-outline-primary w-100 video-btn" data-video-url="https://player.vimeo.com/video/1160102461?autoplay=1">
+                  <i class="bi bi-play-circle me-1"></i>Xem video hướng dẫn
+                </button>
               </div>
             </div>
           </div>
@@ -422,7 +429,9 @@ body {
               <div class="card-body">
                 <h6 class="fw-bold text-dark">2. In theo vùng chọn</h6>
                 <p class="small text-muted">Dành cho danh sách STT không liên tục (Ví dụ: In các căn hộ nợ phí).</p>
-                <a href="https://mega.nz/file/noQhCIjL#xCcnP_U9ZmVvHB1z-YmUxcySaf60drdPQ0cf3htNQi8" target="_blank" class="btn btn-sm btn-outline-dark w-100">Video hướng dẫn</a>
+                <button class="btn btn-sm btn-outline-dark w-100 video-btn" data-video-url="https://player.vimeo.com/video/1160102279?autoplay=1">
+                  <i class="bi bi-play-circle me-1"></i>Xem video hướng dẫn
+                </button>
               </div>
             </div>
           </div>
@@ -454,7 +463,11 @@ body {
                   <p class="small">Khi thay đổi STT căn hộ nhưng QRCode không cập nhật, hãy kiểm tra Menu MiniTool còn không?</p>
                   <ul class="small mb-0">
                     <li>Nếu không: Add-ins lại thư viện (<a href="#kich-hoat-add-ins">Xem Bước 7</a>).</li>
-                    <li>Nếu còn: Bật lại hàm VietQR (<a href="#bat-tat-ham-vietqr">Xem Bước 8.5</a>).</li>
+                    <li>Nếu còn: Bật lại hàm VietQR (<a href="#bat-tat-ham-vietqr">Xem Bước 8.5</a>) 
+                      <button class="btn btn-badge btn-outline-primary video-btn ms-1" style="font-size: 0.7rem; padding: 1px 6px;" data-video-url="https://player.vimeo.com/video/1160103020?autoplay=1">
+                        <i class="bi bi-play-circle me-1"></i>Xem video
+                      </button>
+                    </li>
                     <li><strong>Trường hợp đặc biệt:</strong> Nếu đã làm cả 2 vẫn không được, hãy gỡ MyExcel, xóa folder trong ổ C và cài lại từ đầu.</li>
                   </ul>
                 </div>
@@ -968,6 +981,36 @@ document.addEventListener('DOMContentLoaded', function() {
             modalImage.addEventListener('touchstart', onPointerDown, { passive: false });
             modalImage.addEventListener('touchmove', onPointerMove, { passive: false });
             modalImage.addEventListener('touchend', onPointerUp);
+        });
+    }
+});
+</script>
+<!-- Video Modal -->
+<div class="modal fade" id="videoModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content bg-dark border-0">
+            <div class="modal-header border-0 pb-0 shadow-none"><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div>
+            <div class="modal-body p-0"><div class="ratio ratio-16x9"><iframe id="modalVideoIframe" src="" allowfullscreen allow="autoplay"></iframe></div></div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const videoModal = document.getElementById('videoModal');
+    if (videoModal) {
+        document.querySelectorAll('.video-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const videoUrl = this.getAttribute('data-video-url');
+                if (videoUrl) {
+                    document.getElementById('modalVideoIframe').src = videoUrl;
+                    new bootstrap.Modal(videoModal).show();
+                }
+            });
+        });
+        videoModal.addEventListener('hidden.bs.modal', () => { 
+            document.getElementById('modalVideoIframe').src = ''; 
         });
     }
 });
