@@ -24,6 +24,28 @@ body {
     z-index: 100001;
 }
 
+/* Global Styling for Code tags to make them prominent boxes */
+code {
+    color: #d63384 !important;
+    background-color: #fff0f6 !important; /* Light pink background */
+    padding: 2px 8px !important;
+    border-radius: 6px !important;
+    font-size: 1.15em !important; /* Larger font */
+    font-weight: 600 !important;
+    border: 1px solid rgba(214, 51, 132, 0.2) !important;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 2px 0;
+}
+
+.code-copy-block code {
+    background-color: transparent !important; /* Keep transparent inside copy blocks */
+    border: none !important;
+    padding: 0 !important;
+    display: inline;
+    font-size: 1.1em !important;
+}
+
 .nav-link {
     color: var(--text-color);
     font-weight: 500;

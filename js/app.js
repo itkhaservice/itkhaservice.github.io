@@ -81,11 +81,26 @@ setupCanvas("fallingCanvasMai", "images/hoamai.png", false, 30); // Hoa mai từ
 setupCanvas("fallingCanvasDao", "images/hoadao.png", true, 30);  // Hoa đào từ trái qua
   
 document.addEventListener("DOMContentLoaded", () => {
+    // Function to update corner flowers visibility
+    const updateCornerFlowers = () => {
+        const cornerFlowers = document.querySelectorAll('.corner-flower-mai, .corner-flower-dao');
+        cornerFlowers.forEach(flower => {
+            flower.style.display = window.effectsEnabled ? 'block' : 'none';
+        });
+    };
+
+    // Initial state check
+    updateCornerFlowers();
+
     // Event delegation for dynamically loaded header buttons
     document.addEventListener('click', function(event) {
         const toggleBtn = event.target.closest('#toggle-effects-btn');
         if (toggleBtn) {
             window.effectsEnabled = !window.effectsEnabled;
+            
+            // Update corner flowers
+            updateCornerFlowers();
+
             // If effects are disabled, clear the canvases one last time
             if (!window.effectsEnabled) {
                 const canvasIds = ["fallingCanvasMai", "fallingCanvasDao", "canvas"];
