@@ -60,12 +60,17 @@ function renderReportTable(data) {
 
     data.forEach(item => {
         const daysDiff = calculateDaysDiff(item["Ngày mới nhất"]);
+        // Lấy dữ liệu với fallback nếu tên cột thay đổi
+        const cuDanApp = item["Tổng cư dân sử dụng APP"] ?? item["Cư dân dùng APP"] ?? 0;
+        const canHoApp = item["Tổng số căn hộ sử dụng APP"] ?? item["Căn hộ dùng APP"] ?? 0;
+        const tongCanHo = item["Tổng căn hộ"] ?? 0;
+
         html += `
             <tr>
                 <td class="fw-bold">${item["Dự án"]}</td>
-                <td class="text-center">${item["Tổng căn hộ"] || 0}</td>
-                <td class="text-center">${item["Cư dân dùng APP"] || 0}</td>
-                <td class="text-center">${item["Căn hộ dùng APP"] || 0}</td>
+                <td class="text-center">${tongCanHo}</td>
+                <td class="text-center">${cuDanApp}</td>
+                <td class="text-center">${canHoApp}</td>
                 <td class="text-center">${item["Tin tức"] || 0}</td>
                 <td class="text-center">${item["Thông báo"] || 0}</td>
                 <td class="text-center">${item["Ngày mới nhất"] || 'N/A'}</td>
