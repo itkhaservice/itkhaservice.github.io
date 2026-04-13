@@ -38,10 +38,18 @@ function renderReportTable(data) {
     const container = document.getElementById("report-container");
     if (!container) return;
 
+    // Bỏ qua object đầu tiên theo yêu cầu
+    const displayData = data.slice(1);
+
     let html = `
-        <div class="table-responsive mt-5">
-            <h3 class="text-center mb-4" style="color: var(--primary-color);">TỔNG HỢP TRẠNG THÁI HỆ THỐNG</h3>
-            <table class="table table-bordered table-hover align-middle custom-table">
+        <div class="d-flex justify-content-between align-items-center mb-4 mt-5">
+            <h3 class="mb-0" style="color: var(--primary-color); font-weight: 700;">TỔNG HỢP DỮ LIỆU PHẦN MỀM CÁC DỰ ÁN CHUNG CƯ</h3>
+            <button class="btn btn-success d-flex align-items-center gap-2" onclick="exportReportToExcel()" style="background-color: #108042; border-radius: 8px;">
+                <i class="bi bi-file-earmark-excel"></i> Xuất Excel
+            </button>
+        </div>
+        <div class="table-responsive">
+            <table id="report-table" class="table table-bordered table-hover align-middle custom-table">
                 <thead class="table-success">
                     <tr>
                         <th>Dự án</th>
@@ -58,7 +66,7 @@ function renderReportTable(data) {
                 <tbody>
     `;
 
-    data.forEach(item => {
+    displayData.forEach(item => {
         const daysDiff = calculateDaysDiff(item["Ngày mới nhất"]);
         // Lấy dữ liệu với fallback nếu tên cột thay đổi
         const cuDanApp = item["Tổng cư dân sử dụng APP"] ?? item["Cư dân dùng APP"] ?? 0;
@@ -87,6 +95,22 @@ function renderReportTable(data) {
     `;
 
     container.innerHTML = html;
+}
+
+// Hàm xuất Excel
+function exportReportToExcel() {
+    const table = document.getElementById("report-table");
+    if (!table) return;
+
+    // Tạo workbook từ table
+    const wb = XLSX.utils.table_to_book(table, { sheet: "BaoCaoHeThong" });
+    
+    // Tạo tên file theo ngày hiện tại
+    const date = new Date();
+    const fileName = `Bao_Cao_He_Thong_${date.getFullYear()}${(date.getMonth()+1).toString().padStart(2, '0')}${date.getDate().toString().padStart(2, '0')}.xlsx`;
+    
+    // Xuất file
+    XLSX.writeFile(wb, fileName);
 }
 
 document.addEventListener("DOMContentLoaded", fetchReportData);
