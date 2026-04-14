@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HỆ THỐNG XE - IT KHA SERVICE</title>
+  <title>Hệ thống Xe - IT KHA SERVICE</title>
   
-  <!-- Google Fonts: Inter -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   
   <!-- Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -19,33 +19,207 @@
   
   <!-- Custom Styles -->
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/excel-guide.css">
   <link rel="icon" href="images/system/logo.png" type="image/png">
 
   <style>
+    :root {
+        --guide-primary: #108042;
+        --guide-secondary: #e7fff0;
+    }
     body {
-        background-image: url('images/system/wallpaper.jpg');
-        background-size: cover;
-        background-position: center center;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
+        background: #f1f5f9;
+        font-family: 'Inter', sans-serif;
+    }
+    .software-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        margin-bottom: 64px;
+    }
+    @media (max-width: 992px) {
+        .software-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+    @media (max-width: 768px) {
+        .software-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+    .parking-card {
+        background: white;
+        border-radius: 20px;
+        padding: 32px 24px;
+        text-align: center;
+        border: 1px solid var(--guide-border);
+        transition: all 0.3s ease;
+        text-decoration: none !important;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+        height: 100%;
+    }
+    .parking-card:hover {
+        transform: translateY(-8px);
+        border-color: var(--guide-primary);
+        box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    }
+    .icon-box {
+        width: 80px;
+        height: 80px;
+        background: var(--guide-secondary);
+        color: var(--guide-primary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        font-size: 2.5rem;
+        margin-bottom: 8px;
+        transition: all 0.3s ease;
+    }
+    .parking-card:hover .icon-box {
+        background: var(--guide-primary);
+        color: white;
+    }
+    .parking-name {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--guide-text);
+        margin: 0;
+    }
+    .parking-desc {
+        font-size: 0.9rem;
+        color: #64748b;
+        margin: 0;
+    }
+    .status-badge {
+        font-size: 0.75rem;
+        padding: 4px 12px;
+        border-radius: 99px;
+        background: #f1f5f9;
+        color: #64748b;
+        font-weight: 600;
     }
   </style>
 </head>
 <body class="d-flex flex-column min-vh-100">
+
   <main class="main-wrapper">
-    <div class="container" id="main-content">
-      <div class="page-container">
-        <h1 class="page-title text-center">Hệ thống xe</h1>
-        <p class="text-center text-muted mb-5">Thông tin và hướng dẫn vận hành các hệ thống quản lý bãi xe thông minh.</p>
-        
-        <div class="alert alert-warning border-0 d-flex align-items-center gap-3" style="background-color: #fff9db; border-radius: var(--radius-card);">
-            <i class="bi bi-cone-striped fs-3 text-warning"></i>
-            <div>
-                <h6 class="fw-bold mb-1">Trang đang được phát triển</h6>
-                <p class="mb-0 small text-muted">Nội dung chi tiết về hệ thống xe đang được cập nhật. Vui lòng quay lại sau.</p>
-            </div>
+    <div class="container py-5">
+      
+      <!-- Page Header -->
+      <div class="text-center mb-5">
+        <h1 class="guide-h1 text-success">Hệ thống Quản lý Bãi xe</h1>
+        <p class="text-muted fs-5 mx-auto" style="max-width: 700px;">Tổng hợp hướng dẫn vận hành và xử lý lỗi cho các phần mềm bãi xe thông minh đang triển khai tại các dự án.</p>
+      </div>
+
+      <!-- Main Software Grid -->
+      <div class="software-grid">
+        <!-- IDT Parking -->
+        <a href="#idt-parking" class="parking-card shadow-sm">
+          <div class="icon-box"><i class="bi bi-car-front-fill"></i></div>
+          <h3 class="parking-name">IDT Parking</h3>
+          <p class="parking-desc">Phần mềm bãi xe IDT</p>
+          <span class="status-badge">Xem hướng dẫn</span>
+        </a>
+
+        <!-- KEVI Parking -->
+        <a href="#kevi-parking" class="parking-card shadow-sm">
+          <div class="icon-box"><i class="bi bi-bicycle"></i></div>
+          <h3 class="parking-name">KEVI Parking</h3>
+          <p class="parking-desc">Giải pháp bãi xe KEVI</p>
+          <span class="status-badge">Xem hướng dẫn</span>
+        </a>
+
+        <!-- K-Tek -->
+        <a href="#k-tek" class="parking-card shadow-sm">
+          <div class="icon-box"><i class="bi bi-car-front-fill"></i></div>
+          <h3 class="parking-name">K-Tek</h3>
+          <p class="parking-desc">Công nghệ đỗ xe K-Tek</p>
+          <span class="status-badge">Xem hướng dẫn</span>
+        </a>
+
+        <!-- Tiến Thành -->
+        <a href="#tien-thanh" class="parking-card shadow-sm">
+          <div class="icon-box"><i class="bi bi-bicycle"></i></div>
+          <h3 class="parking-name">Tiến Thành</h3>
+          <p class="parking-desc">Hệ thống xe Tiến Thành</p>
+          <span class="status-badge">Xem hướng dẫn</span>
+        </a>
+
+        <!-- E-Parking -->
+        <a href="#e-parking" class="parking-card shadow-sm">
+          <div class="icon-box"><i class="bi bi-car-front-fill"></i></div>
+          <h3 class="parking-name">E-Parking</h3>
+          <p class="parking-desc">Bãi xe điện tử thông minh</p>
+          <span class="status-badge">Xem hướng dẫn</span>
+        </a>
+
+        <!-- KTP -->
+        <a href="#ktp" class="parking-card shadow-sm">
+          <div class="icon-box"><i class="bi bi-bicycle"></i></div>
+          <h3 class="parking-name">KTP</h3>
+          <p class="parking-desc">Giải pháp quản lý KTP</p>
+          <span class="status-badge">Xem hướng dẫn</span>
+        </a>
+
+        <!-- Quang Minh -->
+        <a href="#quang-minh" class="parking-card shadow-sm">
+          <div class="icon-box"><i class="bi bi-car-front-fill"></i></div>
+          <h3 class="parking-name">Quang Minh Parking</h3>
+          <p class="parking-desc">Hệ thống xe Quang Minh</p>
+          <span class="status-badge">Xem hướng dẫn</span>
+        </a>
+
+        <!-- Nam Phương Sài Gòn -->
+        <a href="#nam-phuong" class="parking-card shadow-sm">
+          <div class="icon-box"><i class="bi bi-bicycle"></i></div>
+          <h3 class="parking-name">Nam Phương Sài Gòn</h3>
+          <p class="parking-desc">Quản lý bãi xe Nam Phương</p>
+          <span class="status-badge">Xem hướng dẫn</span>
+        </a>
+
+        <!-- PMS Parking -->
+        <a href="#pms-parking" class="parking-card shadow-sm">
+          <div class="icon-box"><i class="bi bi-car-front-fill"></i></div>
+          <h3 class="parking-name">PMS Parking</h3>
+          <p class="parking-desc">Phần mềm quản lý PMS</p>
+          <span class="status-badge">Xem hướng dẫn</span>
+        </a>
+      </div>
+
+      <!-- Detail Content Sections -->
+      <div class="guide-content">
+        <section id="idt-parking" class="guide-section">
+          <h2 class="guide-h2"><i class="bi bi-car-front-fill me-2 text-success"></i>Hướng dẫn IDT Parking</h2>
+          <div class="alert alert-warning border-0 d-flex align-items-center gap-3" style="background-color: #fff9db; border-radius: var(--radius-card);">
+              <i class="bi bi-cone-striped fs-3 text-warning"></i>
+              <div>
+                  <h6 class="fw-bold mb-1">Nội dung đang được cập nhật</h6>
+                  <p class="mb-0 small text-muted">Hướng dẫn sử dụng phần mềm IDT Parking sẽ sớm được bổ sung tại đây.</p>
+              </div>
+          </div>
+        </section>
+
+        <section id="kevi-parking" class="guide-section">
+          <h2 class="guide-h2"><i class="bi bi-bicycle me-2 text-success"></i>Hướng dẫn KEVI Parking</h2>
+          <div class="alert alert-warning border-0 d-flex align-items-center gap-3" style="background-color: #fff9db; border-radius: var(--radius-card);">
+              <i class="bi bi-cone-striped fs-3 text-warning"></i>
+              <div>
+                  <h6 class="fw-bold mb-1">Nội dung đang được cập nhật</h6>
+                  <p class="mb-0 small text-muted">Hướng dẫn sử dụng phần mềm KEVI Parking sẽ sớm được bổ sung tại đây.</p>
+              </div>
+          </div>
+        </section>
+
+        <!-- Placeholder for other sections -->
+        <div class="text-center py-5">
+          <p class="text-muted italic">Vui lòng liên hệ bộ phận IT để cung cấp tài liệu hướng dẫn cho các mục còn lại.</p>
         </div>
       </div>
+
     </div>
   </main>
 
@@ -53,6 +227,5 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="js/components.js"></script>
   <script src="js/main.js"></script>
-  <script src="js/app.js"></script>
 </body>
 </html>

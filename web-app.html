@@ -24,7 +24,7 @@
 
   <style>
     :root {
-        --guide-primary: #108042; /* Màu xanh lá thương hiệu */
+        --guide-primary: #108042;
         --guide-secondary: #e7fff0;
     }
     body {
@@ -32,23 +32,34 @@
         color: var(--guide-text);
         font-family: 'Inter', sans-serif;
     }
-    .badge-daily { background: #108042; }
+    .badge-daily { background: var(--guide-primary); }
     .badge-monthly { background: #8B5CF6; }
+    
+    /* Fix Horizontal Scroll for Gallery Thumbs */
     .gallery-thumbs {
         display: flex;
-        gap: 8px;
-        margin-top: 12px;
+        gap: 12px;
+        margin-top: 16px;
         overflow-x: auto;
-        padding-bottom: 5px;
+        padding-bottom: 8px;
+        -webkit-overflow-scrolling: touch;
+    }
+    .gallery-thumbs::-webkit-scrollbar {
+        height: 4px;
+    }
+    .gallery-thumbs::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 10px;
     }
     .thumb-item {
-        width: 60px;
-        height: 45px;
+        width: 100px;
+        height: 70px;
         object-fit: cover;
-        border-radius: 8px;
+        border-radius: 10px;
         cursor: pointer;
         border: 2px solid transparent;
         transition: all 0.2s;
+        flex-shrink: 0; /* Important: Prevent shrinking */
     }
     .thumb-item:hover {
         border-color: var(--guide-primary);
@@ -78,7 +89,7 @@
       
       <!-- Page Header -->
       <div class="mb-5">
-        <h1 class="guide-h1 text-primary">Hệ thống WEBAPP</h1>
+        <h1 class="guide-h1 text-success">Hệ thống WEBAPP</h1>
         <p class="text-muted fs-5">Hướng dẫn vận hành phần mềm quản lý vận hành chung cư chi tiết.</p>
       </div>
 
@@ -88,18 +99,22 @@
           <div class="mb-4">
             <h6 class="fw-bold px-3 mb-3 text-uppercase small text-muted">Công việc hàng ngày</h6>
             <ul class="sidebar-menu">
-              <li><a href="#duyet-cu-dan" class="sidebar-link active"><i class="bi bi-people"></i> 1. Duyệt Cư dân</a></li>
-              <li><a href="#cap-nhat-dmnk" class="sidebar-link"><i class="bi bi-droplet"></i> 2. Cập nhật ĐMNK</a></li>
-              <li><a href="#cap-nhat-phuong-tien" class="sidebar-link"><i class="bi bi-car-front"></i> 3. Phương tiện</a></li>
-              <li><a href="#cap-nhat-thanh-toan" class="sidebar-link"><i class="bi bi-cash-stack"></i> 4. Thanh toán</a></li>
-              <li><a href="#tao-phieu-thu" class="sidebar-link"><i class="bi bi-file-earmark-text"></i> 5. Phiếu thu</a></li>
+              <li><a href="#section-1" class="sidebar-link active"><i class="bi bi-people"></i> 1. Duyệt Cư dân</a></li>
+              <li><a href="#section-2" class="sidebar-link"><i class="bi bi-droplet"></i> 2. Cập nhật ĐMNK</a></li>
+              <li><a href="#section-3" class="sidebar-link"><i class="bi bi-car-front"></i> 3. Phương tiện</a></li>
+              <li><a href="#section-4" class="sidebar-link"><i class="bi bi-cash-stack"></i> 4. Thanh toán báo phí</a></li>
+              <li><a href="#section-5" class="sidebar-link"><i class="bi bi-file-earmark-text"></i> 5. Phiếu thu tiền mặt</a></li>
+              <li><a href="#section-6" class="sidebar-link"><i class="bi bi-bell"></i> 6. Thông báo qua APP</a></li>
+              <li><a href="#section-7" class="sidebar-link"><i class="bi bi-chat-dots"></i> 7. Phản hồi cư dân</a></li>
             </ul>
           </div>
           <div class="mb-4">
             <h6 class="fw-bold px-3 mb-3 text-uppercase small text-muted">Định kỳ & Khác</h6>
             <ul class="sidebar-menu">
-              <li><a href="#cong-viec-hang-thang" class="sidebar-link"><i class="bi bi-calendar-range"></i> Quy trình chốt phí</a></li>
-              <li><a href="#tinh-nang-khac" class="sidebar-link"><i class="bi bi-grid-3x3-gap"></i> Tính năng bổ sung</a></li>
+              <li><a href="#section-8" class="sidebar-link"><i class="bi bi-calendar-range"></i> 8. Quy trình chốt phí</a></li>
+              <li><a href="#section-9" class="sidebar-link"><i class="bi bi-person-plus"></i> 9. Quản lý nhân khẩu</a></li>
+              <li><a href="#section-10" class="sidebar-link"><i class="bi bi-funnel"></i> 10. Bộ lọc & Hiển thị</a></li>
+              <li><a href="#section-11" class="sidebar-link"><i class="bi bi-printer"></i> 11. Thiết lập in ấn</a></li>
               <li><a href="#video-huong-dan" class="sidebar-link text-danger"><i class="bi bi-play-btn"></i> Video Library</a></li>
             </ul>
           </div>
@@ -108,11 +123,11 @@
         <!-- Main Content -->
         <div class="guide-content">
           
-          <h2 class="guide-h2 mt-0" id="cong-viec-hang-ngay"><i class="bi bi- sun me-2"></i>I. Công việc hàng ngày</h2>
+          <h2 class="guide-h2 mt-0" id="cong-viec-hang-ngay"><i class="bi bi-sun me-2"></i>I. Công việc hàng ngày</h2>
 
-          <!-- Section: Duyệt Cư dân -->
-          <section id="duyet-cu-dan" class="guide-section">
-            <span class="step-badge badge-daily">Hàng ngày</span>
+          <!-- Section 1 -->
+          <section id="section-1" class="guide-section">
+            <span class="step-badge badge-daily">Bước 01</span>
             <h3 class="guide-h3 mt-0">1. Duyệt Cư dân</h3>
             <div class="row g-4 align-items-start">
               <div class="col-md-6">
@@ -120,16 +135,12 @@
                   <span class="flow-step">Cư dân</span> <i class="bi bi-chevron-right"></i>
                   <span class="flow-step">Đang chờ</span> <i class="bi bi-chevron-right"></i>
                   <span class="flow-step">Xem chi tiết</span> <i class="bi bi-chevron-right"></i>
-                  <span class="flow-step text-primary fw-bold">Duyệt</span>
+                  <span class="flow-step text-success fw-bold">Duyệt</span>
                 </div>
-                <p>Kiểm tra thông tin cá nhân, ảnh căn hộ do cư dân gửi lên. Chọn trạng thái <strong>Đăng ký</strong> để hoàn tất phê duyệt tài khoản.</p>
-                <div class="guide-alert guide-alert-info">
-                  <i class="bi bi-info-circle-fill fs-4"></i>
-                  <span>Cư dân sẽ nhận được thông báo qua App ngay sau khi tài khoản được duyệt.</span>
-                </div>
+                <p>Kiểm tra thông tin cá nhân và ảnh căn hộ. Chọn <strong>Đăng ký</strong> để kích hoạt tài khoản cư dân.</p>
                 <a href="#" class="video-widget video-btn mt-3" data-video-url="https://player.vimeo.com/video/1160102461?autoplay=1">
                   <i class="bi bi-play-fill fs-4"></i>
-                  <span>Xem Video Hướng Dẫn</span>
+                  <span>Video Hướng Dẫn</span>
                 </a>
               </div>
               <div class="col-md-6 image-group">
@@ -144,9 +155,9 @@
             </div>
           </section>
 
-          <!-- Section: Cập nhật ĐMNK -->
-          <section id="cap-nhat-dmnk" class="guide-section">
-            <span class="step-badge badge-daily">Hàng ngày</span>
+          <!-- Section 2 -->
+          <section id="section-2" class="guide-section">
+            <span class="step-badge badge-daily">Bước 02</span>
             <h3 class="guide-h3 mt-0">2. Cập nhật Định mức nước (ĐMNK)</h3>
             <div class="row g-4 align-items-start">
               <div class="col-md-6 image-group">
@@ -157,34 +168,31 @@
                   <img src="images/web-app/web_app_2.2.png" data-image-full="images/web-app/web_app_2.2.png" class="thumb-item" data-bs-toggle="modal" data-bs-target="#imageModal">
                   <img src="images/web-app/web_app_2.3.png" data-image-full="images/web-app/web_app_2.3.png" class="thumb-item" data-bs-toggle="modal" data-bs-target="#imageModal">
                   <img src="images/web-app/web_app_2.4.png" data-image-full="images/web-app/web_app_2.4.png" class="thumb-item" data-bs-toggle="modal" data-bs-target="#imageModal">
+                  <img src="images/web-app/web_app_2.5.png" data-image-full="images/web-app/web_app_2.5.png" class="thumb-item" data-bs-toggle="modal" data-bs-target="#imageModal">
                 </div>
               </div>
               <div class="col-md-6">
-                <h4 class="guide-h4">Có 2 cách thực hiện:</h4>
-                <ul class="list-unstyled mb-4">
-                  <li class="mb-3 d-flex gap-2"><i class="bi bi-check2-circle text-primary"></i> <span><strong>Thủ công:</strong> Căn hộ > Tìm kiếm > Chỉnh sửa > Cập nhật ĐMNK.</span></li>
-                  <li class="mb-3 d-flex gap-2"><i class="bi bi-check2-circle text-primary"></i> <span><strong>Hàng loạt:</strong> Dùng tính năng <strong>Tải tệp lên</strong> để import file Excel ĐMNK mới nhất.</span></li>
-                </ul>
+                <p>Cập nhật nhân khẩu để tính phí nước chính xác. Có thể làm thủ công hoặc import hàng loạt qua Excel.</p>
                 <a href="#" class="video-widget video-btn" data-video-url="https://player.vimeo.com/video/1160102279?autoplay=1">
                   <i class="bi bi-play-fill fs-4"></i>
-                  <span>Video Hướng Dẫn Import</span>
+                  <span>Video Hướng Dẫn</span>
                 </a>
               </div>
             </div>
           </section>
 
-          <!-- Section: Phương tiện -->
-          <section id="cap-nhat-phuong-tien" class="guide-section">
-            <span class="step-badge badge-daily">Hàng ngày</span>
+          <!-- Section 3 -->
+          <section id="section-3" class="guide-section">
+            <span class="step-badge badge-daily">Bước 03</span>
             <h3 class="guide-h3 mt-0">3. Cập nhật Phương tiện</h3>
             <div class="row g-4">
               <div class="col-md-6">
-                <p>Quản lý biển số xe, loại xe và trạng thái gửi xe của cư dân.</p>
+                <p>Quản lý biển số và thông tin xe. Tránh nhập ký tự đặc biệt để hệ thống vận hành ổn định.</p>
                 <div class="guide-alert guide-alert-warning">
                   <i class="bi bi-exclamation-triangle-fill fs-4"></i>
-                  <span>Tuyệt đối không nhập ký tự đặc biệt (như dấu gạch ngang, dấu chấm) vào ô Biển số để hệ thống nhận diện đúng.</span>
+                  <span>Lưu ý quan trọng: Biển số chỉ chứa số và chữ, không chứa dấu chấm hay gạch ngang.</span>
                 </div>
-                <a href="#" class="video-widget video-btn" data-video-url="https://player.vimeo.com/video/1160102846?autoplay=1">
+                <a href="#" class="video-widget video-btn mt-3" data-video-url="https://player.vimeo.com/video/1160102846?autoplay=1">
                   <i class="bi bi-play-fill fs-4"></i>
                   <span>Video Hướng Dẫn</span>
                 </a>
@@ -202,68 +210,196 @@
             </div>
           </section>
 
-          <!-- Section: Chốt phí hàng tháng -->
-          <h2 class="guide-h2" id="cong-viec-hang-thang"><i class="bi bi-calendar-check me-2"></i>II. Quy trình chốt báo phí hàng tháng</h2>
+          <!-- Section 4 -->
+          <section id="section-4" class="guide-section">
+            <span class="step-badge badge-daily">Bước 04</span>
+            <h3 class="guide-h3 mt-0">4. Cập nhật thanh toán báo phí</h3>
+            <div class="row g-4 align-items-start">
+              <div class="col-md-6 image-group">
+                <div class="img-frame">
+                  <img src="images/web-app/web_app_3.1.png" data-image-full="images/web-app/web_app_3.1.png" alt="Thanh toán" data-bs-toggle="modal" data-bs-target="#imageModal">
+                </div>
+                <div class="gallery-thumbs">
+                  <img src="images/web-app/web_app_3.2.png" data-image-full="images/web-app/web_app_3.2.png" class="thumb-item" data-bs-toggle="modal" data-bs-target="#imageModal">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <p>Cập nhật trạng thái thanh toán ngay khi cư dân hoàn tất đóng phí (Tiền mặt/Chuyển khoản).</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Section 5 -->
+          <section id="section-5" class="guide-section">
+            <span class="step-badge badge-daily">Bước 05</span>
+            <h3 class="guide-h3 mt-0">5. Tạo phiếu thu tiền mặt</h3>
+            <div class="row g-4 align-items-start">
+              <div class="col-md-6">
+                <p>Lập phiếu thu trực tiếp cho cư dân tại quầy. Hỗ trợ in mẫu phiếu chuẩn của công ty.</p>
+                <a href="#" class="video-widget video-btn" data-video-url="https://player.vimeo.com/video/1160103000?autoplay=1">
+                  <i class="bi bi-play-fill fs-4"></i>
+                  <span>Video Hướng Dẫn</span>
+                </a>
+              </div>
+              <div class="col-md-6 image-group">
+                <div class="img-frame">
+                  <img src="images/web-app/web_app_4.1.1.png" data-image-full="images/web-app/web_app_4.1.1.png" alt="Phiếu thu" data-bs-toggle="modal" data-bs-target="#imageModal">
+                </div>
+                <div class="gallery-thumbs">
+                  <img src="images/web-app/web_app_4.1.2.png" data-image-full="images/web-app/web_app_4.1.2.png" class="thumb-item" data-bs-toggle="modal" data-bs-target="#imageModal">
+                  <img src="images/web-app/web_app_4.1.3.png" data-image-full="images/web-app/web_app_4.1.3.png" class="thumb-item" data-bs-toggle="modal" data-bs-target="#imageModal">
+                  <img src="images/web-app/web_app_4.1.4.png" data-image-full="images/web-app/web_app_4.1.4.png" class="thumb-item" data-bs-toggle="modal" data-bs-target="#imageModal">
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Section 6 -->
+          <section id="section-6" class="guide-section">
+            <span class="step-badge badge-daily">Bước 06</span>
+            <h3 class="guide-h3 mt-0">6. Thông báo qua APP</h3>
+            <div class="row g-4 align-items-start">
+              <div class="col-md-6 image-group">
+                <div class="img-frame">
+                  <img src="images/web-app/web_app_5.1.png" data-image-full="images/web-app/web_app_5.1.png" alt="Thông báo" data-bs-toggle="modal" data-bs-target="#imageModal">
+                </div>
+                <div class="gallery-thumbs">
+                  <img src="images/web-app/web_app_5.2.png" data-image-full="images/web-app/web_app_5.2.png" class="thumb-item" data-bs-toggle="modal" data-bs-target="#imageModal">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <p>Phát hành tin tức, thông báo khẩn đến cư dân. Nhớ tích chọn <strong>Thông báo đẩy</strong> để gửi notification.</p>
+                <a href="#" class="video-widget video-btn mt-3" data-video-url="https://player.vimeo.com/video/1160103020?autoplay=1">
+                  <i class="bi bi-play-fill fs-4"></i>
+                  <span>Video Hướng Dẫn</span>
+                </a>
+              </div>
+            </div>
+          </section>
+
+          <!-- Section 7 -->
+          <section id="section-7" class="guide-section">
+            <span class="step-badge badge-daily">Bước 07</span>
+            <h3 class="guide-h3 mt-0">7. Phản hồi cư dân</h3>
+            <div class="row g-4 align-items-start">
+              <div class="col-md-6">
+                <p>Xử lý các yêu cầu, khiếu nại của cư dân thông qua tính năng Phiếu hỗ trợ.</p>
+              </div>
+              <div class="col-md-6 image-group">
+                <div class="img-frame">
+                  <img src="images/web-app/web_app_6.1.png" data-image-full="images/web-app/web_app_6.1.png" alt="Phản hồi" data-bs-toggle="modal" data-bs-target="#imageModal">
+                </div>
+                <div class="gallery-thumbs">
+                  <img src="images/web-app/web_app_6.2.png" data-image-full="images/web-app/web_app_6.2.png" class="thumb-item" data-bs-toggle="modal" data-bs-target="#imageModal">
+                  <img src="images/web-app/web_app_6.3.png" data-image-full="images/web-app/web_app_6.3.png" class="thumb-item" data-bs-toggle="modal" data-bs-target="#imageModal">
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Section 8 -->
+          <h2 class="guide-h2" id="section-8"><i class="bi bi-calendar-check me-2"></i>II. Quy trình chốt báo phí hàng tháng</h2>
           <section class="guide-section">
-            <span class="step-badge badge-monthly">Hàng tháng</span>
+            <span class="step-badge badge-monthly">Bước 08</span>
             <div class="row g-4">
               <div class="col-md-4">
                 <div class="p-3 bg-light rounded-4 border h-100">
-                  <h4 class="guide-h4">B1. Tải chỉ số nước</h4>
-                  <p class="small text-muted">Import file Excel chỉ số nước tiêu thụ từ đơn vị cấp nước hoặc kỹ thuật.</p>
+                  <h4 class="guide-h4">8.1. Tải chỉ số nước</h4>
                   <div class="img-frame">
                     <img src="images/web-app/monthly_1.1.png" data-image-full="images/web-app/monthly_1.1.png" alt="Chỉ số nước" data-bs-toggle="modal" data-bs-target="#imageModal">
                   </div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="p-3 bg-light rounded-4 border h-100">
-                  <h4 class="guide-h4">B2. Tạo phí tự động</h4>
-                  <p class="small text-muted">Sử dụng chức năng "Hành động > Tạo tự động" để hệ thống tính toán phí cho toàn dự án.</p>
-                  <div class="img-frame">
-                    <img src="images/web-app/monthly_3.1.png" data-image-full="images/web-app/monthly_3.1.png" alt="Tạo phí" data-bs-toggle="modal" data-bs-target="#imageModal">
+                  <div class="gallery-thumbs">
+                    <img src="images/web-app/monthly_1.2.png" data-image-full="images/web-app/monthly_1.2.png" class="thumb-item" data-bs-toggle="modal" data-bs-target="#imageModal">
+                    <img src="images/web-app/monthly_1.3.png" data-image-full="images/web-app/monthly_1.3.png" class="thumb-item" data-bs-toggle="modal" data-bs-target="#imageModal">
                   </div>
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="p-3 bg-light rounded-4 border h-100">
-                  <h4 class="guide-h4">B3. Phát hành báo phí</h4>
-                  <p class="small text-muted">Kiểm tra lại số liệu và nhấn "Phát hành" để cư dân có thể tra cứu trên App.</p>
+                  <h4 class="guide-h4">8.2. Tạo phí tự động</h4>
+                  <div class="img-frame">
+                    <img src="images/web-app/monthly_3.1.png" data-image-full="images/web-app/monthly_3.1.png" alt="Tạo phí" data-bs-toggle="modal" data-bs-target="#imageModal">
+                  </div>
+                  <div class="gallery-thumbs">
+                    <img src="images/web-app/monthly_3.2.png" data-image-full="images/web-app/monthly_3.2.png" class="thumb-item" data-bs-toggle="modal" data-bs-target="#imageModal">
+                    <img src="images/web-app/monthly_2.1.png" data-image-full="images/web-app/monthly_2.1.png" class="thumb-item" data-bs-toggle="modal" data-bs-target="#imageModal">
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="p-3 bg-light rounded-4 border h-100">
+                  <h4 class="guide-h4">8.3. Phát hành báo phí</h4>
                   <div class="img-frame">
                     <img src="images/web-app/monthly_4.1.png" data-image-full="images/web-app/monthly_4.1.png" alt="Phát hành" data-bs-toggle="modal" data-bs-target="#imageModal">
+                  </div>
+                  <div class="gallery-thumbs">
+                    <img src="images/web-app/monthly_4.2.png" data-image-full="images/web-app/monthly_4.2.png" class="thumb-item" data-bs-toggle="modal" data-bs-target="#imageModal">
+                    <img src="images/web-app/monthly_5.1.png" data-image-full="images/web-app/monthly_5.1.png" class="thumb-item" data-bs-toggle="modal" data-bs-target="#imageModal">
                   </div>
                 </div>
               </div>
             </div>
           </section>
 
-          <!-- Section: Tính năng bổ sung -->
-          <h2 class="guide-h2" id="tinh-nang-khac"><i class="bi bi-plus-circle me-2"></i>III. Các tính năng bổ sung</h2>
+          <!-- Section 9 -->
+          <h2 class="guide-h2" id="section-9"><i class="bi bi-plus-circle me-2"></i>III. Các tính năng khác</h2>
           <section class="guide-section">
-            <div class="row g-4">
-              <div class="col-md-6">
-                <h4 class="guide-h4">Cấu hình hiển thị & Lọc dữ liệu</h4>
-                <p>Mọi bảng dữ liệu trên WebApp đều hỗ trợ: Lọc theo thời gian, Tìm kiếm từ khóa, Thùng rác và Chọn cột hiển thị.</p>
-                <div class="img-frame image-group">
-                  <img src="images/web-app/web_app_8.1.1.png" data-image-full="images/web-app/web_app_8.1.1.png" alt="Cấu hình" data-bs-toggle="modal" data-bs-target="#imageModal">
-                  <div class="gallery-thumbs p-2">
-                    <img src="images/web-app/web_app_8.1.2.png" data-image-full="images/web-app/web_app_8.1.2.png" class="thumb-item" data-bs-toggle="modal" data-bs-target="#imageModal">
-                    <img src="images/web-app/web_app_8.1.3.png" data-image-full="images/web-app/web_app_8.1.3.png" class="thumb-item" data-bs-toggle="modal" data-bs-target="#imageModal">
-                    <img src="images/web-app/web_app_8.1.4.png" data-image-full="images/web-app/web_app_8.1.4.png" class="thumb-item" data-bs-toggle="modal" data-bs-target="#imageModal">
-                  </div>
+            <span class="step-badge badge-daily">Bước 09</span>
+            <h3 class="guide-h3 mt-0">9. Quản lý nhân khẩu (Thêm/Xóa)</h3>
+            <div class="row g-4 align-items-start">
+              <div class="col-md-6 image-group">
+                <div class="img-frame">
+                  <img src="images/web-app/web_app_9.1.png" data-image-full="images/web-app/web_app_9.1.png" alt="Nhân khẩu" data-bs-toggle="modal" data-bs-target="#imageModal">
+                </div>
+                <div class="gallery-thumbs">
+                  <img src="images/web-app/web_app_9.2.png" data-image-full="images/web-app/web_app_9.2.png" class="thumb-item" data-bs-toggle="modal" data-bs-target="#imageModal">
+                  <img src="images/web-app/web_app_9.3.png" data-image-full="images/web-app/web_app_9.3.png" class="thumb-item" data-bs-toggle="modal" data-bs-target="#imageModal">
                 </div>
               </div>
               <div class="col-md-6">
-                <h4 class="guide-h4">Thiết lập mẫu in & In hàng loạt</h4>
-                <p>Hỗ trợ in Phiếu thu, Phiếu chi và Báo phí hàng loạt qua công cụ MyExcel.</p>
-                <div class="img-frame image-group">
-                  <img src="images/web-app/web_app_10.1.png" data-image-full="images/web-app/web_app_10.1.png" alt="Mẫu in" data-bs-toggle="modal" data-bs-target="#imageModal">
-                  <div class="gallery-thumbs p-2">
-                    <img src="images/web-app/web_app_10.2.png" data-image-full="images/web-app/web_app_10.2.png" class="thumb-item" data-bs-toggle="modal" data-bs-target="#imageModal">
-                    <img src="images/web-app/web_app_10.3.png" data-image-full="images/web-app/web_app_10.3.png" class="thumb-item" data-bs-toggle="modal" data-bs-target="#imageModal">
-                    <img src="images/web-app/web_app_10.4.png" data-image-full="images/web-app/web_app_10.4.png" class="thumb-item" data-bs-toggle="modal" data-bs-target="#imageModal">
-                  </div>
+                <p>Thêm mới hoặc loại bỏ thành viên trong căn hộ để quản lý cư dân chính xác.</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Section 10 -->
+          <section id="section-10" class="guide-section">
+            <span class="step-badge badge-daily">Bước 10</span>
+            <h3 class="guide-h3 mt-0">10. Bộ lọc & Tùy chọn hiển thị</h3>
+            <div class="row g-4 align-items-start">
+              <div class="col-md-6">
+                <p>Tùy chỉnh bảng dữ liệu theo nhu cầu: chọn các cột muốn xem, lọc theo trạng thái và thời gian.</p>
+              </div>
+              <div class="col-md-6 image-group">
+                <div class="img-frame">
+                  <img src="images/web-app/web_app_8.1.1.png" data-image-full="images/web-app/web_app_8.1.1.png" alt="Bộ lọc" data-bs-toggle="modal" data-bs-target="#imageModal">
                 </div>
+                <div class="gallery-thumbs">
+                  <img src="images/web-app/web_app_8.1.2.png" data-image-full="images/web-app/web_app_8.1.2.png" class="thumb-item" data-bs-toggle="modal" data-bs-target="#imageModal">
+                  <img src="images/web-app/web_app_8.1.3.png" data-image-full="images/web-app/web_app_8.1.3.png" class="thumb-item" data-bs-toggle="modal" data-bs-target="#imageModal">
+                  <img src="images/web-app/web_app_8.1.4.png" data-image-full="images/web-app/web_app_8.1.4.png" class="thumb-item" data-bs-toggle="modal" data-bs-target="#imageModal">
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Section 11 -->
+          <section id="section-11" class="guide-section">
+            <span class="step-badge badge-daily">Bước 11</span>
+            <h3 class="guide-h3 mt-0">11. Thiết lập in ấn & In hàng loạt</h3>
+            <div class="row g-4 align-items-start">
+              <div class="col-md-6 image-group">
+                <div class="img-frame">
+                  <img src="images/web-app/web_app_10.1.png" data-image-full="images/web-app/web_app_10.1.png" alt="In ấn" data-bs-toggle="modal" data-bs-target="#imageModal">
+                </div>
+                <div class="gallery-thumbs">
+                  <img src="images/web-app/web_app_10.2.png" data-image-full="images/web-app/web_app_10.2.png" class="thumb-item" data-bs-toggle="modal" data-bs-target="#imageModal">
+                  <img src="images/web-app/web_app_10.3.png" data-image-full="images/web-app/web_app_10.3.png" class="thumb-item" data-bs-toggle="modal" data-bs-target="#imageModal">
+                  <img src="images/web-app/web_app_10.4.png" data-image-full="images/web-app/web_app_10.4.png" class="thumb-item" data-bs-toggle="modal" data-bs-target="#imageModal">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <p>Cấu hình mẫu in và thực hiện in hàng loạt báo phí thông qua Add-ins MyExcel.</p>
               </div>
             </div>
           </section>
@@ -336,7 +472,7 @@
   <script src="js/main.js"></script>
 
   <script>
-    // Sidebar Active State
+    // Sidebar Active State Handling
     window.addEventListener('scroll', () => {
       let current = '';
       const sections = document.querySelectorAll('section, h2[id]');
@@ -357,7 +493,7 @@
       });
     });
 
-    // Image Modal with Carousel
+    // Image Modal Handling with Carousel support
     const imageModal = document.getElementById('imageModal');
     const modalCarouselInner = imageModal.querySelector('.carousel-inner');
 
@@ -379,7 +515,7 @@
       `).join('');
     });
 
-    // Video Modal
+    // Video Modal Handling
     const videoModal = document.getElementById('videoModal');
     document.querySelectorAll('.video-btn').forEach(btn => {
       btn.addEventListener('click', (e) => {

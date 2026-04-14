@@ -316,6 +316,12 @@ section + section {
     transform: translateY(-4px);
 }
 
+.software-card:hover .btn-download {
+    background: var(--primary-color);
+    color: white !important;
+    border-color: var(--primary-color);
+}
+
 .software-card .card-img-top {
     height: 80px; /* Balanced image height */
     width: auto;
