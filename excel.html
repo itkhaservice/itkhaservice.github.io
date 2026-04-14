@@ -3,1038 +3,490 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EXCEL - IT KHA SERVICE</title>
-  <!-- Google Fonts: Inter -->
+  <title>Hướng dẫn MyExcel - IT KHA SERVICE</title>
+  
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-  <!-- Bootstrap Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <script src="https://kit.fontawesome.com/94472b8613.js" crossorigin="anonymous"></script>
+  
   <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Custom Styles -->
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/excel-guide.css">
   <link rel="icon" href="images/system/logo.png" type="image/png">
 
-<style>
-body {
-    background-image: url('images/system/wallpaper.jpg');
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-}
-#canvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    width: 100vw;
-    height: 100vh;
-    pointer-events: none;
-}
-#fallingCanvasMai {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 99998;
-    pointer-events: none;
-}
-#fallingCanvasDao {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 99997;
-    pointer-events: none;
-}
-.corner-flower-mai {
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    width: 160px;
-    z-index: 100000;
-}
-.corner-flower-dao {
-    position: fixed;
-    top: 10px;
-    left: 10px;
-    width: 160px;
-    z-index: 100000;
-}
-</style>
+  <style>
+    body {
+        background: #f1f5f9;
+        color: var(--guide-text);
+        font-family: 'Inter', sans-serif;
+    }
+    .long-string {
+        font-family: 'Fira Code', monospace;
+        font-size: 0.8rem;
+        word-break: break-all;
+    }
+  </style>
 </head>
 <body class="d-flex flex-column min-vh-100">
-  <canvas id="fallingCanvasMai"></canvas>
-  <canvas id="fallingCanvasDao"></canvas>
-  <canvas id="canvas"></canvas>
-  <img src="images/mai.png" class="corner-flower-mai">
-  <img src="images/dao.png" class="corner-flower-dao">
-<main class="container mt-5">
-    <h1 class="page-title text-center mb-3">Hướng dẫn MyExcel</h1>
-    <p class="text-center text-muted mb-5">Quy trình tích hợp Qr Code Ngân hàng vào Excel một cách chuyên nghiệp</p>
 
-    <!-- Visual Navigation Grid -->
-    <div class="nav-grid mb-5" id="table-of-contents">
-      <a href="#tai-va-luu-thu-muc" class="nav-item">
-        <i class="bi bi-download"></i>
-        <span>1. Tải & Lưu folder</span>
-      </a>
-      <a href="#cai-dat-trust-center-main" class="nav-item">
-        <i class="bi bi-shield-check"></i>
-        <span>2-6. Trust Center</span>
-      </a>
-      <a href="#kich-hoat-add-ins" class="nav-item">
-        <i class="bi bi-file-earmark-excel"></i>
-        <span>7. Add-ins</span>
-      </a>
-      <a href="#cau-hinh-thong-tin-ngan-hang-main" class="nav-item">
-        <i class="bi bi-bank"></i>
-        <span>8. Cấu hình Bank</span>
-      </a>
-      <a href="#su-dung-cong-thuc-main" class="nav-item">
-        <i class="bi bi-calculator"></i>
-        <span>9. Cách dùng hàm</span>
-      </a>
-      <a href="#cac-loi-thuong-gap" class="nav-item">
-        <i class="bi bi-exclamation-triangle"></i>
-        <span>10. Lỗi thường gặp</span>
-      </a>
-    </div>
-
-    <div class="guide-container">
-
-    <!-- Section 1: Tải và lưu thư mục -->
-    <div class="guide-step" id="tai-va-luu-thu-muc">
-      <div class="step-marker">01</div>
-      <div class="row align-items-center">
-        <div class="col-md-5 mb-4 mb-md-0">
-          <div class="guide-img-wrapper">
-            <img src="images/myexcel/Hướng dẫn tích hợp Qr Code Ngân hàng-1.png" data-image-full="images/myexcel/Hướng dẫn tích hợp Qr Code Ngân hàng-1.png" alt="Tải và lưu thư mục" class="img-fluid" data-bs-toggle="modal" data-bs-target="#imageModal">
-          </div>
-        </div>
-        <div class="col-md-7">
-          <h3 class="fw-bold mb-3">1. Tải và lưu thư mục</h3>
-          <p class="mb-4">Tải xuống bộ cài đặt MyExcel, giải nén và sao chép thư mục <strong>"MyExcel"</strong> vào trực tiếp ổ đĩa <strong>C:\</strong> của Windows.</p>
-          <a href="https://mega.nz/file/agpAhL5b#IriHswJEwZENnrWiidcYaVXrdHIOghXv_kaJAZhVoEc" target="_blank" rel="noopener noreferrer" class="btn btn-primary w-auto px-4">
-            <i class="bi bi-cloud-download me-2"></i>Tải xuống bộ cài đặt
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Section: Trust Center Group (Steps 2-6) -->
-    <div class="guide-step" id="cai-dat-trust-center-main">
-      <div class="step-marker">02</div>
-      <h3 class="fw-bold mb-4"><i class="bi bi-shield-lock me-2 text-primary"></i>Cài đặt Excel Trust Center (Bước 2 - 6)</h3>
-      <p class="text-muted mb-5">Đây là bước quan trọng để Excel cho phép chạy các hàm tạo QR Code một cách an toàn.</p>
-
-      <div class="step-group">
-        <div class="row align-items-center mb-5">
-          <div class="col-md-5 mb-3 mb-md-0">
-            <div class="guide-img-wrapper">
-              <img src="images/myexcel/Hướng dẫn tích hợp Qr Code Ngân hàng-2.png" data-image-full="images/myexcel/Hướng dẫn tích hợp Qr Code Ngân hàng-2.png" alt="Vị trí tin cậy" class="img-fluid" data-bs-toggle="modal" data-bs-target="#imageModal">
-            </div>
-          </div>
-          <div class="col-md-7">
-            <h5 id="cai-dat-trust-center-vi-tri-tin-cay" class="fw-bold">2. Cài đặt Vị trí tin cậy</h5>
-            <p>Mở Excel > <strong>Options</strong> > <strong>Trust Center</strong> > <strong>Trust Center Settings...</strong></p>
-            <ul class="small mb-0">
-              <li>Chọn <strong>Trusted Locations</strong></li>
-              <li>Nhấn <strong>Add new location...</strong></li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="row align-items-center mb-5">
-          <div class="col-md-5 mb-3 mb-md-0">
-            <div class="guide-img-wrapper">
-              <img src="images/myexcel/Hướng dẫn tích hợp Qr Code Ngân hàng-3.png" data-image-full="images/myexcel/Hướng dẫn tích hợp Qr Code Ngân hàng-3.png" alt="Thư mục con" class="img-fluid" data-bs-toggle="modal" data-bs-target="#imageModal">
-            </div>
-          </div>
-          <div class="col-md-7">
-            <h5 id="cai-dat-trust-center-thu-muc-con" class="fw-bold">3. Cài đặt Thư mục con</h5>
-            <p>Chọn đường dẫn đến thư mục <strong>C:\MyExcel</strong> đã lưu ở bước 1.</p>
-            <p class="small text-danger"><i class="bi bi-check-square-fill me-1"></i>Tích chọn: "Subfolders of this location are also trusted"</p>
-          </div>
-        </div>
-
-        <div class="row align-items-center mb-5">
-          <div class="col-md-5 mb-3 mb-md-0">
-            <div class="guide-img-wrapper">
-              <img src="images/myexcel/Hướng dẫn tích hợp Qr Code Ngân hàng-4.png" data-image-full="images/myexcel/Hướng dẫn tích hợp Qr Code Ngân hàng-4.png" alt="Cài đặt Macro" class="img-fluid" data-bs-toggle="modal" data-bs-target="#imageModal">
-            </div>
-          </div>
-          <div class="col-md-7">
-            <h5 id="cai-dat-macro" class="fw-bold">4. Cài đặt Macro</h5>
-            <p>Tại mục <strong>Macro Settings</strong>, chọn các tùy chọn sau:</p>
-            <ul class="small">
-              <li>Disable VBA macros with notification</li>
-              <li>Enable Excel 4.0 macros...</li>
-              <li><strong>Trust access to the VBA project object model</strong> (Bắt buộc)</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="row align-items-center mb-5">
-          <div class="col-md-5 mb-3 mb-md-0">
-            <div class="guide-img-wrapper">
-              <img src="images/myexcel/Hướng dẫn tích hợp Qr Code Ngân hàng-5.png" data-image-full="images/myexcel/Hướng dẫn tích hợp Qr Code Ngân hàng-5.png" alt="Active X" class="img-fluid" data-bs-toggle="modal" data-bs-target="#imageModal">
-            </div>
-          </div>
-          <div class="col-md-7">
-            <h5 id="cai-dat-active-x" class="fw-bold">5. Cài đặt Active X</h5>
-            <p>Tại mục <strong>ActiveX Settings</strong>, chọn: <em>"Prompt me before enabling all controls..."</em></p>
-          </div>
-        </div>
-
-        <div class="row align-items-center">
-          <div class="col-md-5 mb-3 mb-md-0">
-            <div class="guide-img-wrapper">
-              <img src="images/myexcel/Hướng dẫn tích hợp Qr Code Ngân hàng-6.png" data-image-full="images/myexcel/Hướng dẫn tích hợp Qr Code Ngân hàng-6.png" alt="Protected View" class="img-fluid" data-bs-toggle="modal" data-bs-target="#imageModal">
-            </div>
-          </div>
-          <div class="col-md-7">
-            <h5 id="cai-dat-protected-view" class="fw-bold">6. Cài đặt Protected View</h5>
-            <p>Tại mục <strong>Protected View</strong>, <strong>BỎ TÍCH</strong> tất cả 3 ô hiển thị để tránh bị chặn khi mở file chứa code.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Section 7: Add-ins -->
-    <div class="guide-step" id="kich-hoat-add-ins">
-      <div class="step-marker">07</div>
-      <div class="row align-items-center">
-        <div class="col-md-5 mb-4 mb-md-0">
-          <div class="guide-img-wrapper">
-            <img src="images/myexcel/Hướng dẫn tích hợp Qr Code Ngân hàng-7.png" data-image-full="images/myexcel/Hướng dẫn tích hợp Qr Code Ngân hàng-7.png" alt="Add-ins" class="img-fluid" data-bs-toggle="modal" data-bs-target="#imageModal">
-          </div>
-        </div>
-        <div class="col-md-7">
-          <h3 class="fw-bold mb-3 d-flex align-items-center flex-wrap">
-            7. Kích hoạt Add-ins MyExcel
-            <button class="btn btn-sm btn-outline-primary ms-md-3 mt-2 mt-md-0 video-btn" data-video-url="https://player.vimeo.com/video/1162738081?autoplay=1">
-              <i class="bi bi-play-circle me-1"></i>Xem video hướng dẫn
-            </button>
-          </h3>
-          <p>Mở Excel > <strong>Options</strong> > <strong>Add-ins</strong></p>
-          <ul class="mb-4">
-            <li>Tại mục <strong>Manage</strong>, chọn <strong>Excel Add-ins</strong> > Nhấn <strong>Go...</strong></li>
-            <li>Nhấn <strong>Browse...</strong> và tìm đến file <code>MyExcel.xlam</code> trong thư mục <code>C:\MyExcel</code></li>
-            <li>Tích chọn <strong>MyExcel</strong> và nhấn <strong>OK</strong>.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <!-- Section 8: Bank Configuration -->
-    <div class="guide-step" id="cau-hinh-thong-tin-ngan-hang-main">
-      <div class="step-marker">08</div>
-      <h3 class="fw-bold mb-4">8. Cấu hình thông tin ngân hàng</h3>
+  <main class="main-wrapper">
+    <div class="container-fluid px-lg-5">
       
-      <div class="row mb-5">
-        <div class="col-md-5 mb-4">
-          <div class="guide-img-wrapper">
-            <img src="images/myexcel/Hướng dẫn tích hợp Qr Code Ngân hàng-8.png" data-image-full="images/myexcel/Hướng dẫn tích hợp Qr Code Ngân hàng-8.png" alt="Minitool" class="img-fluid" data-bs-toggle="modal" data-bs-target="#imageModal">
-          </div>
-        </div>
-        <div class="col-md-7">
-          <h5 class="fw-bold">8.1. Truy cập Menu MiniTool</h5>
-          <p>Sau khi kích hoạt Add-ins thành công, trên thanh Ribbon của Excel sẽ xuất hiện tab <strong>MiniTool</strong>.</p>
-          <ul class="small">
-            <li>Chọn <strong>MiniTool</strong> > <strong>Tạo Qr Tài khoản Ngân hàng...</strong></li>
-            <li>Chọn <strong>Tạo QR Code Tài khoản Ngân hàng</strong> để mở bảng cấu hình.</li>
-          </ul>
-        </div>
+      <!-- Page Header -->
+      <div class="mb-5">
+        <h1 class="guide-h1 text-success">Hướng dẫn MyExcel</h1>
+        <p class="text-muted fs-5">Quy trình tích hợp Qr Code Ngân hàng vào Excel một cách chuyên nghiệp.</p>
       </div>
 
-      <div class="step-group">
-        <h5 class="fw-bold mb-4"><i class="bi bi-gear-wide-connected me-2 text-primary"></i>8.2. Thiết lập mã cấu hình</h5>
-        <div class="row">
-          <div class="col-md-5 mb-4">
-            <div class="guide-img-wrapper">
-              <img src="images/myexcel/Hướng dẫn tích hợp Qr Code Ngân hàng-9.png" data-image-full="images/myexcel/Hướng dẫn tích hợp Qr Code Ngân hàng-9.png" alt="Mặc định" class="img-fluid" data-bs-toggle="modal" data-bs-target="#imageModal">
-            </div>
-          </div>
-          <div class="col-md-7">
-            <p>Sao chép đoạn mã của tài khoản mặc định dưới đây và dán vào phần cấu hình trong Excel, sau đó nhấn <strong>Lưu</strong>.</p>
-            <div class="mb-4">
-              <label class="fw-bold small mb-1">Vietinbank (Mặc định - 110000063371)</label>
-              <div class="code-copy-block">
-                <code class="copyable-code-string">00020101021238560010A0000007270126000697041501121100000633710208QRIBFTTA53037045408494949495802VN62110807myexcel630429DD</code>
-                <button class="copy-button btn btn-sm btn-outline-secondary" onclick="copyToClipboardFromCode(this)">Sao chép</button>
-              </div>
-            </div>
-            <button class="btn btn-custom-outline w-100" type="button" data-bs-toggle="modal" data-bs-target="#bankListModal">
-              <i class="bi bi-grid-3x3-gap-fill"></i> Xem danh sách tài khoản khác
-            </button>
-          </div>
-        </div>
+      <div class="guide-wrapper">
+        <!-- Sidebar -->
+        <aside class="guide-sidebar d-none d-lg-block">
+          <ul class="sidebar-menu">
+            <li><a href="#section-1" class="sidebar-link active"><i class="bi bi-download"></i> 1. Tải & Giải nén</a></li>
+            <li><a href="#section-2" class="sidebar-link"><i class="bi bi-shield-check"></i> 2-6. Trust Center</a></li>
+            <li><a href="#section-7" class="sidebar-link"><i class="bi bi-file-earmark-excel"></i> 7. Kích hoạt Add-ins</a></li>
+            <li><a href="#section-8" class="sidebar-link"><i class="bi bi-bank"></i> 8. Cấu hình Bank</a></li>
+            <li><a href="#section-9" class="sidebar-link"><i class="bi bi-calculator"></i> 9. Cách dùng hàm</a></li>
+            <li><a href="#section-10" class="sidebar-link text-danger"><i class="bi bi-exclamation-triangle"></i> 10. Lỗi thường gặp</a></li>
+          </ul>
+        </aside>
 
-        <!-- Quick Code Generator Integration -->
-        <div class="card mt-5 border-0 shadow-sm" style="border-radius: var(--border-radius-lg); background: #f8f9fa;">
-          <div class="card-body p-4">
-            <h6 class="fw-bold mb-3 text-primary"><i class="bi bi-magic me-2"></i>Công cụ tạo mã nhanh</h6>
-            <div class="row g-3">
+        <!-- Main Content -->
+        <div class="guide-content">
+          
+          <!-- Section 1 -->
+          <section id="section-1" class="guide-section">
+            <span class="step-badge">Bước 01</span>
+            <h2 class="guide-h2 mt-0">1. Tải và lưu thư mục</h2>
+            <div class="row g-4 align-items-center">
               <div class="col-md-6">
-                <label class="form-label small fw-bold">Chọn ngân hàng</label>
-                <select id="genBank" class="form-select form-select-sm">
-                  <option value="970415">Vietinbank (970415)</option>
-                  <option value="970418">BIDV (970418)</option>
-                  <option value="970448">OCB (970448)</option>
-                  <option value="970430">PGBank (970430)</option>
-                  <option value="970436">Vietcombank (970436)</option>
-                  <option value="970422">MB Bank (970422)</option>
-                  <option value="970407">Techcombank (970407)</option>
-                  <option value="970423">TPBank (970423)</option>
-                  <option value="970432">VPBank (970432)</option>
-                  <option value="970416">ACB (970416)</option>
-                  <option value="970405">Agribank (970405)</option>
-                </select>
+                <p class="fs-5">Tải xuống bộ cài đặt MyExcel, giải nén và sao chép thư mục <strong>"MyExcel"</strong> vào trực tiếp ổ đĩa <strong>C:\</strong> của Windows.</p>
+                <div class="guide-alert guide-alert-warning">
+                  <i class="bi bi-exclamation-circle-fill fs-4"></i>
+                  <span>Lưu ý: Thư mục phải nằm ở <code>C:\MyExcel</code> để các đường dẫn hàm hoạt động chính xác.</span>
+                </div>
+                <a href="https://mega.nz/file/agpAhL5b#IriHswJEwZENnrWiidcYaVXrdHIOghXv_kaJAZhVoEc" target="_blank" class="btn btn-success btn-lg px-4 rounded-pill">
+                  <i class="bi bi-cloud-download me-2"></i> Tải xuống bộ cài đặt
+                </a>
               </div>
               <div class="col-md-6">
-                <label class="form-label small fw-bold">Số tài khoản</label>
-                <input type="text" id="genAcc" class="form-control form-control-sm" placeholder="Nhập số tài khoản..." value="110000063371">
-              </div>
-              <div class="col-12">
-                <button type="button" class="btn btn-primary btn-sm px-4" onclick="generateQuickCode()">Tạo mã cấu hình</button>
+                <div class="img-frame">
+                  <img src="images/myexcel/Hướng dẫn tích hợp Qr Code Ngân hàng-1.png" data-image-full="images/myexcel/Hướng dẫn tích hợp Qr Code Ngân hàng-1.png" alt="Step 1" data-bs-toggle="modal" data-bs-target="#imageModal">
+                </div>
               </div>
             </div>
+          </section>
+
+          <!-- Section 2-6 -->
+          <section id="section-2" class="guide-section">
+            <span class="step-badge">Bước 02 - 06</span>
+            <h2 class="guide-h2 mt-0">Cài đặt Excel Trust Center</h2>
+            <p class="text-muted mb-4">Đây là bước quan trọng để Excel cho phép chạy các hàm tạo QR Code một cách an toàn.</p>
+
+            <div class="row g-4">
+              <div class="col-md-6">
+                <div class="mb-5">
+                  <h4 class="guide-h4">2. Cài đặt Vị trí tin cậy</h4>
+                  <p class="small text-muted">Mở Excel > Options > Trust Center > Settings... > Trusted Locations</p>
+                  <div class="img-frame">
+                    <img src="images/myexcel/Hướng dẫn tích hợp Qr Code Ngân hàng-2.png" data-image-full="images/myexcel/Hướng dẫn tích hợp Qr Code Ngân hàng-2.png" alt="Step 2" data-bs-toggle="modal" data-bs-target="#imageModal">
+                  </div>
+                </div>
+                <div class="mb-5">
+                  <h4 class="guide-h4">3. Cài đặt Thư mục con</h4>
+                  <p class="small text-muted">Thêm <code>C:\MyExcel</code> và tích chọn "Subfolders are also trusted".</p>
+                  <div class="img-frame">
+                    <img src="images/myexcel/Hướng dẫn tích hợp Qr Code Ngân hàng-3.png" data-image-full="images/myexcel/Hướng dẫn tích hợp Qr Code Ngân hàng-3.png" alt="Step 3" data-bs-toggle="modal" data-bs-target="#imageModal">
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="mb-5">
+                  <h4 class="guide-h4">4. Cài đặt Macro</h4>
+                  <p class="small text-muted">Chọn "Disable VBA macros with notification" và "Trust access to the VBA project".</p>
+                  <div class="img-frame">
+                    <img src="images/myexcel/Hướng dẫn tích hợp Qr Code Ngân hàng-4.png" data-image-full="images/myexcel/Hướng dẫn tích hợp Qr Code Ngân hàng-4.png" alt="Step 4" data-bs-toggle="modal" data-bs-target="#imageModal">
+                  </div>
+                </div>
+                <div>
+                  <h4 class="guide-h4">5-6. ActiveX & Protected View</h4>
+                  <p class="small text-muted">Bỏ tích các ô Protected View để tránh bị chặn khi mở file.</p>
+                  <div class="img-frame">
+                    <img src="images/myexcel/Hướng dẫn tích hợp Qr Code Ngân hàng-6.png" data-image-full="images/myexcel/Hướng dẫn tích hợp Qr Code Ngân hàng-6.png" alt="Step 6" data-bs-toggle="modal" data-bs-target="#imageModal">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Section 7 -->
+          <section id="section-7" class="guide-section">
+            <span class="step-badge">Bước 07</span>
+            <h2 class="guide-h2 mt-0">7. Kích hoạt Add-ins MyExcel</h2>
+            <div class="row g-4 align-items-center">
+              <div class="col-md-6">
+                <div class="img-frame">
+                  <img src="images/myexcel/Hướng dẫn tích hợp Qr Code Ngân hàng-7.png" data-image-full="images/myexcel/Hướng dẫn tích hợp Qr Code Ngân hàng-7.png" alt="Step 7" data-bs-toggle="modal" data-bs-target="#imageModal">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <ul class="list-unstyled">
+                  <li class="mb-3 d-flex gap-2"><i class="bi bi-1-circle-fill text-success"></i> <span>Vào <strong>Options > Add-ins</strong></span></li>
+                  <li class="mb-3 d-flex gap-2"><i class="bi bi-2-circle-fill text-success"></i> <span>Chọn <strong>Excel Add-ins > Go...</strong></span></li>
+                  <li class="mb-3 d-flex gap-2"><i class="bi bi-3-circle-fill text-success"></i> <span>Tìm file <code>MyExcel.xlam</code> trong <code>C:\MyExcel</code></span></li>
+                </ul>
+                <a href="#" class="video-widget video-btn" data-video-url="https://player.vimeo.com/video/1162738081?autoplay=1">
+                  <i class="bi bi-play-fill fs-4"></i>
+                  <span>Xem Video Hướng Dẫn</span>
+                </a>
+              </div>
+            </div>
+          </section>
+
+          <!-- Section 8 -->
+          <section id="section-8" class="guide-section">
+            <span class="step-badge">Bước 08</span>
+            <h2 class="guide-h2 mt-0">8. Cấu hình thông tin ngân hàng</h2>
             
-            <div id="genResultArea" class="d-none mt-3 p-3 bg-white rounded border">
-              <div class="row align-items-center">
-                <div class="col-md-3 text-center">
-                  <img id="genResultQR" src="" alt="QR" class="img-fluid border" style="max-width: 100px;">
+            <h3 class="guide-h3">8.1. Menu MiniTool</h3>
+            <p>Sau khi cài đặt, bạn sẽ thấy tab <strong>MiniTool</strong> trên Excel. Chọn "Tạo Qr Tài khoản Ngân hàng".</p>
+            <div class="img-frame mb-5" style="max-width: 600px;">
+              <img src="images/myexcel/Hướng dẫn tích hợp Qr Code Ngân hàng-8.png" data-image-full="images/myexcel/Hướng dẫn tích hợp Qr Code Ngân hàng-8.png" alt="Menu" data-bs-toggle="modal" data-bs-target="#imageModal">
+            </div>
+
+            <h3 class="guide-h3">8.2. Thiết lập mã cấu hình nhanh</h3>
+            <div class="gen-widget mb-4">
+              <div class="row g-3 align-items-end">
+                <div class="col-md-5">
+                  <label class="form-label fw-bold">Chọn ngân hàng</label>
+                  <select id="genBank" class="form-select border-success">
+                    <option value="970415">Vietinbank (970415)</option>
+                    <option value="970418">BIDV (970418)</option>
+                    <option value="970436">Vietcombank (970436)</option>
+                    <option value="970422">MB Bank (970422)</option>
+                    <option value="970407">Techcombank (970407)</option>
+                  </select>
                 </div>
-                <div class="col-md-9">
-                  <label class="small fw-bold">Kết quả:</label>
-                  <div class="code-copy-block py-1">
-                    <code id="genResultCode" class="small"></code>
-                    <button class="btn btn-sm btn-light py-0" onclick="copyToClipboardFromCode(this)"><i class="bi bi-clipboard"></i></button>
+                <div class="col-md-5">
+                  <label class="form-label fw-bold">Số tài khoản</label>
+                  <input type="text" id="genAcc" class="form-control border-success" placeholder="Nhập số tài khoản..." value="110000063371">
+                </div>
+                <div class="col-md-2">
+                  <button class="btn btn-success w-100" onclick="generateQuickCode()">Tạo mã</button>
+                </div>
+              </div>
+
+              <div id="genResultArea" class="d-none mt-4 p-3 bg-white rounded-4 border">
+                <div class="row g-3 align-items-center">
+                  <div class="col-md-3 text-center">
+                    <img id="genResultQR" src="" alt="QR" class="img-fluid border rounded-3" style="max-width: 120px;">
+                  </div>
+                  <div class="col-md-9">
+                    <label class="fw-bold mb-2">Mã cấu hình (Dán vào MyExcel):</label>
+                    <div class="code-wrapper">
+                      <code id="genResultCode"></code>
+                      <button class="copy-btn" onclick="copyToClipboardFromCode(this)">COPY</button>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
 
-      <div class="row mt-5">
-        <div class="col-md-5 mb-4">
-          <div class="guide-img-wrapper">
-            <img src="images/myexcel/Hướng dẫn tích hợp Qr Code Ngân hàng-10.png" data-image-full="images/myexcel/Hướng dẫn tích hợp Qr Code Ngân hàng-10.png" alt="Cấu hình ngân hàng khác" class="img-fluid" data-bs-toggle="modal" data-bs-target="#imageModal">
-          </div>
-        </div>
-        <div class="col-md-7">
-          <h5 id="cau-hinh-thong-tin-ngan-hang-tai-khoan-khac-1" class="fw-bold">8.3. Cấu hình ngân hàng khác (Cách thủ công)</h5>
-          <p>Nếu không dùng công cụ tạo mã nhanh, bạn truy cập: <a href="https://vietqr.net/" target="_blank">vietqr.net</a>.</p>
-          <ul class="small">
-            <li>Điền thông tin ngân hàng của bạn.</li>
-            <li>Số tiền nhập: <strong>49494949</strong> | Nội dung: <strong>myexcel</strong></li>
-            <li>Tạo mã QR và dùng Camera điện thoại quét để lấy đoạn mã text dài.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="row mt-4">
-        <div class="col-md-5 mb-4">
-          <div class="guide-img-wrapper">
-            <img src="images/myexcel/Hướng dẫn tích hợp Qr Code Ngân hàng-11.png" data-image-full="images/myexcel/Hướng dẫn tích hợp Qr Code Ngân hàng-11.png" alt="Dán mã cấu hình" class="img-fluid" data-bs-toggle="modal" data-bs-target="#imageModal">
-          </div>
-        </div>
-        <div class="col-md-7">
-          <h5 id="cau-hinh-thong-tin-ngan-hang-tai-khoan-khac-2" class="fw-bold">8.4. Dán mã cấu hình</h5>
-          <p>Sao chép đoạn mã vừa quét được từ điện thoại, dán vào ô cấu hình trong MyExcel và nhấn <strong>Lưu</strong>.</p>
-        </div>
-      </div>
-
-      <div class="row mt-5">
-        <div class="col-md-5 mb-4">
-          <div class="guide-img-wrapper">
-            <img src="images/myexcel/Hướng dẫn tích hợp Qr Code Ngân hàng-12.png" data-image-full="images/myexcel/Hướng dẫn tích hợp Qr Code Ngân hàng-12.png" alt="Bật hàm" class="img-fluid" data-bs-toggle="modal" data-bs-target="#imageModal">
-          </div>
-        </div>
-        <div class="col-md-7">
-          <h5 id="bat-tat-ham-vietqr" class="fw-bold d-flex align-items-center flex-wrap">
-            8.5. Bật hàm VietQr Code
-            <button class="btn btn-sm btn-outline-primary ms-md-3 mt-2 mt-md-0 video-btn" data-video-url="https://player.vimeo.com/video/1162738121?autoplay=1">
-              <i class="bi bi-play-circle me-1"></i>Xem video hướng dẫn
+            <button class="btn btn-outline-success mb-5" data-bs-toggle="modal" data-bs-target="#bankListModal">
+              <i class="bi bi-list-stars me-2"></i>Xem danh sách tài khoản cấu hình sẵn
             </button>
-          </h5>
-          <p>Để các công thức Excel có thể tính toán, bạn cần kích hoạt hàm:</p>
-          <ul class="small">
-            <li>MiniTool > Tạo Qr Tài khoản Ngân hàng...</li>
-            <li>Nhấn chọn <strong>Bật tắt hàm VietQR Code</strong></li>
-            <li>Nhấn <strong>OK</strong> để hoàn tất.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <!-- Section 9: Formulas & Printing -->
-    <div class="guide-step" id="su-dung-cong-thuc-main">
-      <div class="step-marker">09</div>
-      <h3 class="fw-bold mb-4">9. Sử dụng công thức & In hàng loạt</h3>
-      
-      <div class="row align-items-center mb-5">
-        <div class="col-md-5 mb-4 mb-md-0">
-          <div class="guide-img-wrapper">
-            <img src="images/myexcel/Hướng dẫn tích hợp Qr Code Ngân hàng-13.png" data-image-full="images/myexcel/Hướng dẫn tích hợp Qr Code Ngân hàng-13.png" alt="Công thức" class="img-fluid" data-bs-toggle="modal" data-bs-target="#imageModal">
-          </div>
-        </div>
-        <div class="col-md-7">
-          <h5 class="fw-bold">9.1. Áp dụng hàm QrBank</h5>
-          <p>Sử dụng công thức sau tại ô bạn muốn hiển thị QR Code:</p>
-          <div class="code-copy-block">
-            <code>=QrBank_SoTien_NoiDung(sotien, noidung)</code>
-          </div>
-          <p class="small text-muted"><i class="bi bi-info-circle me-1"></i>Mẹo: Nên gộp (Merge) nhiều ô lại để hình QR hiển thị to và rõ nét hơn.</p>
-        </div>
-      </div>
 
-      <div class="row align-items-center mb-5">
-        <div class="col-md-5 mb-4 mb-md-0">
-          <div class="guide-img-wrapper">
-            <img src="images/myexcel/Hướng dẫn tích hợp Qr Code Ngân hàng-14.png" data-image-full="images/myexcel/Hướng dẫn tích hợp Qr Code Ngân hàng-14.png" alt="Mẫu công thức" class="img-fluid" data-bs-toggle="modal" data-bs-target="#imageModal">
-          </div>
-        </div>
-        <div class="col-md-7">
-          <h5 id="su-dung-cong-thuc-mau" class="fw-bold">9.2. Mẫu công thức ghép chuỗi nội dung</h5>
-          <p>Bạn có thể ghép tên căn hộ hoặc mã số báo phí vào nội dung chuyển khoản:</p>
-          <div class="code-copy-block">
-            <code class="small">=QrBank_SoTien_NoiDung(H26, "Thanh toan phi CC SCR II Can ho " & C6)</code>
-            <button class="copy-button btn btn-sm btn-outline-secondary" onclick="copyToClipboardFromCode(this)">Sao chép</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="step-group" id="in-phieu-hang-loat">
-        <h5 class="fw-bold mb-4"><i class="bi bi-printer me-2 text-primary"></i>9.3. Sử dụng tính năng In hàng loạt</h5>
-        <p>Menu <strong>MyExcel</strong> > <strong>In hàng loạt</strong>. MyExcel hỗ trợ 2 chế độ in phổ biến:</p>
-        
-        <div class="row g-3">
-          <div class="col-md-6">
-            <div class="card h-100 border-0 shadow-sm">
-              <div class="card-body">
-                <h6 class="fw-bold text-primary">1. In liên tục</h6>
-                <p class="small text-muted">Dành cho danh sách STT kế tiếp nhau (Ví dụ: In từ 1 đến 100).</p>
-                <button class="btn btn-sm btn-outline-primary w-100 video-btn" data-video-url="https://player.vimeo.com/video/1162738102?autoplay=1">
-                  <i class="bi bi-play-circle me-1"></i>Xem video hướng dẫn
-                </button>
+            <div class="guide-alert guide-alert-info">
+              <div>
+                <h4 class="guide-h4 text-info mt-0">8.3. Cấu hình ngân hàng khác (Thủ công)</h4>
+                <p class="mb-0">Truy cập <a href="https://vietqr.net/" target="_blank" class="fw-bold">vietqr.net</a>, nhập thông tin ngân hàng. Số tiền nhập: <strong>49494949</strong> | Nội dung: <strong>myexcel</strong>. Tạo mã QR và dùng điện thoại quét để lấy đoạn mã text dài.</p>
               </div>
             </div>
-          </div>
-          <div class="col-md-6">
-            <div class="card h-100 border-0 shadow-sm">
-              <div class="card-body">
-                <h6 class="fw-bold text-dark">2. In theo vùng chọn</h6>
-                <p class="small text-muted">Dành cho danh sách STT không liên tục (Ví dụ: In các căn hộ nợ phí).</p>
-                <button class="btn btn-sm btn-outline-dark w-100 video-btn" data-video-url="https://player.vimeo.com/video/1162738111?autoplay=1">
-                  <i class="bi bi-play-circle me-1"></i>Xem video hướng dẫn
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <!-- Section 10: Troubleshooting -->
-    <div class="guide-step border-danger border-opacity-10" id="cac-loi-thuong-gap">
-      <div class="step-marker bg-danger">10</div>
-      <h3 class="fw-bold mb-4 text-danger">10. Các lỗi thường gặp & Cách xử lý</h3>
-      <p class="text-muted mb-4 small">Nhấn vào từng mục bên dưới để xem chi tiết hình ảnh và cách khắc phục.</p>
-      
-      <div class="accordion accordion-flush custom-accordion" id="troubleshootingAccordion">
-        <!-- 10.1 -->
-        <div class="accordion-item border-bottom">
-          <h2 class="accordion-header">
-            <button class="accordion-button collapsed fw-bold py-3" type="button" data-bs-toggle="collapse" data-bs-target="#error1">
-              10.1. Mất công thức / QRCode không cập nhật
-            </button>
-          </h2>
-          <div id="error1" class="accordion-collapse collapse" data-bs-parent="#troubleshootingAccordion">
-            <div class="accordion-body">
-              <div class="row align-items-center">
-                <div class="col-md-4 mb-3 mb-md-0 text-center">
-                  <img src="images/myexcel/Hướng dẫn tích hợp Qr Code Ngân hàng-18.png" class="img-fluid rounded border shadow-sm" style="max-height: 200px; cursor: zoom-in;" data-bs-toggle="modal" data-bs-target="#imageModal" data-image-full="images/myexcel/Hướng dẫn tích hợp Qr Code Ngân hàng-18.png">
+            <div class="mt-5">
+              <h4 class="guide-h4">8.5. Bật hàm VietQr Code</h4>
+              <p>Phải nhấn "Bật tắt hàm VietQR Code" trong menu cấu hình thì công thức mới hoạt động.</p>
+              <a href="#" class="video-widget video-btn" data-video-url="https://player.vimeo.com/video/1162738121?autoplay=1">
+                <i class="bi bi-play-fill fs-4"></i>
+                <span>Video Bật Hàm</span>
+              </a>
+            </div>
+          </section>
+
+          <!-- Section 9 -->
+          <section id="section-9" class="guide-section">
+            <span class="step-badge">Bước 09</span>
+            <h2 class="guide-h2 mt-0">9. Sử dụng công thức & In hàng loạt</h2>
+            <div class="row g-4">
+              <div class="col-md-7">
+                <h4 class="guide-h4">9.1. Áp dụng hàm QrBank</h4>
+                <p>Sử dụng công thức sau tại ô bạn muốn hiển thị QR Code:</p>
+                <div class="code-wrapper mb-4">
+                  <code>=QrBank_SoTien_NoiDung(sotien, noidung)</code>
+                  <button class="copy-btn" onclick="copyToClipboardFromCode(this)">COPY</button>
                 </div>
-                <div class="col-md-8">
-                  <p class="small">Khi thay đổi STT căn hộ nhưng QRCode không cập nhật, hãy kiểm tra Menu MiniTool còn không?</p>
-                  <ul class="small mb-0">
-                    <li>Nếu không: Add-ins lại thư viện (<a href="#kich-hoat-add-ins">Xem Bước 7</a>)
-                      <button class="btn btn-badge btn-outline-primary video-btn ms-1" style="font-size: 0.7rem; padding: 1px 6px;" data-video-url="https://player.vimeo.com/video/1162738081?autoplay=1">
-                        <i class="bi bi-play-circle me-1"></i>Xem video
-                      </button>
-                    </li>
-                    <li>Nếu còn: Bật lại hàm VietQR (<a href="#bat-tat-ham-vietqr">Xem Bước 8.5</a>) 
-                      <button class="btn btn-badge btn-outline-primary video-btn ms-1" style="font-size: 0.7rem; padding: 1px 6px;" data-video-url="https://player.vimeo.com/video/1162738121?autoplay=1">
-                        <i class="bi bi-play-circle me-1"></i>Xem video
-                      </button>
-                    </li>
-                    <li><strong>Trường hợp đặc biệt:</strong> Nếu đã làm cả 2 vẫn không được, hãy gỡ MyExcel, xóa folder trong ổ C và cài lại từ đầu.</li>
-                  </ul>
+                
+                <h4 class="guide-h4">9.2. Ghép chuỗi nội dung</h4>
+                <div class="code-wrapper">
+                  <code>=QrBank_SoTien_NoiDung(H26, "Thanh toan phi CC SCR II Can ho " & C6)</code>
+                  <button class="copy-btn" onclick="copyToClipboardFromCode(this)">COPY</button>
+                </div>
+              </div>
+              <div class="col-md-5">
+                <div class="img-frame">
+                  <img src="images/myexcel/Hướng dẫn tích hợp Qr Code Ngân hàng-13.png" data-image-full="images/myexcel/Hướng dẫn tích hợp Qr Code Ngân hàng-13.png" alt="Formula" data-bs-toggle="modal" data-bs-target="#imageModal">
                 </div>
               </div>
             </div>
-          </div>
-        </div>
 
-        <!-- 10.2 -->
-        <div class="accordion-item border-bottom">
-          <h2 class="accordion-header">
-            <button class="accordion-button collapsed fw-bold py-3" type="button" data-bs-toggle="collapse" data-bs-target="#error2">
-              10.2. Cách thay đổi nội dung quét QR
-            </button>
-          </h2>
-          <div id="error2" class="accordion-collapse collapse" data-bs-parent="#troubleshootingAccordion">
-            <div class="accordion-body">
-              <div class="row align-items-center">
-                <div class="col-md-4 mb-3 mb-md-0 text-center">
-                  <img src="images/myexcel/Hướng dẫn tích hợp Qr Code Ngân hàng-16.png" class="img-fluid rounded border shadow-sm" style="max-height: 200px; cursor: zoom-in;" data-bs-toggle="modal" data-bs-target="#imageModal" data-image-full="images/myexcel/Hướng dẫn tích hợp Qr Code Ngân hàng-16.png">
-                </div>
-                <div class="col-md-8">
-                  <p class="small">Nội dung quét QR có thể tùy biến bằng cách ghép nhiều ô dữ liệu bằng ký tự <code>&</code>.</p>
-                  <div class="code-copy-block mb-2">
-                    <code class="small">I4 & " Thanh toan phi can ho " & J3</code>
-                  </div>
-                  <p class="small text-muted mb-0 italic">Kết quả: A-05-10 Thanh toan phi can ho 20</p>
-                </div>
+            <div class="mt-5 p-4 bg-light rounded-4 border">
+              <h4 class="fw-bold mb-3"><i class="bi bi-printer me-2"></i>9.3. In hàng loạt</h4>
+              <p>MyExcel hỗ trợ in tự động kèm theo ảnh QR thay đổi theo từng trang.</p>
+              <div class="d-flex gap-3 flex-wrap">
+                <button class="btn btn-outline-danger video-btn" data-video-url="https://player.vimeo.com/video/1162738102?autoplay=1"><i class="bi bi-play-circle me-1"></i> In liên tục</button>
+                <button class="btn btn-outline-danger video-btn" data-video-url="https://player.vimeo.com/video/1162738111?autoplay=1"><i class="bi bi-play-circle me-1"></i> In vùng chọn</button>
               </div>
             </div>
-          </div>
-        </div>
+          </section>
 
-        <!-- 10.3 -->
-        <div class="accordion-item border-bottom">
-          <h2 class="accordion-header">
-            <button class="accordion-button collapsed fw-bold py-3" type="button" data-bs-toggle="collapse" data-bs-target="#error3">
-              10.3. Hiện tượng In chậm / Treo Excel
-            </button>
-          </h2>
-          <div id="error3" class="accordion-collapse collapse" data-bs-parent="#troubleshootingAccordion">
-            <div class="accordion-body">
-              <div class="row align-items-center">
-                <div class="col-md-4 mb-3 mb-md-0 text-center">
-                  <img src="images/myexcel/Hướng dẫn tích hợp Qr Code Ngân hàng-17.png" class="img-fluid rounded border shadow-sm" style="max-height: 200px; cursor: zoom-in;" data-bs-toggle="modal" data-bs-target="#imageModal" data-image-full="images/myexcel/Hướng dẫn tích hợp Qr Code Ngân hàng-17.png">
-                </div>
-                <div class="col-md-8">
-                  <p class="small text-danger fw-bold">Nguyên nhân:</p>
-                  <p class="small">Do file tích tụ quá nhiều ảnh QR cũ làm tăng dung lượng file đột biến.</p>
-                  <p class="small fw-bold">Cách xử lý:</p>
-                  <ul class="small mb-0">
-                    <li>Sử dụng tính năng xóa QR nhỏ (<a href="#error4" data-bs-toggle="collapse">Mục 10.4</a>)
-                      <button class="btn btn-badge btn-outline-primary video-btn ms-1" style="font-size: 0.7rem; padding: 1px 6px;" data-video-url="https://player.vimeo.com/video/1162738944?autoplay=1">
-                        <i class="bi bi-play-circle me-1"></i>Xem video
-                      </button>
-                    </li>
-                    <li>Trong hộp thoại In hàng loạt, ưu tiên chọn <strong>"In ra file PDF"</strong>.</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 10.4 -->
-        <div class="accordion-item border-bottom">
-          <h2 class="accordion-header">
-            <button class="accordion-button collapsed fw-bold py-3" type="button" data-bs-toggle="collapse" data-bs-target="#error4">
-              10.4. Xóa nhanh nhiều QR nhỏ (Giảm dung lượng)
-            </button>
-          </h2>
-          <div id="error4" class="accordion-collapse collapse" data-bs-parent="#troubleshootingAccordion">
-            <div class="accordion-body">
-              <div class="row align-items-center">
-                <div class="col-md-4 mb-3 mb-md-0">
-                  <div class="row g-1">
-                    <div class="col-6"><img src="images/myexcel/Hướng dẫn tích hợp Qr Code Ngân hàng-21.png" class="img-fluid rounded border" data-bs-toggle="modal" data-bs-target="#imageModal" data-image-full="images/myexcel/Hướng dẫn tích hợp Qr Code Ngân hàng-21.png"></div>
-                    <div class="col-6"><img src="images/myexcel/Hướng dẫn tích hợp Qr Code Ngân hàng-22.png" class="img-fluid rounded border" data-bs-toggle="modal" data-bs-target="#imageModal" data-image-full="images/myexcel/Hướng dẫn tích hợp Qr Code Ngân hàng-22.png"></div>
-                  </div>
-                </div>
-                <div class="col-md-8">
-                  <p class="small">Xóa ảnh QR cũ giúp file Excel nhẹ và chạy nhanh hơn:
-                    <button class="btn btn-badge btn-outline-primary video-btn ms-1" style="font-size: 0.7rem; padding: 1px 6px;" data-video-url="https://player.vimeo.com/video/1162738944?autoplay=1">
-                      <i class="bi bi-play-circle me-1"></i>Xem video
-                    </button>
-                  </p>
-                  <ul class="small mb-0">
-                    <li><strong>Cách 1:</strong> <code>F5</code> > <code>Special</code> > <code>Objects</code>. Giữ <strong>Ctrl</strong> để bỏ chọn Logo, rồi <strong>Delete</strong>.</li>
-                    <li><strong>Cách 2:</strong> Menu MyExcel > Xóa QRCode.</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 10.5 -->
-        <div class="accordion-item border-bottom">
-          <h2 class="accordion-header">
-            <button class="accordion-button collapsed fw-bold py-3" type="button" data-bs-toggle="collapse" data-bs-target="#error5">
-              10.5. Xử lý dòng chữ thông báo bản quyền
-            </button>
-          </h2>
-          <div id="error5" class="accordion-collapse collapse" data-bs-parent="#troubleshootingAccordion">
-            <div class="accordion-body">
-              <div class="row align-items-center">
-                <div class="col-md-4 mb-3 mb-md-0 text-center">
-                  <img src="images/myexcel/Hướng dẫn tích hợp Qr Code Ngân hàng-23.png" class="img-fluid rounded border shadow-sm" style="max-height: 200px; cursor: zoom-in;" data-bs-toggle="modal" data-bs-target="#imageModal" data-image-full="images/myexcel/Hướng dẫn tích hợp Qr Code Ngân hàng-23.png">
-                </div>
-                <div class="col-md-8">
-                  <p class="small">Dùng một <strong>Shape trắng</strong> hoặc hình ảnh trắng nhỏ che đè lên dòng yêu cầu bản quyền của MyExcel trên mẫu báo phí trước khi thực hiện In hàng loạt.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 10.6 -->
-        <div class="accordion-item">
-          <h2 class="accordion-header">
-            <button class="accordion-button collapsed fw-bold py-3" type="button" data-bs-toggle="collapse" data-bs-target="#error6">
-              10.6. QRCode bị lệch tiền (Do số lẻ)
-            </button>
-          </h2>
-          <div id="error6" class="accordion-collapse collapse" data-bs-parent="#troubleshootingAccordion">
-            <div class="accordion-body">
-              <div class="row align-items-center">
-                <div class="col-md-4 mb-3 mb-md-0 text-center">
-                  <img src="images/myexcel/Hướng dẫn tích hợp Qr Code Ngân hàng-24.png" class="img-fluid rounded border shadow-sm" style="max-height: 200px; cursor: zoom-in;" data-bs-toggle="modal" data-bs-target="#imageModal" data-image-full="images/myexcel/Hướng dẫn tích hợp Qr Code Ngân hàng-24.png">
-                </div>
-                <div class="col-md-8">
-                  <p class="small">Để tránh Excel tự làm tròn số khi tạo QR, hãy dùng công thức này để ép về định dạng text:</p>
-                  <div class="code-copy-block mt-2">
-                    <code class="small">=SUBSTITUTE(TEXT(H16,"0"),",","")</code>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div> <!-- End of guide-container -->
-
-    </main>
+          <!-- Section 10 -->
+          <section id="section-10" class="guide-section border-danger">
+            <span class="step-badge bg-danger">Khắc phục</span>
+            <h2 class="guide-h2 mt-0 text-danger">10. Các lỗi thường gặp</h2>
             
-  <!-- Back to Menu Button -->
-  <a href="#table-of-contents" id="back-to-menu" class="btn btn-primary back-to-menu-btn" title="Quay về menu">
-    <i class="bi bi-arrow-up"></i>
-  </a>
+            <div class="accordion accordion-flush" id="errorAccordion">
+              <!-- 10.1 -->
+              <div class="accordion-item bg-transparent">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed fw-bold text-dark bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#err1">
+                    10.1. Mất công thức / QRCode không cập nhật
+                  </button>
+                </h2>
+                <div id="err1" class="accordion-collapse collapse" data-bs-parent="#errorAccordion">
+                  <div class="accordion-body border-top">
+                    <p>Kiểm tra Tab MiniTool. Nếu mất, hãy Add-ins lại (Bước 7). Nếu còn, hãy nhấn lại "Bật tắt hàm VietQR" (Bước 8.5).</p>
+                    <img src="images/myexcel/Hướng dẫn tích hợp Qr Code Ngân hàng-18.png" class="img-fluid rounded-4 border mt-3" style="max-height: 250px;">
+                  </div>
+                </div>
+              </div>
+              
+              <!-- 10.2 -->
+              <div class="accordion-item bg-transparent">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed fw-bold text-dark bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#err2">
+                    10.2. Cách thay đổi nội dung quét QR
+                  </button>
+                </h2>
+                <div id="err2" class="accordion-collapse collapse" data-bs-parent="#errorAccordion">
+                  <div class="accordion-body border-top">
+                    <p>Nội dung quét QR có thể tùy biến bằng cách ghép nhiều ô dữ liệu bằng ký tự <code>&</code>.</p>
+                    <div class="code-wrapper"><code>I4 & " Thanh toan phi can ho " & J3</code></div>
+                  </div>
+                </div>
+              </div>
 
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-  <script src="js/components.js"></script>
-  <script src="js/main.js"></script><!-- Image Modal -->
-<div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-xl">
-    <div class="modal-content bg-transparent border-0">
-      <div class="modal-body text-center">
-        <img src="" id="fullImage" class="img-fluid" alt="Enlarged Image">
-      </div>
-    </div>
-  </div>
-</div>
+              <!-- 10.3 -->
+              <div class="accordion-item bg-transparent">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed fw-bold text-dark bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#err3">
+                    10.3. Hiện tượng In chậm / Treo Excel
+                  </button>
+                </h2>
+                <div id="err3" class="accordion-collapse collapse" data-bs-parent="#errorAccordion">
+                  <div class="accordion-body border-top">
+                    <p>Do file tích tụ quá nhiều ảnh QR cũ. Nhấn <strong>F5 > Special > Objects</strong>, rồi nhấn <strong>Delete</strong> để xóa bớt ảnh cũ (giữ Ctrl để bỏ chọn logo).</p>
+                  </div>
+                </div>
+              </div>
 
-<!-- Image Modal -->
-<div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-xl">
-    <div class="modal-content bg-transparent border-0">
-      <div class="modal-body text-center">
-        <img src="" id="fullImage" class="img-fluid" alt="Enlarged Image">
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Modal Bank List -->
-<div class="modal fade" id="bankListModal" tabindex="-1" aria-labelledby="bankListModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg">
-    <div class="modal-content shadow-lg border-0" style="border-radius: var(--border-radius-lg);">
-      <div class="modal-header border-0 pb-0">
-        <h5 class="modal-title fw-bold" id="bankListModalLabel" style="color: var(--primary-color);">Danh sách Tài khoản Khánh Hội & BQT</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body p-4">
-        <p class="text-muted small mb-4">Nhấn nút "Sao chép" bên cạnh mỗi tài khoản để lấy mã cấu hình.</p>
-        
-        <div class="row g-3">
-          <!-- Item 1: BIDV 861 -->
-          <div class="col-12">
-            <label class="fw-bold small mb-1">1. BIDV (Khánh Hội - 8610019465)</label>
-            <div class="code-copy-block" style="padding: 8px 12px;">
-              <code class="copyable-code-string long-string" style="font-size: 0.8rem;">00020101021238540010A00000072701240006970418011086100194650208QRIBFTTA53037045408494949495802VN62110807myexcel6304160A</code>
-              <button class="btn btn-sm btn-outline-secondary" onclick="copyToClipboardFromCode(this)"><i class="bi bi-clipboard"></i></button>
+              <!-- 10.5 -->
+              <div class="accordion-item bg-transparent">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed fw-bold text-dark bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#err5">
+                    10.5. Xử lý dòng chữ thông báo bản quyền
+                  </button>
+                </h2>
+                <div id="err5" class="accordion-collapse collapse" data-bs-parent="#errorAccordion">
+                  <div class="accordion-body border-top">
+                    <p>Dùng một <strong>Shape trắng</strong> hoặc hình ảnh trắng nhỏ che đè lên dòng yêu cầu bản quyền của MyExcel trước khi thực hiện In hàng loạt.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 10.6 -->
+              <div class="accordion-item bg-transparent">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed fw-bold text-dark bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#err6">
+                    10.6. QRCode bị lệch tiền (Do số lẻ)
+                  </button>
+                </h2>
+                <div id="err6" class="accordion-collapse collapse" data-bs-parent="#errorAccordion">
+                  <div class="accordion-body border-top">
+                    <p>Dùng công thức ép về định dạng text để tránh Excel tự làm tròn:</p>
+                    <div class="code-wrapper"><code>=SUBSTITUTE(TEXT(H16,"0"),",","")</code></div>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-          <!-- Item 2: BIDV 868 -->
-          <div class="col-12">
-            <label class="fw-bold small mb-1">2. BIDV (Khánh Hội - 8681006868)</label>
-            <div class="code-copy-block" style="padding: 8px 12px;">
-              <code class="copyable-code-string long-string" style="font-size: 0.8rem;">00020101021238540010A00000072701240006970415011086100194650208QRIBFTTB53037045408494949495802VN62110807myexcel6304C7A6</code>
-              <button class="btn btn-sm btn-outline-secondary" onclick="copyToClipboardFromCode(this)"><i class="bi bi-clipboard"></i></button>
-            </div>
-          </div>
-          <!-- Item 3: BIDV 135 -->
-          <div class="col-12">
-            <label class="fw-bold small mb-1">3. BIDV (Khánh Hội - 1351515615)</label>
-            <div class="code-copy-block" style="padding: 8px 12px;">
-              <code class="copyable-code-string long-string" style="font-size: 0.8rem;">00020101021238540010A00000072701240006970418011013515156150208QRIBFTTA53037045408494949495802VN62110807myexcel63041B5E</code>
-              <button class="btn btn-sm btn-outline-secondary" onclick="copyToClipboardFromCode(this)"><i class="bi bi-clipboard"></i></button>
-            </div>
-          </div>
-          <!-- Item 4: BIDV HP2 -->
-          <div class="col-12">
-            <label class="fw-bold small mb-1">4. BIDV (BQT HP2 - 1330193768)</label>
-            <div class="code-copy-block" style="padding: 8px 12px;">
-              <code class="copyable-code-string long-string" style="font-size: 0.8rem;">00020101021238540010A00000072701240006970418011013301937680208QRIBFTTA53037045408494949495802VN62110807myexcel6304F7C1</code>
-              <button class="btn btn-sm btn-outline-secondary" onclick="copyToClipboardFromCode(this)"><i class="bi bi-clipboard"></i></button>
-            </div>
-          </div>
-          <!-- Item 5: Vietinbank 112 -->
-          <div class="col-12">
-            <label class="fw-bold small mb-1">5. Vietinbank (Khánh Hội - 112002904890)</label>
-            <div class="code-copy-block" style="padding: 8px 12px;">
-              <code class="copyable-code-string long-string" style="font-size: 0.8rem;">00020101021238560010A0000007270126000697041501121120029048900208QRIBFTTA53037045408494949495802VN62110807myexcel63041F8C</code>
-              <button class="btn btn-sm btn-outline-secondary" onclick="copyToClipboardFromCode(this)"><i class="bi bi-clipboard"></i></button>
-            </div>
-          </div>
-          <!-- Item 6: Vietinbank 115 -->
-          <div class="col-12">
-            <label class="fw-bold small mb-1">6. Vietinbank (Khánh Hội - 115002904885)</label>
-            <div class="code-copy-block" style="padding: 8px 12px;">
-              <code class="copyable-code-string long-string" style="font-size: 0.8rem;">00020101021238560010A0000007270126000697041501121150029048850208QRIBFTTA53037045408494949495802VN62110807myexcel6304F5F4</code>
-              <button class="btn btn-sm btn-outline-secondary" onclick="copyToClipboardFromCode(this)"><i class="bi bi-clipboard"></i></button>
-            </div>
-          </div>
-          <!-- Item 7: Vietinbank 117-902 -->
-          <div class="col-12">
-            <label class="fw-bold small mb-1">7. Vietinbank (Khánh Hội - 117002916902)</label>
-            <div class="code-copy-block" style="padding: 8px 12px;">
-              <code class="copyable-code-string long-string" style="font-size: 0.8rem;">00020101021238560010A0000007270126000697041501121170029169020208QRIBFTTA53037045408494949495802VN62110807myexcel6304C4E6</code>
-              <button class="btn btn-sm btn-outline-secondary" onclick="copyToClipboardFromCode(this)"><i class="bi bi-clipboard"></i></button>
-            </div>
-          </div>
-          <!-- Item 8: Vietinbank 117-162 -->
-          <div class="col-12">
-            <label class="fw-bold small mb-1">8. Vietinbank (Khánh Hội - 117002930162)</label>
-            <div class="code-copy-block" style="padding: 8px 12px;">
-              <code class="copyable-code-string long-string" style="font-size: 0.8rem;">00020101021238560010A0000007270126000697041501121170029301620208QRIBFTTA53037045408494949495802VN62110807myexcel6304E3E2</code>
-              <button class="btn btn-sm btn-outline-secondary" onclick="copyToClipboardFromCode(this)"><i class="bi bi-clipboard"></i></button>
-            </div>
-          </div>
-          <!-- Item 9: Vietinbank 118 -->
-          <div class="col-12">
-            <label class="fw-bold small mb-1">9. Vietinbank (Khánh Hội - 11800296901)</label>
-            <div class="code-copy-block" style="padding: 8px 12px;">
-              <code class="copyable-code-string long-string" style="font-size: 0.8rem;">00020101021238550010A000000727012500069704150111118002969010208QRIBFTTA53037045408494949495802VN62110807myexcel6304F0F8</code>
-              <button class="btn btn-sm btn-outline-secondary" onclick="copyToClipboardFromCode(this)"><i class="bi bi-clipboard"></i></button>
-            </div>
-          </div>
-          <!-- Item 10: Vietinbank 119-567 -->
-          <div class="col-12">
-            <label class="fw-bold small mb-1">10. Vietinbank (Khánh Hội - 119002930567)</label>
-            <div class="code-copy-block" style="padding: 8px 12px;">
-              <code class="copyable-code-string long-string" style="font-size: 0.8rem;">00020101021238560010A0000007270126000697041501121190029305670208QRIBFTTA53037045408494949495802VN62110807myexcel6304D4C1</code>
-              <button class="btn btn-sm btn-outline-secondary" onclick="copyToClipboardFromCode(this)"><i class="bi bi-clipboard"></i></button>
-            </div>
-          </div>
-          <!-- Item 11: Vietinbank KH2 -->
-          <div class="col-12">
-            <label class="fw-bold small mb-1">11. Vietinbank (BQT KH2 - 126000035238)</label>
-            <div class="code-copy-block" style="padding: 8px 12px;">
-              <code class="copyable-code-string long-string" style="font-size: 0.8rem;">00020101021238560010A0000007270126000697041501121260000352380208QRIBFTTA53037045408494949495802VN62110807myexcel6304C9A6</code>
-              <button class="btn btn-sm btn-outline-secondary" onclick="copyToClipboardFromCode(this)"><i class="bi bi-clipboard"></i></button>
-            </div>
-          </div>
-          <!-- Item 12: Vietinbank HAGL2 -->
-          <div class="col-12">
-            <label class="fw-bold small mb-1">12. Vietinbank (BQT HAGL2 - 119000144482)</label>
-            <div class="code-copy-block" style="padding: 8px 12px;">
-              <code class="copyable-code-string long-string" style="font-size: 0.8rem;">00020101021238560010A0000007270126000697041501121190001444820208QRIBFTTA53037045408494949495802VN62110807myexcel6304A1B9</code>
-              <button class="btn btn-sm btn-outline-secondary" onclick="copyToClipboardFromCode(this)"><i class="bi bi-clipboard"></i></button>
-            </div>
-          </div>
-          <!-- Item 13: Vietinbank HOMYLAND2 -->
-          <div class="col-12">
-            <label class="fw-bold small mb-1">13. Vietinbank (BQT HOMYLAND2 - 127000038807)</label>
-            <div class="code-copy-block" style="padding: 8px 12px;">
-              <code class="copyable-code-string long-string" style="font-size: 0.8rem;">00020101021238560010A0000007270126000697041501121270000388070208QRIBFTTA53037045408494949495802VN62110807myexcel6304C3D2</code>
-              <button class="btn btn-sm btn-outline-secondary" onclick="copyToClipboardFromCode(this)"><i class="bi bi-clipboard"></i></button>
-            </div>
-          </div>
-          <!-- Item 14: OCB LAN PHUONG -->
-          <div class="col-12">
-            <label class="fw-bold small mb-1">14. OCB (BQT LAN PHƯƠNG - 319315)</label>
-            <div class="code-copy-block" style="padding: 8px 12px;">
-              <code class="copyable-code-string long-string" style="font-size: 0.8rem;">00020101021238530010A0000007270123000697044801063193150208QRIBFTTA53037045408494949495802VN62110807myexcel6304B2D4</code>
-              <button class="btn btn-sm btn-outline-secondary" onclick="copyToClipboardFromCode(this)"><i class="bi bi-clipboard"></i></button>
-            </div>
-          </div>
-          <!-- Item 15: PGBank -->
-          <div class="col-12">
-            <label class="fw-bold small mb-1">15. PGBank (Khánh Hội - 4467040102860)</label>
-            <div class="code-copy-block" style="padding: 8px 12px;">
-              <code class="copyable-code-string long-string" style="font-size: 0.8rem;">00020101021238570010A00000072701270006970430011344670401028600208QRIBFTTA53037045408494949495802VN62110807myexcel6304A9CA</code>
-              <button class="btn btn-sm btn-outline-secondary" onclick="copyToClipboardFromCode(this)"><i class="bi bi-clipboard"></i></button>
-            </div>
-          </div>
+          </section>
+
         </div>
       </div>
-      <div class="modal-footer border-0 pt-0">
-        <button type="button" class="btn btn-light btn-sm px-4" data-bs-dismiss="modal" style="border-radius: var(--border-radius-md);">Đóng</button>
-      </div>
     </div>
-  </div>
-</div>
+  </main>
 
-<script>
-function copyToClipboardFromCode(btn) {
-    const codeElement = btn.parentElement.querySelector('code');
-    const text = codeElement.innerText;
-    navigator.clipboard.writeText(text).then(() => {
-        const originalHtml = btn.innerHTML;
-        btn.innerHTML = '<i class="bi bi-check2 text-success"></i>';
-        setTimeout(() => {
-            btn.innerHTML = originalHtml;
-        }, 2000);
-    }).catch(err => {
-        console.error('Lỗi khi copy: ', err);
-    });
-}
-
-function generateQuickCode() {
-    const bin = document.getElementById('genBank').value;
-    const acc = document.getElementById('genAcc').value.trim();
-    
-    if (!acc) {
-        alert('Vui lòng nhập số tài khoản!');
-        return;
-    }
-
-    const formatTag = (tag, value) => {
-        return tag.toString().padStart(2, '0') + value.length.toString().padStart(2, '0') + value;
-    };
-
-    // Sub-tags for Tag 38
-    const sub00 = formatTag(0, 'A000000727');
-    const sub01_sub00 = formatTag(0, bin);
-    const sub01_sub01 = formatTag(1, acc);
-    const sub01 = formatTag(1, sub01_sub00 + sub01_sub01);
-    const sub02 = formatTag(2, 'QRIBFTTA');
-    
-    const tag38 = formatTag(38, sub00 + sub01 + sub02);
-    
-    // Core payload (before CRC)
-    let payload = "000201010212" + tag38 + "53037045408494949495802VN62110807myexcel6304";
-    
-    // CRC16 CCITT (0xFFFF)
-    const crc = (data) => {
-        let crc = 0xFFFF;
-        for (let i = 0; i < data.length; i++) {
-            crc ^= data.charCodeAt(i) << 8;
-            for (let j = 0; j < 8; j++) {
-                if ((crc & 0x8000) !== 0) {
-                    crc = (crc << 1) ^ 0x1021;
-                } else {
-                    crc <<= 1;
-                }
-            }
-        }
-        return (crc & 0xFFFF).toString(16).toUpperCase().padStart(4, '0');
-    };
-
-    const finalCode = payload + crc(payload);
-    
-    const resultArea = document.getElementById('genResultArea');
-    const resultCode = document.getElementById('genResultCode');
-    const resultQR = document.getElementById('genResultQR');
-    
-    // Hiển thị mã code ngay lập tức
-    resultCode.innerText = finalCode;
-    resultArea.classList.remove('d-none');
-    
-    // Đặt ảnh tạm thời là một loading GIF hoặc để trống để chờ
-    resultQR.src = 'https://cdnjs.cloudflare.com/ajax/libs/galleriffic/2.0.1/css/loader.gif';
-    
-    // Tạo link ảnh QR từ chuỗi finalCode (Sử dụng QuickChart API cực nhanh)
-    const qrUrl = `https://quickchart.io/qr?text=${encodeURIComponent(finalCode)}&size=200`;
-    
-    // Gán ảnh thật sau khi tính toán xong
-    setTimeout(() => {
-        resultQR.src = qrUrl;
-    }, 100);
-    
-    // Smooth scroll to result
-    resultArea.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-}
-</script>
-<script src="js/app.js"></script>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    var imageModal = document.getElementById('imageModal');
-    if (imageModal) {
-        // Set image source when modal opens
-        imageModal.addEventListener('show.bs.modal', function(event) {
-            var button = event.relatedTarget;
-            var imageSrc = button.getAttribute('data-image-full');
-            var modalImage = imageModal.querySelector('#fullImage');
-            modalImage.src = imageSrc;
-            
-            // Reset transforms
-            modalImage.style.transform = '';
-            modalImage.style.cursor = 'grab';
-        });
-
-        // Initialize Zoom & Pan when modal is shown
-        imageModal.addEventListener('shown.bs.modal', function() {
-            var modalImage = imageModal.querySelector('#fullImage');
-            if (!modalImage) return;
-
-            // Prevent duplicate listeners
-            if (modalImage.dataset.zoomInitialized) return;
-            modalImage.dataset.zoomInitialized = 'true';
-
-            let scale = 1;
-            let panning = false;
-            let pointX = 0, pointY = 0;
-            let startX = 0, startY = 0;
-            const zoomStep = 0.2;
-            const maxZoom = 15;
-            const minZoom = 1;
-
-            const updateTransform = () => {
-                modalImage.style.transform = `translate(${pointX}px, ${pointY}px) scale(${scale})`;
-                
-                // Allow overflow when zoomed
-                const containers = [
-                    imageModal.querySelector('.modal-content'),
-                    imageModal.querySelector('.modal-body')
-                ];
-                
-                containers.forEach(c => {
-                    if (c) {
-                        c.style.overflow = scale > 1 ? 'visible' : '';
-                         if (scale > 1) {
-                            c.style.zIndex = "9999";
-                        }
-                    }
-                });
-
-                if (scale > 1) {
-                    modalImage.style.cursor = panning ? 'grabbing' : 'grab';
-                } else {
-                    modalImage.style.cursor = 'grab';
-                }
-            };
-
-            // Wheel Zoom
-            modalImage.addEventListener('wheel', (e) => {
-                e.preventDefault();
-                const delta = e.deltaY > 0 ? -zoomStep : zoomStep;
-                scale = Math.min(Math.max(minZoom, scale + delta), maxZoom);
-
-                if (scale === 1) {
-                    pointX = 0;
-                    pointY = 0;
-                }
-                updateTransform();
-            }, { passive: false });
-
-            // Pan Logic
-            let isDragging = false;
-            let dragStartX = 0;
-            let dragStartY = 0;
-
-            const onPointerDown = (e) => {
-                if (e.type === 'mousedown' && e.button !== 0) return;
-                e.preventDefault();
-                
-                const clientX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
-                const clientY = e.type.includes('touch') ? e.touches[0].clientY : e.clientY;
-
-                isDragging = true;
-                dragStartX = clientX;
-                dragStartY = clientY;
-
-                if (scale > 1) {
-                    panning = true;
-                    startX = clientX - pointX;
-                    startY = clientY - pointY;
-                    modalImage.style.cursor = 'grabbing';
-                }
-            };
-
-            const onPointerMove = (e) => {
-                if (!isDragging) return;
-                
-                const clientX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
-                const clientY = e.type.includes('touch') ? e.touches[0].clientY : e.clientY;
-
-                if (scale > 1) {
-                    e.preventDefault();
-                    pointX = clientX - startX;
-                    pointY = clientY - startY;
-                    updateTransform();
-                }
-            };
-
-            const onPointerUp = (e) => {
-                if (!isDragging) return;
-                isDragging = false;
-                panning = false;
-                updateTransform();
-            };
-
-            modalImage.addEventListener('mousedown', onPointerDown);
-            window.addEventListener('mousemove', onPointerMove);
-            window.addEventListener('mouseup', onPointerUp);
-
-            modalImage.addEventListener('touchstart', onPointerDown, { passive: false });
-            modalImage.addEventListener('touchmove', onPointerMove, { passive: false });
-            modalImage.addEventListener('touchend', onPointerUp);
-        });
-    }
-});
-</script>
-<!-- Video Modal -->
-<div class="modal fade" id="videoModal" tabindex="-1" aria-hidden="true">
+  <!-- Modals -->
+  <div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-xl">
-        <div class="modal-content bg-dark border-0">
-            <div class="modal-header border-0 pb-0 shadow-none"><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div>
-            <div class="modal-body p-0"><div class="ratio ratio-16x9"><iframe id="modalVideoIframe" src="" allowfullscreen allow="autoplay"></iframe></div></div>
+      <div class="modal-content bg-transparent border-0">
+        <div class="modal-body p-0 text-center">
+          <img src="" id="fullImage" class="img-fluid rounded-4" style="box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.5);">
         </div>
+      </div>
     </div>
-</div>
+  </div>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const videoModal = document.getElementById('videoModal');
-    if (videoModal) {
-        document.querySelectorAll('.video-btn').forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                e.preventDefault();
-                const videoUrl = this.getAttribute('data-video-url');
-                if (videoUrl) {
-                    document.getElementById('modalVideoIframe').src = videoUrl;
-                    new bootstrap.Modal(videoModal).show();
-                }
-            });
-        });
-        videoModal.addEventListener('hidden.bs.modal', () => { 
-            document.getElementById('modalVideoIframe').src = ''; 
+  <div class="modal fade" id="videoModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+      <div class="modal-content bg-dark border-0 rounded-4 overflow-hidden">
+        <div class="modal-header border-0 pb-0 position-absolute top-0 end-0 z-3">
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body p-0">
+          <div class="ratio ratio-16x9">
+            <iframe id="modalVideoIframe" src="" allowfullscreen allow="autoplay"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="bankListModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content rounded-4 border-0 shadow-lg">
+        <div class="modal-header border-bottom px-4">
+          <h5 class="modal-title fw-bold text-success">Mã cấu hình tài khoản sẵn có</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body p-4">
+          <div class="mb-4">
+            <label class="fw-bold small mb-1">1. BIDV (Khánh Hội - 8610019465)</label>
+            <div class="code-wrapper mt-0 py-2">
+              <code class="long-string">00020101021238540010A00000072701240006970418011086100194650208QRIBFTTA53037045408494949495802VN62110807myexcel6304160A</code>
+              <button class="copy-btn" onclick="copyToClipboardFromCode(this)">COPY</button>
+            </div>
+          </div>
+          <div class="mb-4">
+            <label class="fw-bold small mb-1">2. Vietinbank (Khánh Hội - 112002904890)</label>
+            <div class="code-wrapper mt-0 py-2">
+              <code class="long-string">00020101021238560010A0000007270126000697041501121120029048900208QRIBFTTA53037045408494949495802VN62110807myexcel63041F8C</code>
+              <button class="copy-btn" onclick="copyToClipboardFromCode(this)">COPY</button>
+            </div>
+          </div>
+          <div class="mb-4">
+            <label class="fw-bold small mb-1">3. OCB (BQT LAN PHƯƠNG - 319315)</label>
+            <div class="code-wrapper mt-0 py-2">
+              <code class="long-string">00020101021238530010A0000007270123000697044801063193150208QRIBFTTA53037045408494949495802VN62110807myexcel6304B2D4</code>
+              <button class="copy-btn" onclick="copyToClipboardFromCode(this)">COPY</button>
+            </div>
+          </div>
+          <p class="text-muted small mt-3">Nhấn nút <strong>COPY</strong> và dán vào mục cấu hình trong MyExcel.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/main.js"></script>
+
+  <script>
+    // Sidebar Active State Handling
+    window.addEventListener('scroll', () => {
+      let current = '';
+      const sections = document.querySelectorAll('section');
+      const navLinks = document.querySelectorAll('.sidebar-link');
+      
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (pageYOffset >= sectionTop - 150) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href').includes(current)) {
+          link.classList.add('active');
+        }
+      });
+    });
+
+    // Copy to clipboard
+    function copyToClipboardFromCode(btn) {
+        const text = btn.previousElementSibling.innerText;
+        navigator.clipboard.writeText(text).then(() => {
+            const originalText = btn.innerText;
+            btn.innerText = 'COPIED!';
+            btn.classList.add('bg-success');
+            setTimeout(() => {
+                btn.innerText = originalText;
+                btn.classList.remove('bg-success');
+            }, 2000);
         });
     }
-});
-</script>
+
+    // Quick Code Generator
+    function generateQuickCode() {
+        const bin = document.getElementById('genBank').value;
+        const acc = document.getElementById('genAcc').value.trim();
+        if (!acc) return alert('Nhập số tài khoản!');
+
+        const formatTag = (tag, val) => tag.toString().padStart(2, '0') + val.length.toString().padStart(2, '0') + val;
+        const tag38 = formatTag(38, formatTag(0, 'A000000727') + formatTag(1, formatTag(0, bin) + formatTag(1, acc)) + formatTag(2, 'QRIBFTTA'));
+        let payload = "000201010212" + tag38 + "53037045408494949495802VN62110807myexcel6304";
+
+        const crc = (data) => {
+            let crc = 0xFFFF;
+            for (let i = 0; i < data.length; i++) {
+                crc ^= data.charCodeAt(i) << 8;
+                for (let j = 0; j < 8; j++) crc = (crc & 0x8000) ? (crc << 1) ^ 0x1021 : crc << 1;
+            }
+            return (crc & 0xFFFF).toString(16).toUpperCase().padStart(4, '0');
+        };
+
+        const finalCode = payload + crc(payload);
+        document.getElementById('genResultCode').innerText = finalCode;
+        document.getElementById('genResultQR').src = `https://quickchart.io/qr?text=${encodeURIComponent(finalCode)}&size=200`;
+        document.getElementById('genResultArea').classList.remove('d-none');
+        document.getElementById('genResultArea').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    // Image Modal Handling
+    const imageModal = document.getElementById('imageModal');
+    imageModal.addEventListener('show.bs.modal', (e) => {
+      document.getElementById('fullImage').src = e.relatedTarget.getAttribute('data-image-full');
+    });
+
+    // Video Modal Handling
+    const videoModal = document.getElementById('videoModal');
+    document.querySelectorAll('.video-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        document.getElementById('modalVideoIframe').src = btn.getAttribute('data-video-url');
+        new bootstrap.Modal(videoModal).show();
+      });
+    });
+    videoModal.addEventListener('hidden.bs.modal', () => document.getElementById('modalVideoIframe').src = '');
+  </script>
 </body>
 </html>
-
-
-
-

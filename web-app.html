@@ -3,523 +3,392 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hệ thống WEBAPP - IT KHA SERVICE</title>
+  <title>Hướng dẫn vận hành WebApp - IT KHA SERVICE</title>
+  
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://kit.fontawesome.com/94472b8613.js" crossorigin="anonymous"></script>
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Custom Styles -->
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/excel-guide.css">
   <link rel="icon" href="images/system/logo.png" type="image/png">
+
   <style>
-    body { background-image: url('images/system/wallpaper.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed; }
-    .theme-webapp { --guide-primary: #0f7f44; }
-    .gallery-thumb { width: 60px; height: 45px; object-fit: cover; cursor: pointer; border-radius: 4px; transition: transform 0.2s; }
-    .gallery-thumb:hover { transform: scale(1.1); border: 2px solid #0f7f44; }
+    :root {
+        --guide-primary: #108042; /* Màu xanh lá thương hiệu */
+        --guide-secondary: #e7fff0;
+    }
+    body {
+        background: #f1f5f9;
+        color: var(--guide-text);
+        font-family: 'Inter', sans-serif;
+    }
+    .badge-daily { background: #108042; }
+    .badge-monthly { background: #8B5CF6; }
+    .gallery-thumbs {
+        display: flex;
+        gap: 8px;
+        margin-top: 12px;
+        overflow-x: auto;
+        padding-bottom: 5px;
+    }
+    .thumb-item {
+        width: 60px;
+        height: 45px;
+        object-fit: cover;
+        border-radius: 8px;
+        cursor: pointer;
+        border: 2px solid transparent;
+        transition: all 0.2s;
+    }
+    .thumb-item:hover {
+        border-color: var(--guide-primary);
+        transform: translateY(-2px);
+    }
+    .flow-indicator {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+        font-size: 0.85rem;
+        color: #64748b;
+        margin-bottom: 1rem;
+    }
+    .flow-step {
+        background: #f8fafc;
+        padding: 4px 10px;
+        border-radius: 6px;
+        border: 1px solid #e2e8f0;
+    }
   </style>
 </head>
-<body class="d-flex flex-column min-vh-100 theme-webapp">
-<main class="container mt-5">
-    <h1 class="page-title text-center mb-3">Hệ thống WEBAPP</h1>
-    <p class="text-center text-muted mb-5">Hướng dẫn vận hành phần mềm quản lý vận hành chung cư chi tiết</p>
+<body class="d-flex flex-column min-vh-100">
 
-    <!-- Visual Navigation Grid -->
-    <div class="nav-grid mb-5" id="table-of-contents">
-      <a href="#cong-viec-hang-ngay" class="nav-item">
-        <i class="bi bi-calendar-check"></i>
-        <span>1. Công việc hàng ngày</span>
-      </a>
-      <a href="#cong-viec-hang-thang" class="nav-item">
-        <i class="bi bi-calendar-month"></i>
-        <span>2. Công việc hàng tháng</span>
-      </a>
-      <a href="#khac" class="nav-item">
-        <i class="bi bi-gear"></i>
-        <span>3. Cấu hình & Khác</span>
-      </a>
-      <a href="#video-huong-dan" class="nav-item">
-        <i class="bi bi-play-circle"></i>
-        <span>4. Video hướng dẫn</span>
-      </a>
-    </div>
+  <main class="main-wrapper">
+    <div class="container-fluid px-lg-5">
+      
+      <!-- Page Header -->
+      <div class="mb-5">
+        <h1 class="guide-h1 text-primary">Hệ thống WEBAPP</h1>
+        <p class="text-muted fs-5">Hướng dẫn vận hành phần mềm quản lý vận hành chung cư chi tiết.</p>
+      </div>
 
-    <div class="guide-container">
-        <h2 class="mb-5 text-primary fw-bold" id="cong-viec-hang-ngay">I. Công việc hàng ngày</h2>
+      <div class="guide-wrapper">
+        <!-- Sidebar -->
+        <aside class="guide-sidebar d-none d-lg-block">
+          <div class="mb-4">
+            <h6 class="fw-bold px-3 mb-3 text-uppercase small text-muted">Công việc hàng ngày</h6>
+            <ul class="sidebar-menu">
+              <li><a href="#duyet-cu-dan" class="sidebar-link active"><i class="bi bi-people"></i> 1. Duyệt Cư dân</a></li>
+              <li><a href="#cap-nhat-dmnk" class="sidebar-link"><i class="bi bi-droplet"></i> 2. Cập nhật ĐMNK</a></li>
+              <li><a href="#cap-nhat-phuong-tien" class="sidebar-link"><i class="bi bi-car-front"></i> 3. Phương tiện</a></li>
+              <li><a href="#cap-nhat-thanh-toan" class="sidebar-link"><i class="bi bi-cash-stack"></i> 4. Thanh toán</a></li>
+              <li><a href="#tao-phieu-thu" class="sidebar-link"><i class="bi bi-file-earmark-text"></i> 5. Phiếu thu</a></li>
+            </ul>
+          </div>
+          <div class="mb-4">
+            <h6 class="fw-bold px-3 mb-3 text-uppercase small text-muted">Định kỳ & Khác</h6>
+            <ul class="sidebar-menu">
+              <li><a href="#cong-viec-hang-thang" class="sidebar-link"><i class="bi bi-calendar-range"></i> Quy trình chốt phí</a></li>
+              <li><a href="#tinh-nang-khac" class="sidebar-link"><i class="bi bi-grid-3x3-gap"></i> Tính năng bổ sung</a></li>
+              <li><a href="#video-huong-dan" class="sidebar-link text-danger"><i class="bi bi-play-btn"></i> Video Library</a></li>
+            </ul>
+          </div>
+        </aside>
 
-        <!-- Step 01: Duyệt Cư dân -->
-        <div class="guide-step" id="duyet-cu-dan">
-            <div class="step-marker">01</div>
-            <div class="badge-task badge-daily">Hàng ngày</div>
-            <h3 class="fw-bold mb-4">1. Duyệt Cư dân</h3>
-            <div class="row align-items-center image-group">
-                <div class="col-md-5 mb-4">
-                    <div class="guide-img-wrapper shadow-sm border rounded">
-                        <img src="images/web-app/web_app_1.1.png" data-bs-toggle="modal" data-bs-target="#imageModal" data-image-full="images/web-app/web_app_1.1.png" class="img-fluid">
-                    </div>
-                    <div class="d-flex gap-2 mt-2">
-                        <img src="images/web-app/web_app_1.2.png" data-bs-toggle="modal" data-bs-target="#imageModal" data-image-full="images/web-app/web_app_1.2.png" class="gallery-thumb border">
-                        <img src="images/web-app/web_app_1.3.png" data-bs-toggle="modal" data-bs-target="#imageModal" data-image-full="images/web-app/web_app_1.3.png" class="gallery-thumb border">
-                    </div>
+        <!-- Main Content -->
+        <div class="guide-content">
+          
+          <h2 class="guide-h2 mt-0" id="cong-viec-hang-ngay"><i class="bi bi- sun me-2"></i>I. Công việc hàng ngày</h2>
+
+          <!-- Section: Duyệt Cư dân -->
+          <section id="duyet-cu-dan" class="guide-section">
+            <span class="step-badge badge-daily">Hàng ngày</span>
+            <h3 class="guide-h3 mt-0">1. Duyệt Cư dân</h3>
+            <div class="row g-4 align-items-start">
+              <div class="col-md-6">
+                <div class="flow-indicator">
+                  <span class="flow-step">Cư dân</span> <i class="bi bi-chevron-right"></i>
+                  <span class="flow-step">Đang chờ</span> <i class="bi bi-chevron-right"></i>
+                  <span class="flow-step">Xem chi tiết</span> <i class="bi bi-chevron-right"></i>
+                  <span class="flow-step text-primary fw-bold">Duyệt</span>
                 </div>
-                <div class="col-md-7">
-                    <div class="sub-step-flow">
-                        <span>Cư dân</span> <i class="bi bi-arrow-right"></i>
-                        <span>Đang chờ</span> <i class="bi bi-arrow-right"></i>
-                        <span>Xem chi tiết</span> <i class="bi bi-arrow-right"></i>
-                        <span>Duyệt</span>
-                    </div>
-                    <p class="small">Kiểm tra thông tin, ảnh căn hộ và chọn trạng thái <strong>Đăng ký</strong> để hoàn tất phê duyệt tài khoản cư dân.</p>
-                    <a href="#" class="btn btn-sm btn-outline-primary video-btn" data-video-url="https://player.vimeo.com/video/1160102461?autoplay=1">
-                        <i class="bi bi-play-circle me-1"></i>Xem video
-                    </a>
+                <p>Kiểm tra thông tin cá nhân, ảnh căn hộ do cư dân gửi lên. Chọn trạng thái <strong>Đăng ký</strong> để hoàn tất phê duyệt tài khoản.</p>
+                <div class="guide-alert guide-alert-info">
+                  <i class="bi bi-info-circle-fill fs-4"></i>
+                  <span>Cư dân sẽ nhận được thông báo qua App ngay sau khi tài khoản được duyệt.</span>
                 </div>
+                <a href="#" class="video-widget video-btn mt-3" data-video-url="https://player.vimeo.com/video/1160102461?autoplay=1">
+                  <i class="bi bi-play-fill fs-4"></i>
+                  <span>Xem Video Hướng Dẫn</span>
+                </a>
+              </div>
+              <div class="col-md-6 image-group">
+                <div class="img-frame mb-2">
+                  <img src="images/web-app/web_app_1.1.png" data-image-full="images/web-app/web_app_1.1.png" alt="Duyệt cư dân" data-bs-toggle="modal" data-bs-target="#imageModal">
+                </div>
+                <div class="gallery-thumbs">
+                  <img src="images/web-app/web_app_1.2.png" data-image-full="images/web-app/web_app_1.2.png" class="thumb-item" data-bs-toggle="modal" data-bs-target="#imageModal">
+                  <img src="images/web-app/web_app_1.3.png" data-image-full="images/web-app/web_app_1.3.png" class="thumb-item" data-bs-toggle="modal" data-bs-target="#imageModal">
+                </div>
+              </div>
             </div>
-        </div>
+          </section>
 
-        <!-- Step 02: Cập nhật ĐMNK -->
-        <div class="guide-step" id="cap-nhat-dmnk">
-            <div class="step-marker">02</div>
-            <div class="badge-task badge-daily">Hàng ngày</div>
-            <h3 class="fw-bold mb-4">2. Cập nhật ĐMNK</h3>
-            <div class="row image-group">
-                <div class="col-md-5 mb-4">
-                    <div class="guide-img-wrapper shadow-sm border rounded">
-                        <img src="images/web-app/web_app_2.1.png" data-bs-toggle="modal" data-bs-target="#imageModal" data-image-full="images/web-app/web_app_2.1.png" class="img-fluid">
-                    </div>
-                    <div class="d-flex gap-2 mt-2 overflow-auto pb-1">
-                        <img src="images/web-app/web_app_2.2.png" data-bs-toggle="modal" data-bs-target="#imageModal" data-image-full="images/web-app/web_app_2.2.png" class="gallery-thumb border">
-                        <img src="images/web-app/web_app_2.3.png" data-bs-toggle="modal" data-bs-target="#imageModal" data-image-full="images/web-app/web_app_2.3.png" class="gallery-thumb border">
-                        <img src="images/web-app/web_app_2.4.png" data-bs-toggle="modal" data-bs-target="#imageModal" data-image-full="images/web-app/web_app_2.4.png" class="gallery-thumb border">
-                        <img src="images/web-app/web_app_2.5.png" data-bs-toggle="modal" data-bs-target="#imageModal" data-image-full="images/web-app/web_app_2.5.png" class="gallery-thumb border">
-                    </div>
+          <!-- Section: Cập nhật ĐMNK -->
+          <section id="cap-nhat-dmnk" class="guide-section">
+            <span class="step-badge badge-daily">Hàng ngày</span>
+            <h3 class="guide-h3 mt-0">2. Cập nhật Định mức nước (ĐMNK)</h3>
+            <div class="row g-4 align-items-start">
+              <div class="col-md-6 image-group">
+                <div class="img-frame mb-2">
+                  <img src="images/web-app/web_app_2.1.png" data-image-full="images/web-app/web_app_2.1.png" alt="ĐMNK" data-bs-toggle="modal" data-bs-target="#imageModal">
                 </div>
-                <div class="col-md-7">
-                    <p class="small"><strong>Cách 1:</strong> Căn hộ > Tìm kiếm > Chỉnh sửa > Cập nhật Định mức nước > Lưu.</p>
-                    <p class="small"><strong>Cách 2:</strong> Tải tệp lên > Đính kèm file Excel > Chọn Ghi đè dữ liệu > Đồng ý.</p>
-                    <a href="#" class="btn btn-sm btn-outline-primary video-btn" data-video-url="https://player.vimeo.com/video/1160102279?autoplay=1">
-                        <i class="bi bi-play-circle me-1"></i>Xem video
-                    </a>
+                <div class="gallery-thumbs">
+                  <img src="images/web-app/web_app_2.2.png" data-image-full="images/web-app/web_app_2.2.png" class="thumb-item" data-bs-toggle="modal" data-bs-target="#imageModal">
+                  <img src="images/web-app/web_app_2.3.png" data-image-full="images/web-app/web_app_2.3.png" class="thumb-item" data-bs-toggle="modal" data-bs-target="#imageModal">
+                  <img src="images/web-app/web_app_2.4.png" data-image-full="images/web-app/web_app_2.4.png" class="thumb-item" data-bs-toggle="modal" data-bs-target="#imageModal">
                 </div>
+              </div>
+              <div class="col-md-6">
+                <h4 class="guide-h4">Có 2 cách thực hiện:</h4>
+                <ul class="list-unstyled mb-4">
+                  <li class="mb-3 d-flex gap-2"><i class="bi bi-check2-circle text-primary"></i> <span><strong>Thủ công:</strong> Căn hộ > Tìm kiếm > Chỉnh sửa > Cập nhật ĐMNK.</span></li>
+                  <li class="mb-3 d-flex gap-2"><i class="bi bi-check2-circle text-primary"></i> <span><strong>Hàng loạt:</strong> Dùng tính năng <strong>Tải tệp lên</strong> để import file Excel ĐMNK mới nhất.</span></li>
+                </ul>
+                <a href="#" class="video-widget video-btn" data-video-url="https://player.vimeo.com/video/1160102279?autoplay=1">
+                  <i class="bi bi-play-fill fs-4"></i>
+                  <span>Video Hướng Dẫn Import</span>
+                </a>
+              </div>
             </div>
-        </div>
+          </section>
 
-        <!-- Step 03: Phương tiện -->
-        <div class="guide-step" id="cap-nhat-phuong-tien">
-            <div class="step-marker">03</div>
-            <div class="badge-task badge-daily">Hàng ngày</div>
-            <h3 class="fw-bold mb-4">3. Cập nhật Phương tiện</h3>
-            <div class="step-group mb-4 image-group">
-                <h6 class="fw-bold text-primary">3.1. Thêm mới / Thay đổi thông tin</h6>
-                <div class="row align-items-center">
-                    <div class="col-md-5 mb-3">
-                        <div class="guide-img-wrapper shadow-sm border rounded">
-                            <img src="images/web-app/web_app_7.1.1.png" data-bs-toggle="modal" data-bs-target="#imageModal" data-image-full="images/web-app/web_app_7.1.1.png" class="img-fluid">
-                        </div>
-                        <div class="d-flex gap-2 mt-2">
-                            <img src="images/web-app/web_app_7.1.2.png" data-bs-toggle="modal" data-bs-target="#imageModal" data-image-full="images/web-app/web_app_7.1.2.png" class="gallery-thumb border">
-                            <img src="images/web-app/web_app_7.1.3.png" data-bs-toggle="modal" data-bs-target="#imageModal" data-image-full="images/web-app/web_app_7.1.3.png" class="gallery-thumb border">
-                            <img src="images/web-app/web_app_7.2.1.png" data-bs-toggle="modal" data-bs-target="#imageModal" data-image-full="images/web-app/web_app_7.2.1.png" class="gallery-thumb border">
-                        </div>
-                    </div>
-                    <div class="col-md-7">
-                        <p class="small">Vào mục <strong>Phương tiện</strong> > Thêm mới hoặc Tìm kiếm để chỉnh sửa. Lưu ý không nhập ký tự đặc biệt trong biển số.</p>
-                        <a href="#" class="btn btn-sm btn-outline-primary video-btn" data-video-url="https://player.vimeo.com/video/1160102846?autoplay=1">
-                            <i class="bi bi-play-circle me-1"></i>Xem video
-                        </a>
-                    </div>
+          <!-- Section: Phương tiện -->
+          <section id="cap-nhat-phuong-tien" class="guide-section">
+            <span class="step-badge badge-daily">Hàng ngày</span>
+            <h3 class="guide-h3 mt-0">3. Cập nhật Phương tiện</h3>
+            <div class="row g-4">
+              <div class="col-md-6">
+                <p>Quản lý biển số xe, loại xe và trạng thái gửi xe của cư dân.</p>
+                <div class="guide-alert guide-alert-warning">
+                  <i class="bi bi-exclamation-triangle-fill fs-4"></i>
+                  <span>Tuyệt đối không nhập ký tự đặc biệt (như dấu gạch ngang, dấu chấm) vào ô Biển số để hệ thống nhận diện đúng.</span>
                 </div>
+                <a href="#" class="video-widget video-btn" data-video-url="https://player.vimeo.com/video/1160102846?autoplay=1">
+                  <i class="bi bi-play-fill fs-4"></i>
+                  <span>Video Hướng Dẫn</span>
+                </a>
+              </div>
+              <div class="col-md-6 image-group">
+                <div class="img-frame">
+                  <img src="images/web-app/web_app_7.1.1.png" data-image-full="images/web-app/web_app_7.1.1.png" alt="Phương tiện" data-bs-toggle="modal" data-bs-target="#imageModal">
+                </div>
+                <div class="gallery-thumbs">
+                  <img src="images/web-app/web_app_7.1.2.png" data-image-full="images/web-app/web_app_7.1.2.png" class="thumb-item" data-bs-toggle="modal" data-bs-target="#imageModal">
+                  <img src="images/web-app/web_app_7.1.3.png" data-image-full="images/web-app/web_app_7.1.3.png" class="thumb-item" data-bs-toggle="modal" data-bs-target="#imageModal">
+                  <img src="images/web-app/web_app_7.2.1.png" data-image-full="images/web-app/web_app_7.2.1.png" class="thumb-item" data-bs-toggle="modal" data-bs-target="#imageModal">
+                </div>
+              </div>
             </div>
-        </div>
+          </section>
 
-        <!-- Step 04: Thanh toán -->
-        <div class="guide-step" id="cap-nhat-thanh-toan-bao-phi">
-            <div class="step-marker">04</div>
-            <div class="badge-task badge-daily">Hàng ngày</div>
-            <h3 class="fw-bold mb-4">4. Cập nhật thanh toán báo phí</h3>
-            <div class="row align-items-center image-group">
-                <div class="col-md-5 mb-4">
-                    <div class="guide-img-wrapper shadow-sm border rounded">
-                        <img src="images/web-app/web_app_3.1.png" data-bs-toggle="modal" data-bs-target="#imageModal" data-image-full="images/web-app/web_app_3.1.png" class="img-fluid">
-                    </div>
-                    <div class="d-flex gap-2 mt-2">
-                        <img src="images/web-app/web_app_3.2.png" data-bs-toggle="modal" data-bs-target="#imageModal" data-image-full="images/web-app/web_app_3.2.png" class="gallery-thumb border">
-                    </div>
+          <!-- Section: Chốt phí hàng tháng -->
+          <h2 class="guide-h2" id="cong-viec-hang-thang"><i class="bi bi-calendar-check me-2"></i>II. Quy trình chốt báo phí hàng tháng</h2>
+          <section class="guide-section">
+            <span class="step-badge badge-monthly">Hàng tháng</span>
+            <div class="row g-4">
+              <div class="col-md-4">
+                <div class="p-3 bg-light rounded-4 border h-100">
+                  <h4 class="guide-h4">B1. Tải chỉ số nước</h4>
+                  <p class="small text-muted">Import file Excel chỉ số nước tiêu thụ từ đơn vị cấp nước hoặc kỹ thuật.</p>
+                  <div class="img-frame">
+                    <img src="images/web-app/monthly_1.1.png" data-image-full="images/web-app/monthly_1.1.png" alt="Chỉ số nước" data-bs-toggle="modal" data-bs-target="#imageModal">
+                  </div>
                 </div>
-                <div class="col-md-7">
-                    <p class="small">Báo phí > Tìm kiếm Căn hộ > Xem chi tiết > Cập nhật Trạng thái thanh toán (Chuyển khoản/Tiền mặt).</p>
+              </div>
+              <div class="col-md-4">
+                <div class="p-3 bg-light rounded-4 border h-100">
+                  <h4 class="guide-h4">B2. Tạo phí tự động</h4>
+                  <p class="small text-muted">Sử dụng chức năng "Hành động > Tạo tự động" để hệ thống tính toán phí cho toàn dự án.</p>
+                  <div class="img-frame">
+                    <img src="images/web-app/monthly_3.1.png" data-image-full="images/web-app/monthly_3.1.png" alt="Tạo phí" data-bs-toggle="modal" data-bs-target="#imageModal">
+                  </div>
                 </div>
+              </div>
+              <div class="col-md-4">
+                <div class="p-3 bg-light rounded-4 border h-100">
+                  <h4 class="guide-h4">B3. Phát hành báo phí</h4>
+                  <p class="small text-muted">Kiểm tra lại số liệu và nhấn "Phát hành" để cư dân có thể tra cứu trên App.</p>
+                  <div class="img-frame">
+                    <img src="images/web-app/monthly_4.1.png" data-image-full="images/web-app/monthly_4.1.png" alt="Phát hành" data-bs-toggle="modal" data-bs-target="#imageModal">
+                  </div>
+                </div>
+              </div>
             </div>
-        </div>
+          </section>
 
-        <!-- Step 05: Phiếu thu -->
-        <div class="guide-step" id="tao-phieu-thu-tien-mat">
-            <div class="step-marker">05</div>
-            <div class="badge-task badge-daily">Hàng ngày</div>
-            <h3 class="fw-bold mb-4">5. Tạo phiếu thu tiền mặt</h3>
-            <div class="row image-group">
-                <div class="col-md-5 mb-4">
-                    <div class="guide-img-wrapper shadow-sm border rounded">
-                        <img src="images/web-app/web_app_4.1.1.png" data-bs-toggle="modal" data-bs-target="#imageModal" data-image-full="images/web-app/web_app_4.1.1.png" class="img-fluid">
-                    </div>
-                    <div class="d-flex gap-2 mt-2">
-                        <img src="images/web-app/web_app_4.1.2.png" data-bs-toggle="modal" data-bs-target="#imageModal" data-image-full="images/web-app/web_app_4.1.2.png" class="gallery-thumb border">
-                        <img src="images/web-app/web_app_4.1.3.png" data-bs-toggle="modal" data-bs-target="#imageModal" data-image-full="images/web-app/web_app_4.1.3.png" class="gallery-thumb border">
-                        <img src="images/web-app/web_app_4.1.4.png" data-bs-toggle="modal" data-bs-target="#imageModal" data-image-full="images/web-app/web_app_4.1.4.png" class="gallery-thumb border">
-                    </div>
+          <!-- Section: Tính năng bổ sung -->
+          <h2 class="guide-h2" id="tinh-nang-khac"><i class="bi bi-plus-circle me-2"></i>III. Các tính năng bổ sung</h2>
+          <section class="guide-section">
+            <div class="row g-4">
+              <div class="col-md-6">
+                <h4 class="guide-h4">Cấu hình hiển thị & Lọc dữ liệu</h4>
+                <p>Mọi bảng dữ liệu trên WebApp đều hỗ trợ: Lọc theo thời gian, Tìm kiếm từ khóa, Thùng rác và Chọn cột hiển thị.</p>
+                <div class="img-frame image-group">
+                  <img src="images/web-app/web_app_8.1.1.png" data-image-full="images/web-app/web_app_8.1.1.png" alt="Cấu hình" data-bs-toggle="modal" data-bs-target="#imageModal">
+                  <div class="gallery-thumbs p-2">
+                    <img src="images/web-app/web_app_8.1.2.png" data-image-full="images/web-app/web_app_8.1.2.png" class="thumb-item" data-bs-toggle="modal" data-bs-target="#imageModal">
+                    <img src="images/web-app/web_app_8.1.3.png" data-image-full="images/web-app/web_app_8.1.3.png" class="thumb-item" data-bs-toggle="modal" data-bs-target="#imageModal">
+                    <img src="images/web-app/web_app_8.1.4.png" data-image-full="images/web-app/web_app_8.1.4.png" class="thumb-item" data-bs-toggle="modal" data-bs-target="#imageModal">
+                  </div>
                 </div>
-                <div class="col-md-7">
-                    <p class="small">Phiếu thu > Thêm mới > Chọn Căn hộ/Nhân viên > Nhập nội dung & số tiền > Lưu & In phiếu.</p>
-                    <a href="#" class="btn btn-sm btn-outline-primary video-btn" data-video-url="https://player.vimeo.com/video/1160103000?autoplay=1">
-                        <i class="bi bi-play-circle me-1"></i>Xem video
-                    </a>
+              </div>
+              <div class="col-md-6">
+                <h4 class="guide-h4">Thiết lập mẫu in & In hàng loạt</h4>
+                <p>Hỗ trợ in Phiếu thu, Phiếu chi và Báo phí hàng loạt qua công cụ MyExcel.</p>
+                <div class="img-frame image-group">
+                  <img src="images/web-app/web_app_10.1.png" data-image-full="images/web-app/web_app_10.1.png" alt="Mẫu in" data-bs-toggle="modal" data-bs-target="#imageModal">
+                  <div class="gallery-thumbs p-2">
+                    <img src="images/web-app/web_app_10.2.png" data-image-full="images/web-app/web_app_10.2.png" class="thumb-item" data-bs-toggle="modal" data-bs-target="#imageModal">
+                    <img src="images/web-app/web_app_10.3.png" data-image-full="images/web-app/web_app_10.3.png" class="thumb-item" data-bs-toggle="modal" data-bs-target="#imageModal">
+                    <img src="images/web-app/web_app_10.4.png" data-image-full="images/web-app/web_app_10.4.png" class="thumb-item" data-bs-toggle="modal" data-bs-target="#imageModal">
+                  </div>
                 </div>
+              </div>
             </div>
-        </div>
+          </section>
 
-        <!-- Step 06: Thông báo -->
-        <div class="guide-step" id="thong-bao-qua-app">
-            <div class="step-marker">06</div>
-            <div class="badge-task badge-daily">Hàng ngày</div>
-            <h3 class="fw-bold mb-4">6. Thông báo qua APP</h3>
-            <div class="row align-items-center image-group">
-                <div class="col-md-5 mb-4">
-                    <div class="guide-img-wrapper shadow-sm border rounded">
-                        <img src="images/web-app/web_app_5.1.png" data-bs-toggle="modal" data-bs-target="#imageModal" data-image-full="images/web-app/web_app_5.1.png" class="img-fluid">
-                    </div>
-                    <div class="d-flex gap-2 mt-2">
-                        <img src="images/web-app/web_app_5.2.png" data-bs-toggle="modal" data-bs-target="#imageModal" data-image-full="images/web-app/web_app_5.2.png" class="gallery-thumb border">
-                    </div>
-                </div>
-                <div class="col-md-7">
-                    <p class="small">Bài viết > Thông báo > Thêm mới. Lưu ý chọn "Phát hành" và "Thông báo đẩy" để cư dân nhận được tin nhắn trên điện thoại.</p>
-                    <a href="#" class="btn btn-sm btn-outline-primary video-btn" data-video-url="https://player.vimeo.com/video/1160103020?autoplay=1">
-                        <i class="bi bi-play-circle me-1"></i>Xem video
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Step 07: Phản hồi -->
-        <div class="guide-step" id="phan-hoi-tu-cu-dan">
-            <div class="step-marker">07</div>
-            <div class="badge-task badge-daily">Hàng ngày</div>
-            <h3 class="fw-bold mb-4">7. Phản hồi từ cư dân</h3>
-            <div class="row align-items-center image-group">
-                <div class="col-md-5 mb-4">
-                    <div class="guide-img-wrapper shadow-sm border rounded">
-                        <img src="images/web-app/web_app_6.1.png" data-bs-toggle="modal" data-bs-target="#imageModal" data-image-full="images/web-app/web_app_6.1.png" class="img-fluid">
-                    </div>
-                    <div class="d-flex gap-2 mt-2">
-                        <img src="images/web-app/web_app_6.2.png" data-bs-toggle="modal" data-bs-target="#imageModal" data-image-full="images/web-app/web_app_6.2.png" class="gallery-thumb border">
-                        <img src="images/web-app/web_app_6.3.png" data-bs-toggle="modal" data-bs-target="#imageModal" data-image-full="images/web-app/web_app_6.3.png" class="gallery-thumb border">
-                    </div>
-                </div>
-                <div class="col-md-7">
-                    <p class="small">Phiếu hỗ trợ > Xem chi tiết > Trả lời hội thoại. Có thể đính kèm ảnh minh họa cho cư dân.</p>
-                </div>
-            </div>
-        </div>
-
-        <h2 class="mt-5 mb-5 text-primary fw-bold" id="cong-viec-hang-thang">II. Công việc hàng tháng</h2>
-
-        <!-- Step 08: Chốt báo phí -->
-        <div class="guide-step" id="chot-bao-phi-hang-thang">
-            <div class="step-marker">08</div>
-            <div class="badge-task badge-monthly">Hàng tháng</div>
-            <h3 class="fw-bold mb-4">Quy trình chốt báo phí</h3>
-            
-            <div class="step-group mb-4 image-group">
-                <h6 class="fw-bold text-primary">8.1. Tải lên chỉ số nước</h6>
-                <div class="row">
-                    <div class="col-md-5 mb-3">
-                        <img src="images/web-app/monthly_1.1.png" data-bs-toggle="modal" data-bs-target="#imageModal" data-image-full="images/web-app/monthly_1.1.png" class="img-fluid rounded border">
-                        <div class="d-flex gap-2 mt-2">
-                            <img src="images/web-app/monthly_1.2.png" data-bs-toggle="modal" data-bs-target="#imageModal" data-image-full="images/web-app/monthly_1.2.png" class="gallery-thumb border">
-                            <img src="images/web-app/monthly_1.3.png" data-bs-toggle="modal" data-bs-target="#imageModal" data-image-full="images/web-app/monthly_1.3.png" class="gallery-thumb border">
-                            <img src="images/web-app/monthly_1.4.png" data-bs-toggle="modal" data-bs-target="#imageModal" data-image-full="images/web-app/monthly_1.4.png" class="gallery-thumb border">
-                        </div>
-                    </div>
-                    <div class="col-md-7 small">
-                        Chỉ số tiêu thụ > Chỉ số nước > Tải lên. Lưu ý kiểm tra kỹ ĐMNK sau khi tải.
-                    </div>
-                </div>
-            </div>
-
-            <div class="step-group mb-4 image-group">
-                <h6 class="fw-bold text-primary">8.2 - 8.3. Kiểm tra & Tạo phí tự động</h6>
-                <div class="row">
-                    <div class="col-md-5 mb-3">
-                        <img src="images/web-app/monthly_3.1.png" data-bs-toggle="modal" data-bs-target="#imageModal" data-image-full="images/web-app/monthly_3.1.png" class="img-fluid rounded border">
-                        <div class="d-flex gap-2 mt-2">
-                            <img src="images/web-app/monthly_3.2.png" data-bs-toggle="modal" data-bs-target="#imageModal" data-image-full="images/web-app/monthly_3.2.png" class="gallery-thumb border">
-                            <img src="images/web-app/monthly_2.1.png" data-bs-toggle="modal" data-bs-target="#imageModal" data-image-full="images/web-app/monthly_2.1.png" class="gallery-thumb border">
-                        </div>
-                    </div>
-                    <div class="col-md-7 small">
-                        Báo phí > Hành động > Tạo tự động. Kiểm tra cấu hình giá trước khi chạy lệnh.
-                    </div>
-                </div>
-            </div>
-
-            <div class="step-group image-group">
-                <h6 class="fw-bold text-primary">8.4 - 8.5. Phát hành & Gửi thông báo</h6>
-                <div class="row">
-                    <div class="col-md-5 mb-3">
-                        <img src="images/web-app/monthly_4.1.png" data-bs-toggle="modal" data-bs-target="#imageModal" data-image-full="images/web-app/monthly_4.1.png" class="img-fluid rounded border">
-                        <div class="d-flex gap-2 mt-2">
-                            <img src="images/web-app/monthly_4.2.png" data-bs-toggle="modal" data-bs-target="#imageModal" data-image-full="images/web-app/monthly_4.2.png" class="gallery-thumb border">
-                            <img src="images/web-app/monthly_5.1.png" data-bs-toggle="modal" data-bs-target="#imageModal" data-image-full="images/web-app/monthly_5.1.png" class="gallery-thumb border">
-                        </div>
-                    </div>
-                    <div class="col-md-7 small">
-                        Tổng quan > Phát hành báo phí > Gửi thông báo qua APP/Email.
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <h2 class="mt-5 mb-5 text-primary fw-bold" id="khac">III. Khác</h2>
-
-        <!-- Step 09: Tính năng bổ sung -->
-        <div class="guide-step" id="tinh-nang-khac">
-            <div class="step-marker">09</div>
-            <h3 class="fw-bold mb-4">Các tính năng bổ sung</h3>
-            
-            <div class="step-group mb-4 image-group">
-                <h6 class="fw-bold">9.1. Giao diện & Công cụ</h6>
-                <div class="row">
-                    <div class="col-md-5 mb-3">
-                        <img src="images/web-app/web_app_8.1.1.png" data-bs-toggle="modal" data-bs-target="#imageModal" data-image-full="images/web-app/web_app_8.1.1.png" class="img-fluid rounded border">
-                        <div class="d-flex gap-2 mt-2 overflow-auto">
-                            <img src="images/web-app/web_app_8.1.2.png" data-image-full="images/web-app/web_app_8.1.2.png" class="gallery-thumb border" data-bs-toggle="modal" data-bs-target="#imageModal">
-                            <img src="images/web-app/web_app_8.1.3.png" data-image-full="images/web-app/web_app_8.1.3.png" class="gallery-thumb border" data-bs-toggle="modal" data-bs-target="#imageModal">
-                            <img src="images/web-app/web_app_8.1.4.png" data-image-full="images/web-app/web_app_8.1.4.png" class="gallery-thumb border" data-bs-toggle="modal" data-bs-target="#imageModal">
-                        </div>
-                    </div>
-                    <div class="col-md-7 small">
-                        Mỗi trang đều có bộ lọc, thùng rác, tìm kiếm và tùy chọn cột hiển thị linh hoạt.
-                    </div>
-                </div>
-            </div>
-
-            <div class="step-group mb-4 image-group">
-                <h6 class="fw-bold">9.2. Xóa - Thêm nhân khẩu</h6>
-                <div class="row">
-                    <div class="col-md-5 mb-3">
-                        <img src="images/web-app/web_app_9.1.png" data-bs-toggle="modal" data-bs-target="#imageModal" data-image-full="images/web-app/web_app_9.1.png" class="img-fluid rounded border">
-                        <div class="d-flex gap-2 mt-2">
-                            <img src="images/web-app/web_app_9.2.png" data-image-full="images/web-app/web_app_9.2.png" class="gallery-thumb border" data-bs-toggle="modal" data-bs-target="#imageModal">
-                            <img src="images/web-app/web_app_9.3.png" data-image-full="images/web-app/web_app_9.3.png" class="gallery-thumb border" data-bs-toggle="modal" data-bs-target="#imageModal">
-                        </div>
-                    </div>
-                    <div class="col-md-7 small">
-                        Căn hộ > Xem chi tiết > Nhân khẩu để thực hiện thêm/xóa cư dân.
-                    </div>
-                </div>
-            </div>
-
-            <div class="step-group image-group">
-                <h6 class="fw-bold">9.3. In phiếu hàng loạt</h6>
-                <div class="row">
-                    <div class="col-md-5 mb-3">
-                        <img src="images/web-app/web_app_10.1.png" data-bs-toggle="modal" data-bs-target="#imageModal" data-image-full="images/web-app/web_app_10.1.png" class="img-fluid rounded border">
-                        <div class="d-flex gap-2 mt-2 overflow-auto">
-                            <img src="images/web-app/web_app_10.2.png" data-image-full="images/web-app/web_app_10.2.png" class="gallery-thumb border" data-bs-toggle="modal" data-bs-target="#imageModal">
-                            <img src="images/web-app/web_app_10.3.png" data-image-full="images/web-app/web_app_10.3.png" class="gallery-thumb border" data-bs-toggle="modal" data-bs-target="#imageModal">
-                            <img src="images/web-app/web_app_10.4.png" data-image-full="images/web-app/web_app_10.4.png" class="gallery-thumb border" data-bs-toggle="modal" data-bs-target="#imageModal">
-                        </div>
-                    </div>
-                    <div class="col-md-7 small">
-                        Phiếu thu > Xem chi tiết > Thiết lập in. Dùng menu <strong>MyExcel</strong> để in hàng loạt báo phí.
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <h2 class="mt-5 mb-5 text-primary fw-bold" id="video-huong-dan">IV. Video hướng dẫn</h2>
-        <div class="guide-step">
-            <div class="step-marker">10</div>
-            <div class="badge-task badge-video">Video Library</div>
+          <!-- Video Section -->
+          <section id="video-huong-dan" class="guide-section border-danger">
+            <span class="step-badge bg-danger">Video Library</span>
+            <h2 class="guide-h2 mt-0 text-danger border-danger">Thư viện Video hướng dẫn</h2>
             <div class="row g-3">
-                <div class="col-md-4">
-                    <button class="btn btn-outline-primary w-100 video-btn" data-video-url="https://player.vimeo.com/video/1160102461">Duyệt cư dân</button>
-                </div>
-                <div class="col-md-4">
-                    <button class="btn btn-outline-primary w-100 video-btn" data-video-url="https://player.vimeo.com/video/1160102373">Cập nhật thông tin</button>
-                </div>
-                <div class="col-md-4">
-                    <button class="btn btn-outline-primary w-100 video-btn" data-video-url="https://player.vimeo.com/video/1160102279">Định mức nước</button>
-                </div>
-                <!-- Bổ sung thêm các nút video khác tại đây -->
+              <div class="col-md-4">
+                <button class="btn btn-outline-primary w-100 video-btn py-3" data-video-url="https://player.vimeo.com/video/1160102461">
+                  <i class="bi bi-play-circle me-2"></i>Duyệt cư dân
+                </button>
+              </div>
+              <div class="col-md-4">
+                <button class="btn btn-outline-primary w-100 video-btn py-3" data-video-url="https://player.vimeo.com/video/1160102373">
+                  <i class="bi bi-play-circle me-2"></i>Cập nhật thông tin
+                </button>
+              </div>
+              <div class="col-md-4">
+                <button class="btn btn-outline-primary w-100 video-btn py-3" data-video-url="https://player.vimeo.com/video/1160102279">
+                  <i class="bi bi-play-circle me-2"></i>Định mức nước
+                </button>
+              </div>
             </div>
+          </section>
+
         </div>
-
-    </div> <!-- End guide-container -->
-</main>
-
-<!-- Back to Menu -->
-<a href="#table-of-contents" id="back-to-menu" class="btn btn-primary back-to-menu-btn shadow"><i class="bi bi-arrow-up"></i></a>
-
-<!-- Modals -->
-<div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-xl">
-        <div class="modal-content bg-transparent border-0">
-            <div class="modal-body p-0 text-center">
-                <div id="modalCarousel" class="carousel slide" data-bs-ride="false">
-                    <div class="carousel-indicators"></div>
-                    <div class="carousel-inner"></div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#modalCarousel" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#modalCarousel" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
-</div>
+  </main>
 
-<div class="modal fade" id="videoModal" tabindex="-1" aria-hidden="true">
+  <!-- Modals -->
+  <div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-xl">
-        <div class="modal-content bg-dark border-0">
-            <div class="modal-header border-0 pb-0 shadow-none"><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div>
-            <div class="modal-body p-0"><div class="ratio ratio-16x9"><iframe id="modalVideoIframe" src="" allowfullscreen allow="autoplay"></iframe></div></div>
+      <div class="modal-content bg-transparent border-0">
+        <div class="modal-body p-0 text-center">
+          <div id="modalCarousel" class="carousel slide" data-bs-ride="false">
+            <div class="carousel-inner"></div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#modalCarousel" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#modalCarousel" data-bs-slide="next">
+              <span class="carousel-control-next-icon"></span>
+            </button>
+          </div>
         </div>
+      </div>
     </div>
-</div>
+  </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <div class="modal fade" id="videoModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+      <div class="modal-content bg-dark border-0 rounded-4 overflow-hidden">
+        <div class="modal-header border-0 pb-0 position-absolute top-0 end-0 z-3">
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body p-0">
+          <div class="ratio ratio-16x9">
+            <iframe id="modalVideoIframe" src="" allowfullscreen allow="autoplay"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/main.js"></script>
+
   <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const imageModal = document.getElementById('imageModal');
-    const modalCarouselEl = document.getElementById('modalCarousel');
-    const modalCarouselInner = modalCarouselEl.querySelector('.carousel-inner');
-    const modalCarouselIndicators = modalCarouselEl.querySelector('.carousel-indicators');
+    // Sidebar Active State
+    window.addEventListener('scroll', () => {
+      let current = '';
+      const sections = document.querySelectorAll('section, h2[id]');
+      const navLinks = document.querySelectorAll('.sidebar-link');
+      
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (pageYOffset >= sectionTop - 150) {
+          current = section.getAttribute('id');
+        }
+      });
 
-    let scale = 1, panning = false, pointX = 0, pointY = 0, startX = 0, startY = 0, dragStartX = 0;
-    let isDragging = false;
-
-    // Ngăn chặn kéo ảnh mặc định
-    modalCarouselEl.addEventListener('dragstart', (e) => e.preventDefault());
-
-    imageModal.addEventListener('show.bs.modal', function(event) {
-        const clickedImg = event.relatedTarget;
-        const imageGroup = clickedImg.closest('.image-group');
-        if (!imageGroup) return;
-
-        const allImages = Array.from(imageGroup.querySelectorAll('[data-image-full]'));
-        const clickedSrc = clickedImg.getAttribute('data-image-full');
-        const clickedIndex = allImages.findIndex(img => img.getAttribute('data-image-full') === clickedSrc);
-
-        modalCarouselInner.innerHTML = '';
-        modalCarouselIndicators.innerHTML = '';
-
-        allImages.forEach((img, index) => {
-            const src = img.getAttribute('data-image-full');
-            const itemDiv = document.createElement('div');
-            itemDiv.className = `carousel-item ${index === clickedIndex ? 'active' : ''}`;
-            itemDiv.innerHTML = `<div class="zoom-wrapper d-flex justify-content-center align-items-center" style="min-height: 80vh; user-select: none;">
-                                    <img src="${src}" class="d-block img-fluid" style="transition: transform 0.1s ease-out; cursor: grab; max-height: 85vh; pointer-events: none;">
-                                   </div>`;
-            modalCarouselInner.appendChild(itemDiv);
-
-            const indicator = document.createElement('button');
-            indicator.type = 'button'; indicator.dataset.bsTarget = '#modalCarousel'; indicator.dataset.bsSlideTo = index;
-            if (index === clickedIndex) indicator.className = 'active';
-            modalCarouselIndicators.appendChild(indicator);
-        });
-        scale = 1; pointX = 0; pointY = 0;
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href').includes(current)) {
+          link.classList.add('active');
+        }
+      });
     });
 
-    const handleStart = (e) => {
-        const clientX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
-        dragStartX = clientX;
-        isDragging = true;
+    // Image Modal with Carousel
+    const imageModal = document.getElementById('imageModal');
+    const modalCarouselInner = imageModal.querySelector('.carousel-inner');
 
-        if (scale > 1) {
-            panning = true; 
-            startX = clientX - pointX; 
-            startY = (e.type.includes('touch') ? e.touches[0].clientY : e.clientY) - pointY;
-            const activeImg = modalCarouselEl.querySelector('.carousel-item.active img');
-            if (activeImg) {
-                activeImg.style.cursor = 'grabbing';
-                activeImg.style.transition = 'none';
-            }
-        }
-    };
+    imageModal.addEventListener('show.bs.modal', (e) => {
+      const clickedImg = e.relatedTarget;
+      const group = clickedImg.closest('.image-group');
+      if (!group) {
+          modalCarouselInner.innerHTML = `<div class="carousel-item active"><img src="${clickedImg.getAttribute('data-image-full')}" class="d-block w-100 rounded-4"></div>`;
+          return;
+      }
 
-    const handleMove = (e) => {
-        if (!isDragging) return;
-        const clientX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
-        const clientY = e.type.includes('touch') ? e.touches[0].clientY : e.clientY;
+      const allImgs = Array.from(group.querySelectorAll('[data-image-full]'));
+      const clickedSrc = clickedImg.getAttribute('data-image-full');
 
-        if (panning && scale > 1) {
-            e.preventDefault();
-            pointX = clientX - startX;
-            pointY = clientY - startY;
-            const activeImg = modalCarouselEl.querySelector('.carousel-item.active img');
-            if (activeImg) activeImg.style.transform = `translate(${pointX}px, ${pointY}px) scale(${scale})`;
-        }
-    };
-
-    const handleEnd = (e) => {
-        if (!isDragging) return;
-        isDragging = false;
-        const clientX = e.type.includes('touch') ? (e.changedTouches[0].clientX) : e.clientX;
-        
-        if (panning) {
-            panning = false;
-            const activeImg = modalCarouselEl.querySelector('.carousel-item.active img');
-            if (activeImg) {
-                activeImg.style.cursor = 'grab';
-                activeImg.style.transition = 'transform 0.1s ease-out';
-            }
-        } else if (scale === 1) {
-            const diffX = dragStartX - clientX;
-            if (Math.abs(diffX) > 50) { // Ngưỡng vuốt
-                const carousel = bootstrap.Carousel.getOrCreateInstance(modalCarouselEl);
-                if (diffX > 0) carousel.next(); else carousel.prev();
-            }
-        }
-    };
-
-    modalCarouselEl.addEventListener('mousedown', handleStart);
-    modalCarouselEl.addEventListener('touchstart', handleStart, { passive: true });
-    window.addEventListener('mousemove', handleMove, { passive: false });
-    window.addEventListener('touchmove', handleMove, { passive: false });
-    window.addEventListener('mouseup', handleEnd);
-    window.addEventListener('touchend', handleEnd);
-
-    modalCarouselEl.addEventListener('wheel', (e) => {
-        e.preventDefault();
-        const activeImg = modalCarouselEl.querySelector('.carousel-item.active img');
-        if (!activeImg) return;
-        const delta = e.deltaY > 0 ? -0.25 : 0.25;
-        scale = Math.min(Math.max(1, scale + delta), 10);
-        if (scale === 1) { pointX = 0; pointY = 0; }
-        activeImg.style.transform = `translate(${pointX}px, ${pointY}px) scale(${scale})`;
-        activeImg.style.cursor = scale > 1 ? 'grab' : 'default';
-    }, { passive: false });
-
-    modalCarouselEl.addEventListener('slide.bs.carousel', () => {
-        scale = 1; pointX = 0; pointY = 0;
-        modalCarouselEl.querySelectorAll('img').forEach(img => {
-            img.style.transform = '';
-            img.style.cursor = 'grab';
-        });
+      modalCarouselInner.innerHTML = allImgs.map((img, idx) => `
+        <div class="carousel-item ${img.getAttribute('data-image-full') === clickedSrc ? 'active' : ''}">
+          <img src="${img.getAttribute('data-image-full')}" class="d-block w-100 rounded-4">
+        </div>
+      `).join('');
     });
 
     // Video Modal
     const videoModal = document.getElementById('videoModal');
     document.querySelectorAll('.video-btn').forEach(btn => {
-        btn.addEventListener('click', function(e) {
-            e.preventDefault();
-            document.getElementById('modalVideoIframe').src = this.getAttribute('data-video-url');
-            new bootstrap.Modal(videoModal).show();
-        });
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        document.getElementById('modalVideoIframe').src = btn.getAttribute('data-video-url');
+        new bootstrap.Modal(videoModal).show();
+      });
     });
-    videoModal.addEventListener('hidden.bs.modal', () => { document.getElementById('modalVideoIframe').src = ''; });
-});
-</script>
-<script src="js/components.js"></script>
+    videoModal.addEventListener('hidden.bs.modal', () => document.getElementById('modalVideoIframe').src = '');
+  </script>
 </body>
 </html>

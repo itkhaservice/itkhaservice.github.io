@@ -1,0 +1,171 @@
+🚀 UI DESIGN RULES – CHUẨN CHO WEBSITE / ADMIN / TUTORIAL
+
+────────────────────────────
+
+1. LAYOUT CHUẨN
+   ────────────────────────────
+   Header (fixed)
+   ↓
+   Breadcrumb (optional)
+   ↓
+   Page Header (Title + Actions)
+   ↓
+   Content Container
+   ↓
+   Section Blocks
+   ↓
+   Footer
+
+* Max width: 1200–1320px
+* Padding global: 24px
+* Nội dung luôn căn giữa
+
+────────────────────────────
+2. SPACING (QUAN TRỌNG NHẤT)
+────────────────────────────
+Sử dụng hệ 8px:
+
+4 / 8 / 16 / 24 / 32 / 48 / 64
+
+Rule:
+
+* Section: 48–64px
+* Block: 24px
+* Element: 16px
+
+❌ Không dùng số lẻ
+
+────────────────────────────
+3. TYPOGRAPHY
+────────────────────────────
+Font:
+
+* Body: Inter
+* Code: Fira Code
+
+Scale:
+
+* H1: 28px Bold
+
+* H2: 22px SemiBold
+
+* H3: 18px Medium
+
+* Body: 14–16px Regular
+
+* Caption: 12px
+
+* Line-height: 1.6
+
+* Không quá 3 size trong 1 block
+
+────────────────────────────
+4. COLOR SYSTEM
+────────────────────────────
+Primary: #108042
+Success: #22C55E
+Warning: #F59E0B
+Danger: #EF4444
+Gray: #111 → #999 → #EEE
+
+Rule:
+
+* 1 màu chính
+* 1 màu phụ
+* Không quá 5 màu
+
+────────────────────────────
+5. BUTTON RULE
+────────────────────────────
+
+* Height: 36–40px
+* Radius: 6–8px
+
+Phân cấp:
+
+* Primary → action chính (1 nút duy nhất)
+* Secondary → action phụ
+* Danger → xóa
+
+────────────────────────────
+6. INPUT / FORM
+────────────────────────────
+
+* Label nằm trên
+* Spacing: 16px
+* Border: #ddd
+* Focus: màu primary
+* Validate realtime
+
+────────────────────────────
+7. TABLE
+────────────────────────────
+
+* Có hover row
+* Có checkbox select
+* Action nằm bên phải
+* Header rõ ràng
+
+Rule đặc biệt:
+
+* “Xóa nhiều” → mặc định ẩn
+* Chỉ hiện khi select nhiều
+
+────────────────────────────
+8. CARD / SECTION
+────────────────────────────
+
+* Padding: 16–24px
+* Radius: 8–12px
+* Shadow nhẹ
+
+Structure:
+Section Title
+↓
+Spacing
+↓
+Content
+
+* Mỗi section cách nhau 48–64px
+
+────────────────────────────
+9. UX (BẮT BUỘC)
+────────────────────────────
+
+* Có loading
+* Có empty state
+* Có confirm khi xóa
+* Có hover effect
+* Có Back to Top
+
+────────────────────────────
+10. CONSISTENCY (QUAN TRỌNG NHẤT)
+────────────────────────────
+Tất cả page phải:
+
+* Cùng layout
+* Cùng font
+* Cùng spacing
+* Cùng style button
+
+❌ Không mỗi page một kiểu
+
+────────────────────────────
+11. CHECKLIST
+────────────────────────────
+[ ] Layout đúng
+[ ] Spacing 8px
+[ ] Font đúng scale
+[ ] Button đúng cấp
+[ ] Có loading
+[ ] Có empty state
+[ ] Không lạm dụng màu
+[ ] Không rối UI
+
+────────────────────────────
+🔥 NGUYÊN TẮC CỐT LÕI
+────────────────────────────
+
+1. 8px spacing = đẹp
+2. Consistency = chuyên nghiệp
+3. Ít nhưng rõ = xịn

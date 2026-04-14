@@ -1,120 +1,5 @@
-// Global flag for effects
-window.effectsEnabled = false;
-
-// Hàm cài đặt canvas và hiệu ứng hoa rơi
-function setupCanvas(canvasId, imagePath, isFromLeft, flowerCount) {
-    const canvas = document.getElementById(canvasId);
-    if (!canvas) return; // Exit if canvas not found
-    const ctx = canvas.getContext("2d");
-  
-    // Đặt kích thước canvas
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-  
-    const flowers = [];
-    const flowerImage = new Image();
-    flowerImage.src = imagePath; // Đường dẫn tới hình ảnh hoa
-  
-    // Tạo đối tượng hoa
-    function createFlower() {
-      return {
-        x: isFromLeft ? -Math.random() * 200 : canvas.width + Math.random() * 200,
-        y: -Math.random() * 200, // Vị trí Y ban đầu
-        size: Math.random() * 20 + 15, // Kích thước hoa (15px - 35px)
-        speed: Math.random() * 1.5 + 0.5, // Tốc độ rơi chậm (0.5px - 2px)
-        sway: Math.random() * 1.5 - 0.75, // Lắc lư qua lại
-        swayOffset: Math.random() * 80 + 50, // Biên độ lắc lư
-        spreadFactor: Math.random() * 0.4 + 0.3, // Hệ số lan tỏa
-      };
-    }
-  
-    // Cập nhật và vẽ hoa
-    function updateAndDrawFlower(flower) {
-      flower.y += flower.speed;
-  
-      // Tính toán vị trí X dựa trên hướng di chuyển
-      if (isFromLeft) {
-        flower.x += (canvas.width / 2) * flower.spreadFactor / canvas.height;
-      } else {
-        flower.x -= (canvas.width - canvas.width / 2) * flower.spreadFactor / canvas.height;
-      }
-  
-      // Lắc lư qua lại
-      flower.x += Math.sin(flower.y / flower.swayOffset) * flower.sway;
-  
-      // Vẽ hoa
-      ctx.drawImage(flowerImage, flower.x, flower.y, flower.size, flower.size);
-  
-      // Đặt lại hoa nếu ra khỏi màn hình
-      if (flower.y > canvas.height || (isFromLeft && flower.x > canvas.width / 2 + 150) || (!isFromLeft && flower.x < canvas.width / 2 - 150)) {
-        flower.y = -20 - Math.random() * 200;
-        flower.x = isFromLeft ? -150 - Math.random() * 150 : canvas.width + Math.random() * 150;
-      }
-    }
-  
-    // Tạo hiệu ứng hoa rơi
-    function animate() {
-      if (window.effectsEnabled) {
-          ctx.clearRect(0, 0, canvas.width, canvas.height);
-          flowers.forEach(updateAndDrawFlower);
-      }
-      requestAnimationFrame(animate);
-    }
-  
-    // Khi ảnh hoa tải xong, bắt đầu hiệu ứng
-    flowerImage.onload = () => {
-      for (let i = 0; i < flowerCount; i++) {
-        flowers.push(createFlower());
-      }
-      animate();
-    };
-  
-    // Điều chỉnh kích thước canvas khi thay đổi kích thước cửa sổ
-    window.addEventListener("resize", () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    });
-}
-  
-// Gọi hàm cài đặt cho từng canvas
-setupCanvas("fallingCanvasMai", "images/hoamai.png", false, 30); // Hoa mai từ phải qua
-setupCanvas("fallingCanvasDao", "images/hoadao.png", true, 30);  // Hoa đào từ trái qua
-  
+// Logic Quay số may mắn (LUCKY SPIN)
 document.addEventListener("DOMContentLoaded", () => {
-    // Function to update corner flowers visibility
-    const updateCornerFlowers = () => {
-        const cornerFlowers = document.querySelectorAll('.corner-flower-mai, .corner-flower-dao');
-        cornerFlowers.forEach(flower => {
-            flower.style.display = window.effectsEnabled ? 'block' : 'none';
-        });
-    };
-
-    // Initial state check
-    updateCornerFlowers();
-
-    // Event delegation for dynamically loaded header buttons
-    document.addEventListener('click', function(event) {
-        const toggleBtn = event.target.closest('#toggle-effects-btn');
-        if (toggleBtn) {
-            window.effectsEnabled = !window.effectsEnabled;
-            
-            // Update corner flowers
-            updateCornerFlowers();
-
-            // If effects are disabled, clear the canvases one last time
-            if (!window.effectsEnabled) {
-                const canvasIds = ["fallingCanvasMai", "fallingCanvasDao", "canvas"];
-                canvasIds.forEach(id => {
-                    const canvas = document.getElementById(id);
-                    if (canvas) {
-                        const ctx = canvas.getContext('2d');
-                        ctx.clearRect(0, 0, canvas.width, canvas.height);
-                    }
-                });
-            }
-        }
-    });
-
   const number1 = document.getElementById("number1");
   const number2 = document.getElementById("number2");
   const number3 = document.getElementById("number3");
@@ -125,7 +10,6 @@ document.addEventListener("DOMContentLoaded", () => {
   let selectedPrize = null;
   let spinsLeft = 0;
   
-
   // Lưu trạng thái từng giải thưởng
   const prizeStatus = {};
 
@@ -139,7 +23,6 @@ document.addEventListener("DOMContentLoaded", () => {
         modal.classList.add("hidden");
     });
   }
-
 
   function showModal(message) {
     if (modalMessage) {
@@ -213,16 +96,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Hàm để vô hiệu hóa phím Enter
-  function disableEnterKey() {
-    document.addEventListener("keydown", preventEnterKey);
-  }
-
-  // Hàm để bật lại phím Enter
-  function enableEnterKey() {
-    document.removeEventListener("keydown", preventEnterKey);
-  }
-
   // Hàm chặn hành động mặc định của phím Enter
   function preventEnterKey(event) {
     if (event.key === "Enter") {
@@ -246,9 +119,11 @@ document.addEventListener("DOMContentLoaded", () => {
     let interval = animateNumbers(0);
 
     setTimeout(() => {
-      manualSpinButton.disabled = true;
-      manualSpinButton.style.backgroundColor = "#ccc";
-      manualSpinButton.style.cursor = "not-allowed";
+      if(manualSpinButton) {
+        manualSpinButton.disabled = true;
+        manualSpinButton.style.backgroundColor = "#ccc";
+        manualSpinButton.style.cursor = "not-allowed";
+      }
 
       clearInterval(interval);
       number1.textContent = digit1;
@@ -291,22 +166,16 @@ document.addEventListener("DOMContentLoaded", () => {
             ? `, ${luckyNumber}`
             : luckyNumber;
 
-          // Vô hiệu hóa phím Enter trước khi chạy showCongratulationsMessage
-          disableEnterKey();
-
           setTimeout(() => {
             showCongratulationsMessage(luckyNumber);
             playAudio();
-
-            // Bật lại phím Enter sau khi chạy xong showCongratulationsMessage
-            setTimeout(() => {
-              enableEnterKey();
-            }, 5000); // Thời gian đủ để đảm bảo showCongratulationsMessage hoàn tất
           }, 1000);
 
-          manualSpinButton.disabled = false;
-          manualSpinButton.style.backgroundColor = "yellow";
-          manualSpinButton.style.cursor = "pointer";
+          if(manualSpinButton) {
+            manualSpinButton.disabled = false;
+            manualSpinButton.style.backgroundColor = "yellow";
+            manualSpinButton.style.cursor = "pointer";
+          }
 
           spinsLeft--;
           prizeStatus[selectedPrize].spinsLeft = spinsLeft;
@@ -321,20 +190,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 1000);
     }, 1000);
   }
-
-  // Lắng nghe phím Enter trên toàn màn hình
-  if(manualSpinButton) {
-      document.addEventListener("keydown", (event) => {
-        if (event.key === "Enter") {
-          const audioPlayer1 = document.getElementById("audio-player1");
-
-          if(audioPlayer1) audioPlayer1.play();
-
-          handleSpinToggle();
-        }
-      });
-  }
-
 
   // Xử lý quay/dừng
   let isSpinning = false;
@@ -361,8 +216,6 @@ document.addEventListener("DOMContentLoaded", () => {
     manualSpinButton.addEventListener("click", handleSpinToggle);
   }
 
-
-  // Lắng nghe sự kiện chọn giải thưởng
   if(spinButtons) {
       spinButtons.forEach((button) => {
         const prize = button.getAttribute("data-prize");
@@ -383,22 +236,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       });
   }
-
-
-  // Các hàm không liên quan khác (ví dụ như tương tác giao diện hoặc sự kiện bổ sung)
-  function resetPrizeSelection() {
-    selectedPrize = null;
-    spinsLeft = 0;
-    if(priceElement) {
-        priceElement.textContent = "Vui lòng chọn giải thưởng để bắt đầu!";
-    }
-  }
-
-  function clearResultList() {
-    if(resultList) {
-        resultList.innerHTML = "";
-    }
-  }
 });
 
 function changeBackgroundColor(element) {
@@ -407,276 +244,4 @@ function changeBackgroundColor(element) {
 
 function changeBackgroundColorWhite(element) {
   element.style.backgroundColor = "#fff";
-}
-
-// =============================================================
-window.requestAnimFrame = (function () {
-  return (
-    window.requestAnimationFrame ||
-    window.webkitRequestAnimationFrame ||
-    window.mozRequestAnimationFrame ||
-    function (callback) {
-      window.setTimeout(callback, 1000 / 60);
-    }
-  );
-})();
-
-var canvas = document.getElementById("canvas"),
-  ctx = canvas ? canvas.getContext("2d") : null,
-  cw = window.innerWidth,
-  ch = window.innerHeight,
-  fireworks = [],
-  particles = [],
-  hue = 120,
-  limiterTotal = 20,
-  limiterTick = 0,
-  timerTotal = 500,
-  timerTick = 0,
-  mousedown = false,
-  mx,
-  my;
-
-if(canvas) {
-    canvas.width = cw;
-    canvas.height = ch;
-}
-
-
-function random(min, max) {
-  return Math.random() * (max - min) + min;
-}
-
-function calculateDistance(p1x, p1y, p2x, p2y) {
-  var xDistance = p1x - p2x,
-    yDistance = p1y - p2y;
-  return Math.sqrt(Math.pow(xDistance, 2) + Math.pow(yDistance, 2));
-}
-
-function Firework(sx, sy, tx, ty) {
-  this.x = sx;
-  this.y = sy;
-
-  this.sx = sx;
-  this.sy = sy;
-
-  this.tx = tx;
-  this.ty = ty;
-
-  this.distanceToTarget = calculateDistance(sx, sy, tx, ty);
-  this.distanceTraveled = 0;
-
-  this.coordinates = [];
-  this.coordinateCount = 3;
-
-  while (this.coordinateCount--) {
-    this.coordinates.push([this.x, this.y]);
-  }
-  this.angle = Math.atan2(ty - sy, tx - sx);
-  this.speed = 2;
-  this.acceleration = 1.05;
-  this.brightness = random(50, 70);
-
-  this.targetRadius = 1;
-}
-
-Firework.prototype.update = function (index) {
-  this.coordinates.pop();
-
-  this.coordinates.unshift([this.x, this.y]);
-
-  if (this.targetRadius < 8) {
-    this.targetRadius += 0.3;
-  } else {
-    this.targetRadius = 1;
-  }
-
-  this.speed *= this.acceleration;
-
-  var vx = Math.cos(this.angle) * this.speed,
-    vy = Math.sin(this.angle) * this.speed;
-
-  this.distanceTraveled = calculateDistance(
-    this.sx,
-    this.sy,
-    this.x + vx,
-    this.y + vy
-  );
-
-  if (this.distanceTraveled >= this.distanceToTarget) {
-    createParticles(this.tx, this.ty);
-
-    fireworks.splice(index, 1);
-  } else {
-    this.x += vx;
-    this.y += vy;
-  }
-};
-
-Firework.prototype.draw = function () {
-  ctx.beginPath();
-
-  ctx.moveTo(
-    this.coordinates[this.coordinates.length - 1][0],
-    this.coordinates[this.coordinates.length - 1][1]
-  );
-  ctx.lineTo(this.x, this.y);
-  ctx.strokeStyle = "hsl(" + hue + ", 100%, " + this.brightness + "%)";
-  ctx.stroke();
-  ctx.beginPath();
-  ctx.stroke();
-};
-
-function Particle(x, y) {
-  this.x = x;
-  this.y = y;
-
-  this.coordinates = [];
-  this.coordinateCount = 5;
-
-  while (this.coordinateCount--) {
-    this.coordinates.push([this.x, this.y]);
-  }
-
-  this.angle = random(0, Math.PI * 2);
-  this.speed = random(1, 10);
-
-  this.friction = 0.95;
-
-  this.gravity = 0.6;
-
-  this.hue = random(hue - 20, hue + 20);
-  this.brightness = random(50, 80);
-  this.alpha = 1;
-
-  this.decay = random(0.0075, 0.009);
-}
-
-Particle.prototype.update = function (index) {
-  this.coordinates.pop();
-
-  this.coordinates.unshift([this.x, this.y]);
-
-  this.speed *= this.friction;
-
-  this.x += Math.cos(this.angle) * this.speed;
-  this.y += Math.sin(this.angle) * this.speed + this.gravity;
-
-  this.alpha -= this.decay;
-
-  if (this.alpha <= this.decay) {
-    particles.splice(index, 1);
-  }
-};
-
-Particle.prototype.draw = function () {
-  ctx.beginPath();
-  ctx.moveTo(
-    this.coordinates[this.coordinates.length - 1][0],
-    this.coordinates[this.coordinates.length - 1][1]
-  );
-  ctx.lineTo(this.x, this.y);
-  ctx.strokeStyle =
-    "hsla(" +
-    this.hue +
-    ", 100%, " +
-    this.brightness +
-    "%, " +
-    this.alpha +
-    ")";
-
-  ctx.stroke();
-};
-
-function createParticles(x, y) {
-  var particleCount = 20;
-  while (particleCount--) {
-    particles.push(new Particle(x, y));
-  }
-}
-
-function loop() {
-  requestAnimFrame(loop);
-  
-  if (!window.effectsEnabled) {
-      if(ctx) {
-        ctx.clearRect(0, 0, cw, ch);
-      }
-      return; // Skip this frame's drawing
-  }
-
-  hue += 0.5;
-
-  ctx.globalCompositeOperation = "destination-out";
-
-  ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
-  ctx.fillRect(0, 0, cw, ch);
-
-  ctx.globalCompositeOperation = "lighter";
-
-  var i = fireworks.length;
-  while (i--) {
-    fireworks[i].draw();
-    fireworks[i].update(i);
-  }
-
-  var i = particles.length;
-  while (i--) {
-    particles[i].draw();
-    particles[i].update(i);
-  }
-
-  if (timerTick >= timerTotal) {
-    timerTick = 0;
-  } else {
-    var temp = timerTick % 400;
-    if (temp <= 15) {
-      fireworks.push(new Firework(100, ch, random(190, 200), random(90, 100)));
-      fireworks.push(
-        new Firework(cw - 100, ch, random(cw - 200, cw - 190), random(90, 100))
-      );
-    }
-
-    var temp3 = temp / 10;
-
-    if (temp > 319) {
-      fireworks.push(
-        new Firework(
-          300 + (temp3 - 31) * 100,
-          ch,
-          300 + (temp3 - 31) * 100,
-          200
-        )
-      );
-    }
-
-    timerTick++;
-  }
-
-  if (limiterTick >= limiterTotal) {
-    if (mousedown) {
-      fireworks.push(new Firework(cw / 2, ch, mx, my));
-      limiterTick = 0;
-    }
-  } else {
-    limiterTick++;
-  }
-}
-
-if(canvas) {
-    canvas.addEventListener("mousemove", function (e) {
-      mx = e.pageX - canvas.offsetLeft;
-      my = e.pageY - canvas.offsetTop;
-    });
-
-    canvas.addEventListener("mousedown", function (e) {
-      e.preventDefault();
-      mousedown = true;
-    });
-
-    canvas.addEventListener("mouseup", function (e) {
-      e.preventDefault();
-      mousedown = false;
-    });
-
-    window.onload = loop;
 }
