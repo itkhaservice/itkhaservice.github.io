@@ -496,6 +496,73 @@ footer {
     transform: translateY(-3px);
 }
 
+/* Custom Select - Rule 6 */
+.custom-select-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.select-selected {
+    background-color: white;
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius-input);
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--gray-800);
+    position: relative;
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
+
+.select-selected:after {
+    position: absolute;
+    content: "";
+    top: 18px;
+    right: 15px;
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-color: var(--gray-500) transparent transparent transparent;
+}
+
+.select-selected.select-arrow-active:after {
+    border-color: transparent transparent var(--gray-500) transparent;
+    top: 12px;
+}
+
+.select-items {
+    position: absolute;
+    background-color: white;
+    top: 105%;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-input);
+    box-shadow: var(--shadow-md);
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+.select-items div {
+    color: var(--gray-800);
+    padding: 10px 16px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: var(--transition);
+}
+
+.select-items div:hover {
+    background-color: var(--gray-100);
+    color: var(--primary-color);
+}
+
+.select-hide {
+    display: none;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .page-container {
