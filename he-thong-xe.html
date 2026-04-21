@@ -188,6 +188,14 @@
           <p class="parking-desc">Phần mềm quản lý PMS</p>
           <span class="status-badge">Xem hướng dẫn</span>
         </a>
+
+        <!-- SDTParking -->
+        <a href="#sdt-parking" class="parking-card shadow-sm">
+          <div class="icon-box"><i class="bi bi-car-front-fill"></i></div>
+          <h3 class="parking-name">SDTParking</h3>
+          <p class="parking-desc">Hệ thống xe SDTParking</p>
+          <span class="status-badge">Xem hướng dẫn</span>
+        </a>
       </div>
 
       <!-- Detail Content Sections -->
@@ -214,6 +222,189 @@
           </div>
         </section>
 
+        <section id="sdt-parking" class="guide-section">
+          <h2 class="guide-h2"><i class="bi bi-car-front-fill me-2 text-success"></i>Hướng dẫn SDTParking</h2>
+          
+          <div class="row g-4">
+            <!-- 1. Đăng nhập -->
+            <div class="col-md-6 col-lg-4">
+              <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
+                <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 200px; cursor: zoom-in;">
+                  <img src="Parking/SDTParking/login.png" data-image-full="Parking/SDTParking/login.png" class="img-fluid w-100 h-100 object-fit-cover" alt="Login" data-bs-toggle="modal" data-bs-target="#imageModal">
+                </div>
+                <div class="card-body">
+                  <div class="d-flex align-items-center mb-3">
+                    <span class="badge bg-success rounded-circle me-2">1</span>
+                    <h5 class="card-title mb-0 fw-bold">Đăng nhập</h5>
+                  </div>
+                  <p class="card-text small text-muted mb-2">Đăng nhập vào hệ thống tại màn hình Login.</p>
+                  <ul class="list-unstyled small mb-0">
+                    <li><i class="bi bi-person-fill text-success me-2"></i>Tài khoản: <strong>admin</strong></li>
+                    <li><i class="bi bi-key-fill text-success me-2"></i>Mật khẩu: <strong>Khas@123</strong></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- 2. Kiểm tra thông tin thẻ -->
+            <div class="col-md-6 col-lg-4">
+              <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
+                <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 200px; cursor: zoom-in;">
+                  <img src="Parking/SDTParking/manage-card.png" data-image-full="Parking/SDTParking/manage-card.png" class="img-fluid w-100 h-100 object-fit-cover" alt="Quản lý thẻ" data-bs-toggle="modal" data-bs-target="#imageModal">
+                </div>
+                <div class="card-body">
+                  <div class="d-flex align-items-center mb-3">
+                    <span class="badge bg-success rounded-circle me-2">2</span>
+                    <h5 class="card-title mb-0 fw-bold">Kiểm tra thông tin thẻ</h5>
+                  </div>
+                  <ol class="small text-muted ps-3 mb-0">
+                    <li>Vào màn hình <strong>Quản lý thẻ</strong></li>
+                    <li>Chọn <strong>Nhận dạng thẻ chip</strong></li>
+                    <li>Quét thẻ vào đầu đọc</li>
+                  </ol>
+                  <div class="bg-light p-2 rounded small mt-2">
+                    <i class="bi bi-info-circle me-1"></i> Sao chép Mã thẻ và ghi nhớ STT.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3. Đăng ký thẻ tháng mới -->
+            <div class="col-md-6 col-lg-4">
+              <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
+                <div class="card-img-top bg-light position-relative" style="height: 200px;">
+                  <img src="Parking/SDTParking/register-month.png" data-image-full="Parking/SDTParking/register-month.png" class="img-fluid w-100 h-100 object-fit-cover" alt="Đăng ký tháng" data-bs-toggle="modal" data-bs-target="#imageModal" style="cursor: zoom-in;">
+                  <div class="position-absolute bottom-0 end-0 p-2">
+                    <img src="Parking/SDTParking/manage-month.png" data-image-full="Parking/SDTParking/manage-month.png" class="rounded border shadow-sm" style="width: 60px; height: 40px; object-fit: cover; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#imageModal" title="Xem màn hình danh sách">
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="d-flex align-items-center mb-3">
+                    <span class="badge bg-success rounded-circle me-2">3</span>
+                    <h5 class="card-title mb-0 fw-bold">Đăng ký thẻ tháng mới</h5>
+                  </div>
+                  <ol class="small text-muted ps-3 mb-2">
+                    <li>Vào <strong>Quản lý tháng</strong> -> Nhấn <strong>Tạo mới</strong></li>
+                    <li>Điền: Số thẻ, Mã thẻ (từ mục 2)</li>
+                    <li>Biển số, Loại xe, Họ tên, <strong>Điện thoại</strong></li>
+                    <li><strong>Thời gian</strong>, Block, Căn hộ, Công ty</li>
+                    <li><strong>Ghi chú</strong> (nếu có)</li>
+                    <li>Nhấn <strong>Đăng ký</strong> để hoàn tất</li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+
+            <!-- 4. Thay đổi thông tin thẻ -->
+            <div class="col-md-6 col-lg-4">
+              <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
+                <div class="card-img-top bg-light position-relative" style="height: 200px;">
+                  <img src="Parking/SDTParking/edit-month.png" data-image-full="Parking/SDTParking/edit-month.png" class="img-fluid w-100 h-100 object-fit-cover" alt="Chỉnh sửa tháng" data-bs-toggle="modal" data-bs-target="#imageModal" style="cursor: zoom-in;">
+                  <div class="position-absolute bottom-0 end-0 p-2">
+                    <img src="Parking/SDTParking/manage-month.png" data-image-full="Parking/SDTParking/manage-month.png" class="rounded border shadow-sm" style="width: 60px; height: 40px; object-fit: cover; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#imageModal" title="Màn hình danh sách">
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="d-flex align-items-center mb-3">
+                    <span class="badge bg-success rounded-circle me-2">4</span>
+                    <h5 class="card-title mb-0 fw-bold">Thay đổi thông tin</h5>
+                  </div>
+                  <ol class="small text-muted ps-3 mb-0">
+                    <li>Vào <strong>Quản lý tháng</strong> -> <strong>Điều chỉnh</strong></li>
+                    <li><strong>Nhập Số thẻ</strong> muốn chỉnh sửa</li>
+                    <li>Dữ liệu sẽ <strong>trả về phía bên trái</strong></li>
+                    <li>Nhấn <strong>Chỉnh sửa</strong> để cập nhật dữ liệu</li>
+                    <li>Nhấn <strong>Lưu</strong> để hoàn tất</li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+
+            <!-- 5. Gia hạn thẻ -->
+            <div class="col-md-6 col-lg-4">
+              <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
+                <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 200px; cursor: zoom-in;">
+                  <img src="Parking/SDTParking/extend-month.png" data-image-full="Parking/SDTParking/extend-month.png" class="img-fluid w-100 h-100 object-fit-cover" alt="Gia hạn tháng" data-bs-toggle="modal" data-bs-target="#imageModal">
+                </div>
+                <div class="card-body">
+                  <div class="d-flex align-items-center mb-3">
+                    <span class="badge bg-success rounded-circle me-2">5</span>
+                    <h5 class="card-title mb-0 fw-bold">Gia hạn thẻ</h5>
+                  </div>
+                  <p class="small text-muted">Nhấn <strong>Gia hạn</strong>, nhập ngày hết hạn mới và nhấn xác nhận <strong>Gia hạn</strong>.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- 6. Trả thẻ xe -->
+            <div class="col-md-6 col-lg-4">
+              <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
+                <div class="card-img-top bg-light position-relative" style="height: 200px;">
+                  <img src="Parking/SDTParking/edit-month.png" data-image-full="Parking/SDTParking/edit-month.png" class="img-fluid w-100 h-100 object-fit-cover" alt="Trả thẻ" data-bs-toggle="modal" data-bs-target="#imageModal" style="cursor: zoom-in;">
+                  <div class="position-absolute bottom-0 end-0 p-2">
+                    <img src="Parking/SDTParking/manage-month.png" data-image-full="Parking/SDTParking/manage-month.png" class="rounded border shadow-sm" style="width: 60px; height: 40px; object-fit: cover; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#imageModal" title="Màn hình danh sách">
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="d-flex align-items-center mb-3">
+                    <span class="badge bg-success rounded-circle me-2">6</span>
+                    <h5 class="card-title mb-0 fw-bold">Trả thẻ xe</h5>
+                  </div>
+                  <ol class="small text-muted ps-3 mb-2">
+                    <li>Vào <strong>Quản lý tháng</strong> -> <strong>Điều chỉnh</strong></li>
+                    <li>Nhấn chọn <strong>Chỉnh sửa</strong> để bắt đầu thay đổi</li>
+                    <li>Thực hiện thay đổi các thông tin trả thẻ</li>
+                    <li>Nhấn <strong>Lưu</strong> để hoàn tất</li>
+                  </ol>
+                  <div class="alert alert-warning py-1 px-2 mb-0 small border-0 mt-2">
+                    <i class="bi bi-exclamation-triangle-fill me-1"></i> Sau khi trả, thẻ sẽ nhận diện thành <strong>thẻ Vãng lai</strong>. Có thể xóa hẳn thẻ ở mục <strong>Quản lý thẻ</strong>.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 7. Kiểm tra doanh thu -->
+            <div class="col-md-6 col-lg-4">
+              <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden border-success-subtle border">
+                <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 200px; cursor: zoom-in;">
+                  <img src="Parking/SDTParking/revenue.png" data-image-full="Parking/SDTParking/revenue.png" class="img-fluid w-100 h-100 object-fit-cover" alt="Doanh thu" data-bs-toggle="modal" data-bs-target="#imageModal">
+                </div>
+                <div class="card-body">
+                  <div class="d-flex align-items-center mb-3">
+                    <span class="badge bg-success rounded-circle me-2">7</span>
+                    <h5 class="card-title mb-0 fw-bold">Kiểm tra doanh thu</h5>
+                  </div>
+                  <ol class="small text-muted ps-3 mb-2">
+                    <li>Vào màn hình <strong>Revenue</strong> -> Chọn <strong>Thống kê</strong></li>
+                    <li><strong>Một ngày:</strong> Áp dụng từ 00:00 đến 23:59</li>
+                    <li><strong>Nhiều ngày:</strong> Áp dụng từ 2 ngày trở lên</li>
+                    <li>Nhấn nút <strong>Tìm</strong> để truy vấn dữ liệu</li>
+                  </ol>
+                  <div class="alert alert-info py-1 px-2 mb-0 small border-0 mt-2">
+                    <i class="bi bi-file-earmark-excel me-1"></i> Có thể <strong>Xuất Excel</strong>. File sẽ tự mở sau khi xuất (vui lòng thoát ra màn hình chính để kiểm tra).
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 8. Xóa thẻ khỏi hệ thống -->
+            <div class="col-md-6 col-lg-4">
+              <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
+                <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 200px; cursor: zoom-in;">
+                  <img src="Parking/SDTParking/manage-card.png" data-image-full="Parking/SDTParking/manage-card.png" class="img-fluid w-100 h-100 object-fit-cover" alt="Xóa thẻ" data-bs-toggle="modal" data-bs-target="#imageModal">
+                </div>
+                <div class="card-body">
+                  <div class="d-flex align-items-center mb-3">
+                    <span class="badge bg-danger rounded-circle me-2">8</span>
+                    <h5 class="card-title mb-0 fw-bold text-danger">Xóa thẻ khỏi hệ thống</h5>
+                  </div>
+                  <p class="small text-muted">Tại màn Quản lý thẻ, quét mã và chọn dòng dữ liệu tương ứng rồi nhấn nút <strong>Xóa</strong>.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <!-- Placeholder for other sections -->
         <div class="text-center py-5">
           <p class="text-muted italic">Vui lòng liên hệ bộ phận IT để cung cấp tài liệu hướng dẫn cho các mục còn lại.</p>
@@ -223,9 +414,59 @@
     </div>
   </main>
 
+  <!-- Modals -->
+  <div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+      <div class="modal-content bg-transparent border-0">
+        <div class="modal-header border-0 pb-0 position-absolute top-0 end-0 z-3">
+          <button type="button" class="btn-close btn-close-white fs-4 shadow-none" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body p-0 text-center">
+          <div id="modalCarousel" class="carousel slide" data-bs-ride="false">
+            <div class="carousel-inner"></div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#modalCarousel" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#modalCarousel" data-bs-slide="next">
+              <span class="carousel-control-next-icon"></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="js/components.js"></script>
   <script src="js/main.js"></script>
+
+  <script>
+    // Image Modal Handling with Carousel support (Sync with web-app.html)
+    const imageModal = document.getElementById('imageModal');
+    const modalCarouselInner = imageModal.querySelector('.carousel-inner');
+
+    imageModal.addEventListener('show.bs.modal', (e) => {
+      const clickedImg = e.relatedTarget;
+      const cardContainer = clickedImg.closest('.guide-section');
+      const allImages = Array.from(cardContainer.querySelectorAll('img[data-bs-toggle="modal"]'));
+      
+      modalCarouselInner.innerHTML = '';
+      
+      allImages.forEach((img, index) => {
+        const fullSrc = img.getAttribute('data-image-full') || img.src;
+        const isActive = img === clickedImg;
+        
+        const carouselItem = document.createElement('div');
+        carouselItem.className = `carousel-item ${isActive ? 'active' : ''}`;
+        carouselItem.innerHTML = `
+          <div class="d-flex align-items-center justify-content-center px-5" style="min-height: 80vh;">
+            <img src="${fullSrc}" class="img-fluid rounded-3 shadow-lg" style="max-height: 90vh; object-fit: contain;">
+          </div>
+        `;
+        modalCarouselInner.appendChild(carouselItem);
+      });
+    });
+  </script>
 </body>
 </html>
