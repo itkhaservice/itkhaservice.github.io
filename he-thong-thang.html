@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hệ thống Thang - IT KHA SERVICE</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <script src="https://kit.fontawesome.com/94472b8613.js" crossorigin="anonymous"></script>
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/excel-guide.css">
+  <link rel="icon" href="images/system/logo.png" type="image/png">
+
+  <style>
+    :root {
+        --elevator-primary: #108042;
+        --elevator-secondary: #e7fff0;
+    }
+    body {
+        background: #f1f5f9;
+        font-family: 'Inter', sans-serif;
+    }
+    .system-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        margin-bottom: 64px;
+    }
+    @media (max-width: 992px) {
+        .system-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+    @media (max-width: 768px) {
+        .system-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+    .system-card {
+        background: white;
+        border-radius: 20px;
+        padding: 32px 24px;
+        text-align: center;
+        border: 1px solid var(--guide-border);
+        transition: all 0.3s ease;
+        text-decoration: none !important;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+        height: 100%;
+    }
+    .system-card:hover {
+        transform: translateY(-8px);
+        border-color: var(--elevator-primary);
+        box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    }
+    .icon-box {
+        width: 80px;
+        height: 80px;
+        background: var(--elevator-secondary);
+        color: var(--elevator-primary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        font-size: 2.5rem;
+        margin-bottom: 8px;
+        transition: all 0.3s ease;
+    }
+    .system-card:hover .icon-box {
+        background: var(--elevator-primary);
+        color: white;
+    }
+    .system-name {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--guide-text);
+        margin: 0;
+    }
+    .system-desc {
+        font-size: 0.9rem;
+        color: #64748b;
+        margin: 0;
+    }
+    .status-badge {
+        font-size: 0.75rem;
+        padding: 4px 12px;
+        border-radius: 99px;
+        background: #f1f5f9;
+        color: #64748b;
+        font-weight: 600;
+    }
+  </style>
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+  <main class="main-wrapper">
+    <div class="container py-5" id="main-content">
+      
+      <!-- Page Header -->
+      <div class="text-center mb-5">
+        <h1 class="page-title text-success">Hệ thống thang</h1>
+        <p class="text-muted fs-5 mx-auto" style="max-width: 700px;">Tổng hợp hướng dẫn vận hành, quy trình cứu hộ và xử lý lỗi cho các hệ thống thang máy tại dự án.</p>
+      </div>
+
+      <!-- Main System Grid -->
+      <div class="system-grid">
+        <!-- WiseLift -->
+        <a href="#wiselift" class="system-card shadow-sm border-success">
+          <div class="icon-box" style="background: #108042; color: white;"><i class="fa-solid fa-elevator"></i></div>
+          <h3 class="system-name text-success">WiseLift</h3>
+          <p class="system-desc">Hệ thống quản lý thang máy nội bộ</p>
+          <span class="status-badge bg-success text-white">Xem hướng dẫn</span>
+        </a>
+      </div>
+
+      <!-- Detail Content Sections -->
+      <div class="guide-content">
+        <!-- WiseLift Section -->
+        <section id="wiselift" class="guide-section">
+          <h2 class="guide-h2"><i class="fa-solid fa-elevator me-2 text-success"></i>Hướng dẫn WiseLift</h2>
+          
+          <div class="row g-4">
+            <!-- 1. Đăng nhập -->
+            <div class="col-md-6 col-lg-4">
+              <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
+                <div class="card-img-top bg-light" style="height: 200px; cursor: zoom-in;">
+                  <img src="Elevator/WISELift/home.png" data-image-full="Elevator/WISELift/home.png" class="img-fluid w-100 h-100 object-fit-cover" alt="Login WiseLift" data-bs-toggle="modal" data-bs-target="#imageModal">
+                </div>
+                <div class="card-body">
+                  <div class="d-flex align-items-center mb-3">
+                    <span class="badge bg-success rounded-circle me-2">1</span>
+                    <h5 class="card-title mb-0 fw-bold">Đăng nhập</h5>
+                  </div>
+                  <p class="small text-muted mb-0">Kế toán đăng nhập vào phần mềm tại màn hình Home.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- 2. Kiểm tra thẻ -->
+            <div class="col-md-6 col-lg-4">
+              <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
+                <div class="card-img-top bg-light position-relative" style="height: 200px; cursor: zoom-in;">
+                  <img src="Elevator/WISELift/list-device.png" data-image-full="Elevator/WISELift/list-device.png" class="img-fluid w-100 h-100 object-fit-cover" alt="Danh sách thiết bị" data-bs-toggle="modal" data-bs-target="#imageModal">
+                  <div class="position-absolute bottom-0 end-0 p-2">
+                    <img src="Elevator/WISELift/scan-card.png" data-image-full="Elevator/WISELift/scan-card.png" class="rounded border shadow-sm" style="width: 60px; height: 40px; object-fit: cover; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#imageModal" title="Quét thẻ">
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="d-flex align-items-center mb-3">
+                    <span class="badge bg-success rounded-circle me-2">2</span>
+                    <h5 class="card-title mb-0 fw-bold">Kiểm tra thẻ</h5>
+                  </div>
+                  <ul class="small text-muted ps-3 mb-0">
+                    <li>Bấm <strong>Danh sách thiết bị</strong> để xem dữ liệu cư dân.</li>
+                    <li>Quét thẻ vào đầu đọc. 
+                        <span class="text-danger fw-bold">(Đỏ: Chưa tích)</span> / 
+                        <span class="text-primary fw-bold">(Xanh/Đen: Đã tích)</span>.
+                    </li>
+                    <li>Sao chép <strong>Mã số thẻ</strong>.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3. Kiểm tra danh sách thẻ -->
+            <div class="col-md-6 col-lg-4">
+              <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
+                <div class="card-img-top bg-light" style="height: 200px; cursor: zoom-in;">
+                  <img src="Elevator/WISELift/list-card.png" data-image-full="Elevator/WISELift/list-card.png" class="img-fluid w-100 h-100 object-fit-cover" alt="Danh sách thẻ" data-bs-toggle="modal" data-bs-target="#imageModal">
+                </div>
+                <div class="card-body">
+                  <div class="d-flex align-items-center mb-3">
+                    <span class="badge bg-success rounded-circle me-2">3</span>
+                    <h5 class="card-title mb-0 fw-bold">Kiểm tra danh sách thẻ</h5>
+                  </div>
+                  <p class="small text-muted mb-2">Bấm <strong>Danh sách thẻ</strong>, cuộn lên đầu xem <strong>Ngày tạo</strong>.</p>
+                  <div class="alert alert-info py-1 px-2 mb-0 small border-0">
+                    <i class="bi bi-info-circle me-1"></i> Hệ thống lưu tối đa 3000 dòng. Hiện tại đến dòng 14, thẻ tiếp theo là <strong>dòng 15</strong>.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 4. Phân tầng thẻ thang -->
+            <div class="col-md-6 col-lg-4">
+              <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
+                <div class="card-img-top bg-light" style="height: 200px; cursor: zoom-in;">
+                  <img src="Elevator/WISELift/add-floor.png" data-image-full="Elevator/WISELift/add-floor.png" class="img-fluid w-100 h-100 object-fit-cover" alt="Phân tầng" data-bs-toggle="modal" data-bs-target="#imageModal">
+                </div>
+                <div class="card-body">
+                  <div class="d-flex align-items-center mb-3">
+                    <span class="badge bg-success rounded-circle me-2">4</span>
+                    <h5 class="card-title mb-0 fw-bold">Phân tầng thẻ thang</h5>
+                  </div>
+                  <ul class="small text-muted ps-3 mb-0">
+                    <li>Dán Mã số thẻ, nhập Căn hộ, Ngày tạo, Chủ thẻ.</li>
+                    <li>Chọn phân quyền tầng (B-1-2 mặc định).</li>
+                    <li>Nhấn <strong>Check</strong> để Lưu.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- 5. Đồng bộ dữ liệu -->
+            <div class="col-md-6 col-lg-4">
+              <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
+                <div class="card-img-top bg-light" style="height: 200px; cursor: zoom-in;">
+                  <img src="Elevator/WISELift/upload-card.png" data-image-full="Elevator/WISELift/upload-card.png" class="img-fluid w-100 h-100 object-fit-cover" alt="Đồng bộ" data-bs-toggle="modal" data-bs-target="#imageModal">
+                </div>
+                <div class="card-body">
+                  <div class="d-flex align-items-center mb-3">
+                    <span class="badge bg-success rounded-circle me-2">5</span>
+                    <h5 class="card-title mb-0 fw-bold">Đồng bộ dữ liệu các thang</h5>
+                  </div>
+                  <ol class="small text-muted ps-3 mb-0">
+                    <li>Bấm <strong>Kết nối tải dữ liệu</strong>.</li>
+                    <li>Bỏ chọn tất cả, chọn đúng dòng thẻ vừa tạo (dòng 15).</li>
+                    <li>Nhấn <strong>Tải</strong> và chờ hoàn tất 100%.</li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Placeholder for other sections -->
+        <div class="text-center py-5">
+          <p class="text-muted italic">Vui lòng liên hệ bộ phận IT hoặc Kỹ thuật để cung cấp thêm tài liệu hướng dẫn.</p>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Modals (For images zoom later) -->
+  <div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+      <div class="modal-content bg-transparent border-0">
+        <div class="modal-header border-0 pb-0 position-absolute top-0 end-0 z-3">
+          <button type="button" class="btn-close btn-close-white fs-4 shadow-none" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body p-0 text-center">
+          <div id="modalCarousel" class="carousel slide" data-bs-ride="false">
+            <div class="carousel-inner"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/main.js"></script>
+
+  <script>
+    // Image Modal Handling with Carousel support
+    const imageModal = document.getElementById('imageModal');
+    const modalCarouselInner = imageModal.querySelector('.carousel-inner');
+
+    imageModal.addEventListener('show.bs.modal', (e) => {
+      const clickedImg = e.relatedTarget;
+      const cardContainer = clickedImg.closest('.guide-section');
+      const allImages = Array.from(cardContainer.querySelectorAll('img[data-bs-toggle="modal"]'));
+      
+      modalCarouselInner.innerHTML = '';
+      
+      allImages.forEach((img, index) => {
+        const fullSrc = img.getAttribute('data-image-full') || img.src;
+        const isActive = img === clickedImg;
+        
+        const carouselItem = document.createElement('div');
+        carouselItem.className = `carousel-item ${isActive ? 'active' : ''}`;
+        carouselItem.innerHTML = `
+          <div class="d-flex align-items-center justify-content-center px-5" style="min-height: 80vh;">
+            <img src="${fullSrc}" class="img-fluid rounded-3 shadow-lg" style="max-height: 90vh; object-fit: contain;">
+          </div>
+        `;
+        modalCarouselInner.appendChild(carouselItem);
+      });
+    });
+  </script>
+</body>
+</html>
