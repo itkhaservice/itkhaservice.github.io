@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Triển khai Dự án - IT KHA SERVICE</title>
+  
+  <!-- Bootstrap & Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="images/system/logo.png" type="image/png">
+  
+  <style>
+    .step-number {
+        width: 32px;
+        height: 32px;
+        background: var(--primary-color);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 14px;
+        flex-shrink: 0;
+    }
+    .admin-section {
+        background: #f8fafc;
+        border-radius: 12px;
+        padding: 24px;
+        border: 1px solid #e2e8f0;
+        height: 100%;
+    }
+    .admin-link-item {
+        background: white;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        padding: 12px 16px;
+        margin-bottom: 12px;
+        transition: all 0.2s;
+        text-decoration: none;
+        color: inherit;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+    .admin-link-item:hover {
+        border-color: var(--primary-color);
+        transform: translateX(4px);
+        color: var(--primary-color);
+    }
+    .badge-provider {
+        font-size: 10px;
+        padding: 2px 8px;
+        border-radius: 10px;
+        background: #e7fff0;
+        color: #108042;
+        border: 1px solid #108042;
+        font-weight: 600;
+    }
+  </style>
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+  <main class="main-wrapper">
+    <div class="container" id="main-content">
+      <div class="page-container">
+        <h1 class="page-title text-center">Quy trình Triển khai Dự án mới</h1>
+        <p class="text-center text-muted mb-5">Hướng dẫn chi tiết các bước thiết lập vận hành cho một dự án chung cư trên hệ thống.</p>
+
+        <!-- Giai đoạn 1 & 2 -->
+        <div class="row g-4 mb-4">
+            <!-- Bước 1: Khởi tạo & Đăng ký -->
+            <div class="col-md-6">
+                <div class="admin-section">
+                    <div class="d-flex align-items-center gap-3 mb-4">
+                        <div class="step-number">01</div>
+                        <h3 class="fw-bold mb-0" style="font-size: 18px;">Khởi tạo & Đăng ký</h3>
+                    </div>
+                    <p class="small text-muted mb-3">Đăng ký mở dự án với các đơn vị cung cấp hạ tầng:</p>
+                    <div class="d-flex flex-wrap gap-2 mb-4">
+                        <span class="badge-provider">OMATECH</span>
+                        <span class="badge-provider">MOMO</span>
+                        <span class="badge-provider">ZALO</span>
+                    </div>
+                    
+                    <h6 class="fw-bold small text-uppercase mb-3">Tạo tài khoản nhân sự:</h6>
+                    <a href="https://qlvh.khaservice.com.vn/employees" target="_blank" class="admin-link-item">
+                        <i class="bi bi-people-fill text-primary"></i>
+                        <div>
+                            <div class="fw-bold">Quản lý Nhân viên</div>
+                            <div class="small text-muted">Kế toán, Lễ tân, Kỹ thuật, Trưởng ban...</div>
+                        </div>
+                        <i class="bi bi-box-arrow-up-right ms-auto"></i>
+                    </a>
+                    <a href="https://qlvh.khaservice.com.vn/employee-groups" target="_blank" class="admin-link-item">
+                        <i class="bi bi-shield-lock-fill text-danger"></i>
+                        <div>
+                            <div class="fw-bold">Nhóm quyền & Phân quyền</div>
+                            <div class="small text-muted">Thiết lập quyền truy cập cho từng bộ phận.</div>
+                        </div>
+                        <i class="bi bi-box-arrow-up-right ms-auto"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Bước 2: Thông tin Dự án -->
+            <div class="col-md-6">
+                <div class="admin-section">
+                    <div class="d-flex align-items-center gap-3 mb-4">
+                        <div class="step-number">02</div>
+                        <h3 class="fw-bold mb-0" style="font-size: 18px;">Thông tin Dự án</h3>
+                    </div>
+                    <p class="small text-muted mb-3">Thiết lập nhận diện và thông tin liên lạc cho tòa nhà:</p>
+                    
+                    <a href="https://qlvh.khaservice.com.vn/buildings" target="_blank" class="admin-link-item">
+                        <i class="bi bi-building-fill-add text-success"></i>
+                        <div>
+                            <div class="fw-bold">Cấu hình Tòa nhà</div>
+                            <div class="small text-muted">Logo, Zalo, Hotline, Email, Chính sách...</div>
+                        </div>
+                        <i class="bi bi-box-arrow-up-right ms-auto"></i>
+                    </a>
+
+                    <div class="alert alert-warning border-0 small py-2 mb-0 mt-3">
+                        <i class="bi bi-info-circle-fill me-2"></i>
+                        <strong>Lưu ý:</strong> Tham khảo các mẫu chính sách dùng chung từ các dự án trước đó.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Giai đoạn 3: Cấu hình kỹ thuật -->
+        <div class="row g-4">
+            <div class="col-12">
+                <div class="admin-section">
+                    <div class="d-flex align-items-center gap-3 mb-4">
+                        <div class="step-number">03</div>
+                        <h3 class="fw-bold mb-0" style="font-size: 18px;">Cấu hình Dữ liệu & Thanh toán</h3>
+                    </div>
+                    
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <h6 class="fw-bold small text-uppercase mb-3">Dữ liệu Cơ sở:</h6>
+                            <a href="https://qlvh.khaservice.com.vn/blocks" target="_blank" class="admin-link-item">
+                                <i class="bi bi-grid-3x3-gap-fill"></i>
+                                <div>
+                                    <div class="fw-bold">Cấu hình Block</div>
+                                    <div class="small text-muted">Ưu tiên tạo thủ công.</div>
+                                </div>
+                            </a>
+                            <a href="https://qlvh.khaservice.com.vn/apartments" target="_blank" class="admin-link-item">
+                                <i class="bi bi-door-open-fill"></i>
+                                <div>
+                                    <div class="fw-bold">Danh sách Căn hộ</div>
+                                    <div class="small text-muted">Đẩy dữ liệu bằng file Excel.</div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-4">
+                            <h6 class="fw-bold small text-uppercase mb-3">Dịch vụ & Phí:</h6>
+                            <a href="https://qlvh.khaservice.com.vn/configurations/vehicle" target="_blank" class="admin-link-item">
+                                <i class="bi bi-car-front-fill"></i>
+                                <div>
+                                    <div class="fw-bold">Cấu hình Phương tiện</div>
+                                    <div class="small text-muted">Đẩy dữ liệu bằng file Excel.</div>
+                                </div>
+                            </a>
+                            <a href="https://qlvh.khaservice.com.vn/configurations/fee" target="_blank" class="admin-link-item">
+                                <i class="bi bi-cash-coin"></i>
+                                <div>
+                                    <div class="fw-bold">Cấu hình biểu phí</div>
+                                    <div class="small text-muted">Thiết lập đơn giá các dịch vụ.</div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-4">
+                            <h6 class="fw-bold small text-uppercase mb-3">Thanh toán:</h6>
+                            <a href="https://qlvh.khaservice.com.vn/configurations/payment" target="_blank" class="admin-link-item">
+                                <i class="bi bi-credit-card-2-front-fill text-primary"></i>
+                                <div>
+                                    <div class="fw-bold">Cổng thanh toán</div>
+                                    <div class="small text-muted">Kết nối MOMO, ZALO...</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Alert Info -->
+        <div class="alert alert-info border-0 mt-5 d-flex gap-3" style="background-color: #f0f9ff; border-radius: var(--radius-card);">
+            <i class="bi bi-lightbulb-fill text-primary fs-4"></i>
+            <div>
+                <h6 class="fw-bold text-primary mb-1">Mẹo triển khai nhanh</h6>
+                <p class="mb-0 text-muted small">Đối với các dữ liệu lớn như Căn hộ và Phương tiện, hãy luôn sử dụng mẫu Excel của hệ thống để đảm bảo tính chính xác và tiết kiệm thời gian.</p>
+            </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://kit.fontawesome.com/94472b8613.js" crossorigin="anonymous"></script>
+  <script src="js/components.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
