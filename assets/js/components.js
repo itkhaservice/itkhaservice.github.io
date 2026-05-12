@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
     // 1. Load Header
-    fetch("header.html")
+    fetch("partials/header.html")
         .then(response => response.text())
         .then(data => {
             document.querySelector("body").insertAdjacentHTML("afterbegin", data);
@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
 
     // 2. Load Footer
-    fetch("footer.html")
+    fetch("partials/footer.html")
         .then(response => response.text())
         .then(data => {
             document.querySelector("body").insertAdjacentHTML("beforeend", data);

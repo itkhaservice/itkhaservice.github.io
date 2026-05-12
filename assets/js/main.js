@@ -106,13 +106,13 @@ document.addEventListener("DOMContentLoaded", function () {
   let currentAudio = null;
   let lastSongIndex = -1;
 
-  fetch("musics/playlist.json")
+  fetch("assets/musics/playlist.json")
     .then((res) => {
       if (!res.ok) throw new Error("Cannot load playlist");
       return res.json();
     })
     .then((data) => {
-      musicPlaylist = data.map((song) => `musics/${song}`);
+      musicPlaylist = data.map((song) => `assets/musics/${song}`);
     })
     .catch((err) => console.error("Load playlist error:", err));
 
